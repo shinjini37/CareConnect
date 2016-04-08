@@ -1,0 +1,10 @@
+.box{
+    height: 10px;
+    width:1px;
+    background-color: black;
+    padding:0px;
+}
+
+.row{
+    background-color: aquamarine;
+}

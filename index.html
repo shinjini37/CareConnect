@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CareConnect</title>
+    <link rel="stylesheet" type="text/css" href="cc_main_stylesheet.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="row" id="navigation">
+        <div class="col-sm-12">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div id="logo"></div>
+                </div>
+                <div class="col-sm-5">
+                    <div id="search">
+                        <input type="text" placeholder="search...">
+                        <button>Search</button>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="profile-nav">
+                        <button class="btn btn-primary">Profile</button>
+                        <button class="btn btn-primary">Messages</button>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"> S
+                                <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Settings</a></li>
+                                <li><a href="#">Log Out</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="main-container">
+        <div class="col-sm-3" id="filter">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>Filter</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div id="date-dropdown">
+                        <select>
+                            <option value="">04/10/2016</option>
+                            <option value="">04/17/2016</option>
+                            <option value="">04/24/2016</option>
+                            <option value="">05/01/2016</option>
+                        </select>
+                    </div>
+                    <div id="date-checkboxes">
+                        <input type="checkbox" name="date" value="monday"> Mon <br>
+                        <input type="checkbox" name="date" value="tuesday"> Tue <br>
+                        <input type="checkbox" name="date" value="wednesday"> Wed <br>
+                        <input type="checkbox" name="date" value="thursday"> Thu <br>
+                        <input type="checkbox" name="date" value="friday"> Fri <br>
+                        <input type="checkbox" name="date" value="saturday"> Sat <br>
+                        <input type="checkbox" name="date" value="sunday"> Sun <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-9" id="profile-sort-container">
+            <div class="row" id="sort">
+                <div class="col-sm-12">
+                    <div class="box"></div>
+                </div>
+            </div>
+            <div id="profile-container">
+                <div class="row mini-profile">
+                    <div class="col-sm-12">
+                        <div class="box"></div>
+                    </div>
+                </div>
+                <div class="row mini-profile">
+                    <div class="col-sm-12">
+                        <div class="box"></div>
+                    </div>
+                </div>
+                <div class="row mini-profile">
+                    <div class="col-sm-12">
+                        <div class="box"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>
