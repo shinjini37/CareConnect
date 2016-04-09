@@ -56,6 +56,15 @@
 
 #sort-dropdown {
 	text-align: right;
+
+}
+
+#sort-dropdown select {
+    display: inline-block;
+}
+
+#sort-label{
+    display: inline-block;
 }
 
 .profile-container {
