@@ -31,3 +31,32 @@
 .payrange, .agerange{
     display: inline-block;
 }
+
+.mini-profile {
+	border: 1px solid black;
+/*	float: left;*/
+/*	display: inline-block;*/
+}
+
+.babysitter-name {
+	display: inline-block;
+}
+
+.babysitter-wage {
+	display: inline-block;
+}
+
+.babysitter-rating {
+	display: inline-block;
+}
+
+.babysitter-about-me {
+	display: inline-block;
+}
+
+#sort-dropdown {
+	text-align: right;
+}
+
+.profile-container {
+}
