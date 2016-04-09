@@ -5,6 +5,29 @@
     padding:0px;
 }
 
+#logo{
+    height: 20px;
+    width: 50px;
+    background-color: dodgerblue;
+}
+
 .row{
-    background-color: aquamarine;
+    background-color: #bdc3c7;
+}
+
+.filter-date-group{
+    display: inline-block;
+}
+
+.nav-dropdown{
+    display: inline-block;
+}
+
+.date, .day{
+    font-size: .7em;
+
+}
+
+.payrange, .agerange{
+    display: inline-block;
 }
