@@ -3,28 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>CareConnect</title>
-    <link rel="stylesheet" type="text/css" href="cc_main_stylesheet.css">
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="cc_main_stylesheet.css">
 </head>
 <body>
 <div class="container">
     <div class="row" id="navigation">
-        <div class="col-sm-3">
-            <div id="logo"></div>
+        <div class="col-xs-3">
+            <div id="logo">CareConnect</div>
         </div>
-        <div class="col-sm-5">
+        <div class="col-xs-5">
             <div id="search">
-                <form>
-                    <input type="text" placeholder="search...">
-                    <input type="submit" value="Search">
-                </form>
+                <div class="form-group">
+                    <form>
+                        <input type="text" placeholder="search..." class="form-control">
+                        <input type="submit" value="Search" class="btn btn-primary">
+                    </form>
+                </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-xs-4">
             <div id="profile-nav">
                 <button class="btn btn-primary">Profile</button>
                 <button class="btn btn-primary">Messages</button>
@@ -40,16 +42,16 @@
         </div>
     </div>
     <div class="row" id="main-container">
-        <div class="col-sm-3" id="filter">
+        <div class="col-xs-3" id="filter">
             <div class="row">
-                <div class="col-sm-12">
-                    <div>Filter</div>
+                <div class="col-xs-12">
+                    <div class="filter-label filter-label-main">Filter</div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-12">
-                    <div id="filter-date-dropdown">
-                        <select>
+            <div class="row" id="filter-date">
+                <div class="col-xs-12">
+                    <div id="filter-date-dropdown" class="form-group">
+                        <select class="form-control">
                             <option value="">04/11/2016</option>
                             <option value="">04/18/2016</option>
                             <option value="">04/25/2016</option>
@@ -125,9 +127,9 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     <div id="filter-payrange">
-                        <div>Pay Range (per hour)</div>
+                        <div class="filter-label">Pay Range (per hour)</div>
                         <div class="filter-payrange-checkboxes">
                             <input type="checkbox" name="payrange" value="0">
                             <div class="payrange">
@@ -157,9 +159,9 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-xs-12">
                     <div id="filter-agerange">
-                        <div>Child Age Range</div>
+                        <div class="filter-label">Child Age Range</div>
                         <div class="filter-agerange-checkboxes">
                             <input type="checkbox" name="agerange" value="0">
                             <div class="agerange">
@@ -194,22 +196,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-sm-9" id="profile-sort-container">
-            <div class="row" id="sort">
-                <div class="col-sm-12">
-                    <div id="sort-dropdown">
-                        <div id="sort-label">Sort by</div>
-                        <select>
-                            <option value="">Pay Range: Low to High</option>
-                            <option value="">Pay Range: High to Low</option>
-                            <option value="">Rating</option>
-                        </select>
-                    </div>
+        <div class="col-xs-9" id="profile-sort-container">
+            <div id="sort-dropdown">
+                <div id="sort-label">Sort by</div>
+                <div class="form-group">
+                    <select class="form-control">
+                        <option value="">Pay Range: Low to High</option>
+                        <option value="">Pay Range: High to Low</option>
+                        <option value="">Rating</option>
+                    </select>
                 </div>
             </div>
             <div id="profile-container">
                 <div class="row mini-profile">
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="row babysitter-info">
                             <div class="col babysitter-name">Alice</div>
                             <div class="col babysitter-wage">$10</div>
@@ -219,14 +219,14 @@
                             Yo! What's up!
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="babysitter-calendar">
                             Calendar will be here!
                         </div>
                     </div>
                 </div>
                 <div class="row mini-profile">
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="row babysitter-info">
                             <div class="col babysitter-name">Alice</div>
                             <div class="col babysitter-wage">$10</div>
@@ -236,7 +236,7 @@
                             Yo! What's up!
                         </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-xs-6">
                         <div class="babysitter-calendar">
                             Calendar will be here!
                         </div>
