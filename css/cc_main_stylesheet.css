@@ -51,6 +51,7 @@
 
 .filter-date-group{
     display: inline-block;
+    margin: 0px 2px;
 }
 
 #filter .date, #filter .day{
