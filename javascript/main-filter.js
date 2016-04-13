@@ -67,21 +67,21 @@ var sortProfiles = function (profiles) {
     var sortCriterion = $('#sort-select').val();
     var sortFunction;
     if (sortCriterion === 'payLow') {
-        sortFunction = function(p1, p2) {return p1.wage-p2.wage;};
+        sortFunction = function(p1, p2) {return p1.wage - p2.wage;};
     } else if (sortCriterion === 'payHigh') {
-        sortFunction = function(p1, p2) {return p2.wage-p1.wage;};
+        sortFunction = function(p1, p2) {return p2.wage - p1.wage;};
     } else if (sortCriterion === 'ratingLow') {
-        sortFunction = function(p1, p2) {return p1.rating-p2.rating;};
+        sortFunction = function(p1, p2) {return p1.rating - p2.rating;};
     } else if (sortCriterion === 'payHigh') {
-        sortFunction = function(p1, p2) {return p2.rating-p1.rating;};
+        sortFunction = function(p1, p2) {return p2.rating - p1.rating;};
     } else {
         console.log('Invalid sort criterion!');
     }
-    // don't modeify existing array
+    // don't modify existing array
     if (sortFunction !== undefined) {
-        return profiles.slice(0).sort(sortFunction);
+        return _.clone(profiles).sort(sortFunction);
     } else {
-        return profiles.slice(0);
+        return _.clone(profiles);
     }
 };
 
@@ -96,27 +96,43 @@ var filterProfiles = function (profiles) {
     };
     // filter by wage
     var filterByWage = function (profs) {
-        var checkedPayrangeElts = $('#filter-payrange :input:checked');
-        if (checkedPayrangeElts.length === 0 ||
-            checkedPayrangeElts.length === $('#filter-payrange input').length) {
+        // warning: jq map has a different argument order, so we use standard array instead
+        var checkedPayRangeElts = $('#filter-payrange :input:checked').toArray();
+        if (checkedPayRangeElts.length === 0 ||
+            checkedPayRangeElts.length === $('#filter-payrange input').length) {
             return profs;
         } else {
-            var checkedPayrangeGroups = checkedPayrangeElts.map(function (i, elt) {
+            var checkedPayRangeGroups = checkedPayRangeElts.map(function (elt) {
                 return parseInt(elt.value);
-            }).toArray();
+            });
             return profs.filter(function (prof) {
-                return (checkedPayrangeGroups.indexOf(wageGroup(prof.wage)) > -1);
+                return (checkedPayRangeGroups.indexOf(wageGroup(prof.wage)) > -1);
+            });
+        }
+    };
+    // filter by child age
+    var filterByChildAge = function (profs) {
+        var checkedAgeRangeElts = $('#filter-agerange :input:checked').toArray();
+        if (checkedAgeRangeElts.length === 0 ||
+            checkedAgeRangeElts.length === $('#filter-agerange input').length) {
+            return profs;
+        } else {
+            var checkedAgeRangeGroups = checkedAgeRangeElts.map(function (elt) {
+                return parseInt(elt.value);
+            });
+            return profs.filter(function (prof) {
+                return (_.intersection(prof.ageRange, checkedAgeRangeGroups).length > 0);
             });
         }
     };
     // main function
-    return filterByWage(profiles);
+    return filterByChildAge(filterByWage(profiles));
 };
 
 $(function () {
     var shownProfiles = PROFILES;
     // on load
-    $('#profile-container').append(insertMiniProfileElts(shownProfiles));
+    insertMiniProfileElts(sortProfiles(shownProfiles));
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
