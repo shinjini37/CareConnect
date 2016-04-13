@@ -9,6 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- page control scripts -->
+    <script src="javascript/profiles.js"></script>
+    <script src="javascript/main-filter.js"></script>
+    <!-- stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
 </head>
 <body>
@@ -210,83 +214,15 @@
             <div id="sort-dropdown">
                 <div id="sort-label">Sort by</div>
                 <div class="form-group">
-                    <select class="form-control">
-                        <option value="">Pay Range: Low to High</option>
-                        <option value="">Pay Range: High to Low</option>
-                        <option value="">Rating</option>
+                    <select id="sort-select" class="form-control">
+                        <option value="payLow">Pay Range: Low to High</option>
+                        <option value="payHigh">Pay Range: High to Low</option>
+                        <option value="ratingLow">Rating: Low to High</option>
+                        <option value="ratingHigh">Rating: High to Low</option>
                     </select>
                 </div>
             </div>
             <div id="profile-container">
-                <div class="row mini-profile">
-                    <div class="col-xs-6">
-                        <div class="row babysitter-info">
-                            <div class="col babysitter-name"><a href="profile.html">Alissa</a></div>
-                            <div class="col babysitter-wage">$15</div>
-                            <div class="col babysitter-rating">★★★★</div>
-                        </div>
-                        <div class="row babysitter-about-me">
-                            Hello! I love children! <br />
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="babysitter-calendar">
-                            Calendar will be here!
-                        </div>
-                    </div>
-                </div>
-                <div class="row mini-profile">
-                    <div class="col-xs-6">
-                        <div class="row babysitter-info">
-                            <div class="col babysitter-name"><a href="profile.html">Helen</a></div>
-                            <div class="col babysitter-wage">$20</div>
-                            <div class="col babysitter-rating">★★★★</div>
-                        </div>
-                        <div class="row babysitter-about-me">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="babysitter-calendar">
-                            Calendar will be here!
-                        </div>
-                    </div>
-                </div>
-                <div class="row mini-profile">
-                    <div class="col-xs-6">
-                        <div class="row babysitter-info">
-                            <div class="col babysitter-name"><a href="profile.html">Peter</a></div>
-                            <div class="col babysitter-wage">$5</div>
-                            <div class="col babysitter-rating">★★★</div>
-                        </div>
-                        <div class="row babysitter-about-me">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="babysitter-calendar">
-                            Calendar will be here!
-                        </div>
-                    </div>
-                </div>
-                <div class="row mini-profile">
-                    <div class="col-xs-6">
-                        <div class="row babysitter-info">
-                            <div class="col babysitter-name"><a href="profile.html">Ray</a></div>
-                            <div class="col babysitter-wage">$15</div>
-                            <div class="col babysitter-rating">★★★★</div>
-                        </div>
-                        <div class="row babysitter-about-me">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
-                        <div class="babysitter-calendar">
-                            Calendar will be here!
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
