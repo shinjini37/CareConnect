@@ -1,0 +1,111 @@
+/* Navigation */
+
+#navigation{
+    /*background-color: #2C89C6;*/
+    background-color: #1565C0;
+    padding: 10px;
+    height: 60px;
+
+}
+
+#logo{
+    color: whitesmoke;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    height: 60px;
+    margin: -10px -25px -10px -25px;
+    padding: 15px;
+
+}
+
+#logo:hover{
+    background-color: #135DB0;
+    cursor: pointer;
+}
+
+
+#navigation .form-control{
+    display: inline-block;
+    width: 300px;
+}
+
+#profile-nav{
+    text-align: right;
+}
+
+
+
+.nav-dropdown{
+    display: inline-block;
+}
+
+/*Personal info*/
+
+#personal-info {
+    margin-top: 10px;
+}
+
+#profile-image {
+    border:1px solid #021a40;
+    float: left;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.profile_part_label {
+    border:1px solid #021a40;
+    max-width: 100%;
+    text-align: center;
+}
+
+.babysitter-name {
+    font-weight: bold;
+    width: 30%;
+    display: inline-block;
+}
+
+.babysitter-wage {
+    display: inline-block;
+}
+
+.babysitter-rating {
+    display: inline-block;
+}
+
+#babysitter-main-info {
+    font-size: 20px;
+}
+
+#experiences-references {
+    margin-left: 5px;
+}
+
+/*Background*/
+
+.container{
+    width: 1000px;
+    height: 750px;
+    
+    /*background-color: #bdc3c7;*/
+    background-color: #CCCCCC;
+}
+
+#main-container {
+    background: #ffffff;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: 'Open Sans', serif, sans-serif;
+}
+
+.btn{
+    border-color: #1E88E5;
+    background-color: #1E88E5;
+}
+
+.btn:hover{
+    border-color: #2e6da4;
+    background-color: #1976D2;
+}
