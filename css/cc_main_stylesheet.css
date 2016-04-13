@@ -99,6 +99,10 @@
     margin: auto;
 }
 
+#filter-buttons{
+    text-align: center;
+}
+
 
 /* Profile Containers */
 .mini-profile {
