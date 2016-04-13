@@ -27,7 +27,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html',
+            href: 'profile.html?id=' + profile.index,
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
