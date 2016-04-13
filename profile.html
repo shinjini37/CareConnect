@@ -47,7 +47,37 @@
             <div class="row">
                 <div class="col-xs-6" id="user-profile-wrapper">
                     <img id="profile-image" src="images/blue-user-icon.png">
-                    <button type="button" class="btn btn-primary btn-lg btn-block">Contact</button>
+                    <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#myModal">Contact</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <div class="modal-title" id="myModalLabel">
+                                        <label for="babysitter-email">To:</label>
+                                        <input type="email" value="babysitter@mit.edu" class="form-control" id="babysitter-email">
+                                    </div>
+                                </div>
+
+                                <div class="modal-body">
+                                    <div class="modal-title" id="emailSubject">
+                                        <label for="email-subject">Subject:</label>
+                                        <input type="text" value="[CareConnect] Babysitter needed" class="form-control" id="email-subject">
+                                    </div>
+                                    </br>
+                                    <div class="modal-title" id="emailContent">
+                                        <label for="email-content">Message:</label>
+                                        <textarea class="form-control" rows="15" placeholder="Tell the babysitter about yourself..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Save Draft</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-xs-6">
                     <div class="row" id="babysitter-main-info">
