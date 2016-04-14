@@ -53,36 +53,36 @@ var PROFILES = [
         name: 'Pippin',
         wage: 5,
         rating: 3,
-        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        about: "I'm a hobbit!",
         ageRange: [7,8,9,10],
         email: 'pippin1996@mit.edu',
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
-        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
+        availability: [[],['3pm','4pm','5pm','6pm'],['12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
 
     },
     {
         name: 'Stella',
         wage: 7,
         rating: 2,
-        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        about: 'I am star stuff',
         ageRange: [5,6,7,8],
         email: 'stellaR@mit.edu',
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
-        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
+        availability: [['1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],['9am','10am','11am','12pm'],[],['11am','12pm','5pm','6pm']]
 
     },
     {
         name: 'Amy',
         wage: 12,
         rating: 4,
-        about: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        about: "I'm great with children!",
         ageRange: [5,6,7,8],
         email: 'amy_lee@mit.edu',
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
-        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
+        availability: [['12pm','1pm'],['6pm'],['9am'],[],['9am','10am','11am'],[],['11am','12pm','3pm','4pm','5pm','6pm']]
 
     },
 ];

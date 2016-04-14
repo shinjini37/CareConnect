@@ -43,7 +43,6 @@ $(function(){
     } else {
         profile = profile.toLowerCase();
     }
-    console.log(profile);
     if (profile in PROFILE_INDEX){
         var idx = PROFILE_INDEX[profile];
         profile = PROFILES[idx];
@@ -55,7 +54,7 @@ $(function(){
         $("#babysitter-email").val(profile.email);
         $("#babysitter-references").html(profile.references);
         $("#babysitter-experiences").html(profile.experiences);
-        $("#babysitter-age-range").html(profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " years old");
+        $("#babysitter-age-range").html("Will babysit: " + profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " year olds");
         var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
         for (var i=0; i < 7; i++) {
             var availableHours = profile.availability[i];
@@ -67,6 +66,11 @@ $(function(){
     } else {
         window.location.href = 'index.html';
     }
+
+    //scale the image correctly
+    $("#profile-image").css({
+        width: $("#user-profile-wrapper").css("width")
+    });
 
     }
 
