@@ -50,13 +50,14 @@ var insertMiniProfileElts = function (profiles) {
         leftElt.append(aboutElt);
         baseElt.append(leftElt);
         var rightElt = $('<div/>', {
-            class: 'col-xs-6',
+            class: 'col-xs-6'
         });
         var calendarElt = $('<div/>', {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        rightElt.append(calendarElt);
+        generateMiniCalendar(rightElt);
+        //rightElt.append(calendarElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
     });
