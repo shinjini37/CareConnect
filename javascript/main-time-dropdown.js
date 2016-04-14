@@ -6,6 +6,7 @@ $(function () {
         if (timeSelectorElt.hasClass('show')) {
             timeSelectorElt.removeClass('show');
         } else {
+            $('.time-selector').removeClass('show');
             timeSelectorElt.addClass('show');
         }
     });
