@@ -11,7 +11,7 @@ var PROFILES = [
         email: 'alissaHacker@mit.edu',
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
-        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
+        availability: [['9am','10am','11am','12pm','1pm'], ['11am','12pm','5pm','6pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[]]
     },
     {
         name: 'Ben',
@@ -23,7 +23,7 @@ var PROFILES = [
         email: 'benBitdittle@mit.edu',
         references: "- Babysat for Prof. Helen 1 time",
         experiences: "- Babysat my girlfriend's brother",
-        availability: [['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['9am','10am','11am','12pm','1pm'],['11am','12pm','5pm','6pm']]
+        availability: [['11am','12pm','5pm','6pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['9am','10am','11am','12pm','1pm']]
     },
     {
         name: 'Peter',
@@ -47,7 +47,7 @@ var PROFILES = [
         email: 'ray@mit.edu',
         references: "- Babysat for Prof. X 5 times.",
         experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
-        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],['11am','12pm','5pm','6pm'],['11am','12pm','5pm','6pm'],[],['11am','12pm','5pm','6pm']]
+        availability: [['11am','12pm','5pm','6pm'], ['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],['11am','12pm','5pm','6pm'],['11am','12pm','5pm','6pm'],[]]
     },
     {
         name: 'Pippin',

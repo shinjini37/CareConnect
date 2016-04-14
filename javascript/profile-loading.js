@@ -28,12 +28,24 @@ $(function(){
 
     // copied from main-filter.js needed to draw stars
     // convert integer rating to the appropiate number of stars
+    //var starRatingString = function (n) {
+    //    if (n === 0) {
+    //        return '';
+    //    } else {
+    //        return '★☆' + starRatingString(n-1);
+    //    }
+    //};
+
     var starRatingString = function (n) {
-        if (n === 0) {
-            return '';
-        } else {
-            return '★' + starRatingString(n-1);
+        var rating = '';
+        for (var i = 0; i<5; i++){
+            if (i<n){
+                rating = rating.concat('★');
+            } else{
+                rating = rating.concat('☆')
+            }
         }
+        return rating;
     };
 
     // get the profile, load if it exists, redirect to homepage if it doesn't
@@ -55,7 +67,7 @@ $(function(){
         $("#babysitter-references").html(profile.references);
         $("#babysitter-experiences").html(profile.experiences);
         $("#babysitter-age-range").html("Will babysit: " + profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " year olds");
-        var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         for (var i=0; i < 7; i++) {
             var availableHours = profile.availability[i];
             for (var j=0; j < availableHours.length; j++) {
