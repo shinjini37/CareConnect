@@ -8,6 +8,8 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="javascript/profiles.js"></script>
+    <script type="text/javascript" src="javascript/profilePage.js"></script>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="css/profile.css">
 </head>
@@ -81,26 +83,22 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="row" id="babysitter-main-info">
-                        <div class="col babysitter-name">Peter</div>
-                        <div class="col babysitter-wage">$5</div>
-                        <div class="col babysitter-rating">★★★</div>
+                        <div class="col babysitter-name" id="babysitter-name"></div>
+                        <div class="col babysitter-wage" id="babysitter-wage"></div>
+                        <div class="col babysitter-rating" id="babysitter-rating"></div>
                     </div>
                     <div class="row">
                         <h3 class="profile_part_label">About me</h3>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                        <div id="babysitter-about-me"></div>
 
                     </div>
                 </div>
             </div>
             <div class="row" id="experiences-references">
                 <h3 class="profile_part_label">Experiences</h3>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. <br />
-                - CPR <br />
-                - Have 5 younger siblings <br />
-                - Mentored at summer camp <br>
+                <div id="babysitter-experiences"></div>
                 <h3 class="profile_part_label">References</h3>
-                - Babysat for prof X 5 times. <br />
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                <div id="babysitter-references"></div>
             </div>
         </div>
         <div class="col-xs-6" id="babysitter-calendar">
@@ -210,7 +208,5 @@
     </div>
 </div>
 <hr /> 
-
-
 </body>
 </html>
