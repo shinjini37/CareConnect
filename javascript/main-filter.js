@@ -108,7 +108,8 @@ var filterProfiles = function (profiles) {
         } else {
             var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
             return profs.filter(function (prof) {
-                return (_.intersection(prof.ageRange, checkedAgeRangeGroups).length > 0);
+                var desiredAgeRangeGroups = _.uniq(prof.ageRange.map(ageGroup), true);
+                return (_.intersection(desiredAgeRangeGroups, checkedAgeRangeGroups).length > 0);
             });
         }
     };
