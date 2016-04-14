@@ -42,9 +42,7 @@
 
 /* Filter groups */
 #filter{
-    background-color: #AFD0EB;
-    /*background-color: #BBDEFB;*/
-    /*bottom: 0;*/
+    background-color:  #C3C3C3;
     width: 25%;
     padding: 0;
 }
@@ -69,11 +67,11 @@
 }
 
 #filter-payrange, #filter-agerange{
-    padding: 15px;
+    padding: 5px 15px 5px 15px;
 }
 
 #filter-payrange .filter-label, #filter-agerange .filter-label {
-    text-align: center;
+    text-align: left;
     padding: 5px;
     font-weight: 900;
 }
@@ -85,7 +83,8 @@
     color: whitesmoke;
     padding-top: 7px;
     height: 43px;
-    background-color: #9BB9D1;
+    background-color: #A5A5A5;
+
     margin: 0 -15px 15px -15px;
 
 }
@@ -96,18 +95,27 @@
 
 #filter-date{
     text-align: center;
-    padding: 15px 0 15px 0;
+    padding: 5px 0 5px 0;
 }
 
 #filter-date .form-group{
-    width: 125px;
     margin: auto;
+    width: 85%;
 }
 
 #filter-buttons{
+    padding: 10px;
     text-align: center;
 }
 
+#filter-buttons .btn{
+    background-color: #C04544;
+    border: 1px solid #B64141;
+}
+#filter-buttons .btn:hover{
+    background-color: #B64141;
+    border: 1px solid #963635;
+}
 
 /* Profile Containers */
 .mini-profile {
@@ -122,7 +130,7 @@
 
 .babysitter-name {
     font-weight: bold;
-    width: 180px;
+    width: 270px;
 	display: inline-block;
 }
 
@@ -142,6 +150,7 @@
     border: 1px solid darkgrey;
     border-radius: 5px;
     padding: 5px;
+    margin: 5px -10px 0 -10px;
 
 }
 
@@ -161,7 +170,7 @@
 #sort-dropdown {
 	/*text-align: right;*/
     padding: 5px;
-    background-color: #AFAFAF;
+    background-color: #759CC0;
     text-align: right;
     height: 43px;
     margin: 0 -15px 0 -15px;
@@ -193,10 +202,11 @@
 /*Background*/
 
 .container{
-    /*width: 1200px;*/
-    width: 1000px;
+    width: 1200px;
+    /*width: 1000px;*/
     /*background-color: #bdc3c7;*/
-    background-color: #CCCCCC;
+    background-color: #9BB9D1;
+
 }
 
 body{
@@ -214,6 +224,8 @@ body{
     background-color: #1976D2;
 }
 
+
+/*Calendar*/
 .cal_cell{
     border:1px solid #021a40;
     max-width: 100%;
