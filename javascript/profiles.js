@@ -10,7 +10,8 @@ var PROFILES = [
         ageRange: [2,3,4],
         email: 'alissaHacker@mit.edu',
         references: "- Babysat for Prof. Xavier 5 times",
-        experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>"
+        experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
+        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
     },
     {
         name: 'Ben',
@@ -21,7 +22,8 @@ var PROFILES = [
         ageRange: [0,1,2,3],
         email: 'benBitdittle@mit.edu',
         references: "- Babysat for Prof. Helen 1 time",
-        experiences: "- Babysat my girlfriend's brother"
+        experiences: "- Babysat my girlfriend's brother",
+        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
     },
     {
         name: 'Peter',
@@ -32,7 +34,8 @@ var PROFILES = [
         ageRange: [7, 8, 9],
         email: 'peterParker@mit.edu',
         references: "- Babysat for Prof. X 5 times.",
-        experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>"
+        experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
+        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
     },
     {
         name: 'Ray',
@@ -43,6 +46,7 @@ var PROFILES = [
         ageRange: [0,1,2,3,4],
         email: 'ray@mit.edu',
         references: "- Babysat for Prof. X 5 times.",
-        experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>"
+        experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
+        availability: [['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']]
     },
 ];
