@@ -221,6 +221,7 @@ $(function () {
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
+        insertMiniProfileElts(sortProfiles(PROFILES));
     });
     // filter handler
     $('#filter-apply').click(function () {
