@@ -28,10 +28,11 @@ $(function() {
     // console.log(userID);
     var profile = PROFILES[Number(userID)];
     $("#babysitter-rating").html(starRatingString(profile.rating));
-    $("#babysitter-about-me").html(profile.about);
-    $("#babysitter-wage").html(profile.wage);
+    $("#babysitter-about-me").text(profile.about);
+    $("#babysitter-wage").html("$" + profile.wage + "/hr");
     $("#babysitter-name").html(profile.name);
     $("#babysitter-email").val(profile.email);
     $("#babysitter-references").html(profile.references);
     $("#babysitter-experiences").html(profile.experiences);
+    $("#babysitter-age-range").html(profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " years old");
 });
