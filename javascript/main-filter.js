@@ -223,10 +223,15 @@ $(function () {
         $('#filter :input:checked').prop('checked', '');
         insertMiniProfileElts(sortProfiles(PROFILES));
     });
-    // filter handler
-    $('#filter-apply').click(function () {
-        shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
+    // // filter handler
+    // $('#filter-apply').click(function () {
+    //     shownProfiles = filterProfiles(PROFILES);
+    //     insertMiniProfileElts(sortProfiles(shownProfiles));
+    // });
+    // apply filter automatically whenever the user checks a box
+    $('#filter :input').change(function(){
+    	shownProfiles = filterProfiles(PROFILES);
+    	insertMiniProfileElts(sortProfiles(shownProfiles));
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {
