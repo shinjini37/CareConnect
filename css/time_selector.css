@@ -1,0 +1,54 @@
+.time-selector-base {
+    position: relative;
+    display: inline-block;
+}
+
+.time-selector-btn {
+    margin: 0px auto;
+}
+
+.time-selector {
+    display: none;
+    position: absolute;
+    background-color: #e6e6e6;
+    width: 50px;
+    left: -16px;
+    height: 100px;
+    z-index: 10;
+}
+
+/* CSS taken from my RS1 implementation for reference */
+
+.dropdown-btn {
+    border: none;
+    padding: 5px;
+    color: black;
+    cursor: pointer;
+}
+
+.dropdown:hover .dropdown-btn, .content-group span:hover {
+    background-color: #2e9afe;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #e6e6e6;
+    width: 120px;
+}
+
+.content-group {
+	border: 1px solid black;
+	margin: -1px 0px;
+}
+
+.content-group span {
+    display: block;
+    padding: 5px 10px;
+    color: black;
+    cursor: pointer;
+}
+
+.show {
+    display: block;
+}
