@@ -1,4 +1,4 @@
-var generateMiniCalendar = function(rightElement){
+var generateMiniCalendar = function(rightElement, b_availability){
 
 	var calendarContainer = $('<div/>', {
             id : "mini_calendar_container"
@@ -50,9 +50,17 @@ var generateMiniCalendar = function(rightElement){
 	
         for (var hour_index = 0; hour_index < num_hours; hour_index++){
 
-        	var hour_col_div = $("<div />", {
-        		"class" : "col-xs-1 cal_cell"
-        	});
+        	var hour_col_div;
+
+        	if (b_availability[day_index].indexOf(hour_texts[hour_index]) > -1){
+        		hour_col_div = $("<div />", {
+        			"class" : "col-xs-1 cal_cell b_available"
+        		});
+        	} else {
+        		hour_col_div = $("<div />", {
+        			"class" : "col-xs-1 cal_cell"
+        		});
+        	}
 
         	row_div.append(hour_col_div);
         }

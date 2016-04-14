@@ -56,7 +56,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        generateMiniCalendar(rightElt);
+        generateMiniCalendar(rightElt, profile.availability);
         //rightElt.append(calendarElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
