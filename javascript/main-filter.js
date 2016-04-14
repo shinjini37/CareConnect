@@ -56,7 +56,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        generateMiniCalendar(rightElt);
+        generateMiniCalendar(rightElt, profile.availability);
         //rightElt.append(calendarElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
@@ -169,16 +169,35 @@ var insertDateCheckboxes = function (date) {
             checkboxElt.prop('disabled', true);
         }
         baseElt.append(checkboxElt);
+        var dateInfoElt = $('<div/>', {
+            class: 'date-info',
+            id: 'date-info-' + arr[1].toLowerCase(),
+        });
         var dayTextElt = $('<div/>', {
             class: 'day',
             text: arr[1],
         });
-        baseElt.append(dayTextElt);
+        dateInfoElt.append(dayTextElt);
         var dateTextElt = $('<div/>', {
             class: 'date',
             text: displayDate(arr[0], false),
         });
-        baseElt.append(dateTextElt);
+        dateInfoElt.append(dateTextElt);
+        baseElt.append(dateInfoElt);
+        var timeSelectorBaseElt = $('<div/>', {
+            class: 'time-selector-base',
+        });
+        var timeSelectorBtnElt = $('<span/>', {
+            class: 'ui-icon ui-icon-triangle-1-s time-selector-btn',
+            id: 'time-selector-btn-' + arr[1].toLowerCase(),
+        });
+        timeSelectorBaseElt.append(timeSelectorBtnElt);
+        var timeSelectorElt = $('<div/>', {
+            class: 'time-selector',
+            id: 'time-selector-' + arr[1].toLowerCase(),
+        });
+        timeSelectorBaseElt.append(timeSelectorElt);
+        baseElt.append(timeSelectorBaseElt);
         $('#filter-date-checkboxes').append(baseElt);
     });
 };
