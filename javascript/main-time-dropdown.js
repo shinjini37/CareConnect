@@ -22,7 +22,7 @@ var convertTo24HrTime = function (s) {
     }
 };
 
-var addTimeRangeElts = function (elt) {
+var addTimeRangeElts = function (elt, day) {
     var toggling = false;
     var addingToSelector;
     _.range(8,19).forEach(function (n) {
@@ -37,6 +37,10 @@ var addTimeRangeElts = function (elt) {
                 addingToSelector = false;
                 rangeElt.removeClass('time-selector-range-selected');
             } else {
+                if (elt.find('.time-selector-range-selected').length === 0) {
+                    $('#filter-date-checkbox-' + day).prop('checked', true);
+                    changeShownProfiles();
+                }
                 addingToSelector = true;
                 rangeElt.addClass('time-selector-range-selected');
             }
@@ -52,6 +56,10 @@ var addTimeRangeElts = function (elt) {
                     rangeElt.addClass('time-selector-range-selected');
                 } else {
                     rangeElt.removeClass('time-selector-range-selected');
+                    if (elt.find('.time-selector-range-selected').length === 0) {
+                        $('#filter-date-checkbox-' + day).prop('checked', false);
+                        changeShownProfiles();
+                    }
                 }
             }
         });
@@ -60,20 +68,21 @@ var addTimeRangeElts = function (elt) {
 };
 
 var createTimeSelectorElt = function (day, disable) {
+    var day = day.toLowerCase();
     // generate elements
     var baseElt = $('<div/>', {
         class: 'time-selector-base',
     });
     var btnElt = $('<span/>', {
         class: 'ui-icon ui-icon-triangle-1-s time-selector-btn',
-        id: 'time-selector-btn-' + day.toLowerCase(),
+        id: 'time-selector-btn-' + day,
     });
     baseElt.append(btnElt);
     var selectorElt = $('<div/>', {
         class: 'time-selector',
-        id: 'time-selector-' + day.toLowerCase(),
+        id: 'time-selector-' + day,
     });
-    addTimeRangeElts(selectorElt);
+    addTimeRangeElts(selectorElt, day);
     baseElt.append(selectorElt);
     // click handler for button
     if (!disable) {
