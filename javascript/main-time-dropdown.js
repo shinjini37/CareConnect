@@ -42,7 +42,6 @@ var addTimeRangeElts = function (elt) {
                 rangeElt.addClass('time-selector-range-selected');
             }
             $(document).mouseup(function () {
-                changeShownProfiles();
                 toggling = false;
                 $(document).off('mouseup');
             });

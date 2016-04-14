@@ -130,21 +130,32 @@ var filterProfiles = function (profiles) {
     };
     // filter by time
     var filterByTime = function (profs) {
-        return true;
         var DAYS_OF_THE_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-        return profs.filter(function (prof) {
-            DAYS_OF_THE_WEEK.forEach(function (day, idx) {
-                var available = prof.availability[idx].map(convertTo24HrTime);
-                var chosen = getValues($('#time-selector-' + day + ' .time-selector-range-selected'));
-                if (_.intersection(available, chosen).length > 0) {
-                    return true;
-                }
-            });
-            return false;
+        var validDayFilters = [];
+        DAYS_OF_THE_WEEK.forEach(function (day, idx) {
+            if ($('#filter-date-checkbox-' + day).prop('checked') &&
+                $('#time-selector-' + day + ' .time-selector-range-selected').length > 0) {
+                validDayFilters.push(idx);
+            }
         });
+        if (validDayFilters.length === 0) {
+            return profs;
+        } else {
+            return profs.filter(function (prof) {
+                validDayFilters.forEach(function (idx) {
+                    var day = DAYS_OF_THE_WEEK[idx];
+                    var available = prof.availability[idx].map(convertTo24HrTime);
+                    var chosen = getValues($('#time-selector-' + day + ' .time-selector-range-selected'));
+                    if (_.intersection(available, chosen).length > 0) {
+                        return true;
+                    }
+                });
+                return false;
+            });
+        }
     };
     // main function
-    return filterByTime(filterByChildAge(filterByWage(profiles)));
+    return filterByChildAge(filterByWage(profiles));
 };
 
 // display date in mm/dd/yyyy or mm/dd format
@@ -180,6 +191,8 @@ var insertDateCheckboxes = function (date) {
         var checkboxElt = $('<input/>', {
             type: 'checkbox',
             name: 'date',
+            class: 'filter-date-checkbox',
+            id: 'filter-date-checkbox-' + arr[1].toLowerCase(),
         });
         // disable past dates
         var disableElt = (arr[0] < new Date());
@@ -230,13 +243,6 @@ var generateWeeksForSelection = function () {
     });
 };
 
-/*
-var changeShownProfiles = function () {
-    shownProfiles = filterProfiles(PROFILES);
-    insertMiniProfileElts(sortProfiles(shownProfiles));
-};
-*/
-
 $(function () {
     var shownProfiles = PROFILES;
     // on load
@@ -252,15 +258,14 @@ $(function () {
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
-        shownProfiles = filterProfiles(PROFILES);
+        $('.time-selector-range-selected').removeClass('time-selector-range-selected');
+        shownProfiles = PROFILES;
         insertMiniProfileElts(sortProfiles(shownProfiles));
-        // changeShownProfiles();
     });
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
     	shownProfiles = filterProfiles(PROFILES);
         insertMiniProfileElts(sortProfiles(shownProfiles));
-        // changeShownProfiles();
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {
