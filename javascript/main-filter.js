@@ -27,7 +27,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html',
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
@@ -146,4 +146,49 @@ $(function () {
     $('#sort-select').on('change', function () {
         insertMiniProfileElts(sortProfiles(shownProfiles));
     });
+
+    // filter extend to bottom of div
+    var height = $("#profile-sort-container").css("height");
+    $("#filter").css({height: height});
+
+
+    // Make filter bar scroll with window. This can be made better
+    $(window).scroll(function() {
+        var scrollTop = $(window).scrollTop();
+        var navHeight = $("#navigation").css("height");
+        navHeight = navHeight.slice(0,-2);
+        navHeight = parseInt(navHeight);
+        var filterFloatHeight = $("#filter .float").css("height");
+        filterFloatHeight = filterFloatHeight.slice(0,-2);
+        filterFloatHeight = parseInt(filterFloatHeight);
+        var containerHeight = $(".container").css("height");
+        containerHeight = containerHeight.slice(0,-2);
+        containerHeight = parseInt(containerHeight);
+        console.log((containerHeight - filterFloatHeight));
+
+        // if the filter bar hits the bottom
+        if ((scrollTop > containerHeight - filterFloatHeight - 15)){
+            console.log("1");
+            $('#filter .float').css({
+                position:"absolute",
+                "top": (containerHeight - 15 - navHeight - filterFloatHeight)
+            });
+        } else if (scrollTop>navHeight){ // if the scroll has passed the nav bar
+            console.log("2");
+            $('#filter .float').css({
+                position:"fixed",
+                top:0,
+                width: $('#filter').css("width"),
+                "padding-top": 0
+            });
+        } else { // back to normal view
+            console.log("3");
+            $('#filter .float').css({
+                'position':"relative",
+                "padding-top": 0
+            });
+        }
+    });
+
+
 });
