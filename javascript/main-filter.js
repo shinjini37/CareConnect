@@ -27,7 +27,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html',
+            href: 'profile.html?id=' + profile.index,
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
@@ -50,13 +50,14 @@ var insertMiniProfileElts = function (profiles) {
         leftElt.append(aboutElt);
         baseElt.append(leftElt);
         var rightElt = $('<div/>', {
-            class: 'col-xs-6',
+            class: 'col-xs-6'
         });
         var calendarElt = $('<div/>', {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        rightElt.append(calendarElt);
+        generateMiniCalendar(rightElt);
+        //rightElt.append(calendarElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
     });
@@ -239,11 +240,17 @@ $(function () {
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
+        insertMiniProfileElts(sortProfiles(PROFILES));
     });
-    // filter handler
-    $('#filter-apply').click(function () {
-        shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
+    // // filter handler
+    // $('#filter-apply').click(function () {
+    //     shownProfiles = filterProfiles(PROFILES);
+    //     insertMiniProfileElts(sortProfiles(shownProfiles));
+    // });
+    // apply filter automatically whenever the user checks a box
+    $('#filter :input').change(function(){
+    	shownProfiles = filterProfiles(PROFILES);
+    	insertMiniProfileElts(sortProfiles(shownProfiles));
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {
