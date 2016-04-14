@@ -25,11 +25,10 @@ var convertTo24HrTime = function (s) {
 var addTimeRangeElts = function (elt) {
     var toggling = false;
     var addingToSelector;
-    _.range(9,19).forEach(function (n) {
+    _.range(8,19).forEach(function (n) {
         var rangeElt = $('<div/>', {
             class: 'time-selector-range unhighlightable',
             text: convertTo12HrTime(n),
-            value: n,
         });
         // dragging mechanism
         rangeElt.mousedown(function () {
@@ -42,6 +41,7 @@ var addTimeRangeElts = function (elt) {
                 rangeElt.addClass('time-selector-range-selected');
             }
             $(document).mouseup(function () {
+                changeShownProfiles();
                 toggling = false;
                 $(document).off('mouseup');
             });

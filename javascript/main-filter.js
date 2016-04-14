@@ -14,8 +14,8 @@ var starRatingString = function (n) {
     for (var i = 0; i<5; i++){
         if (i<n){
             rating = rating.concat('★');
-        } else{
-            rating = rating.concat('☆')
+        } else {
+            rating = rating.concat('☆');
         }
     }
     return rating;
@@ -129,7 +129,7 @@ var filterProfiles = function (profiles) {
     };
     // filter by child age
     var filterByChildAge = function (profs) {
-        var checkedAgeRangeElts = $('#filter-agerange :input:checked').toArray();
+        var checkedAgeRangeElts = $('#filter-agerange :input:checked');
         if (checkedAgeRangeElts.length === 0 ||
             checkedAgeRangeElts.length === $('#filter-agerange input').length) {
             return profs;
@@ -154,20 +154,22 @@ var filterProfiles = function (profiles) {
             return profs;
         } else {
             return profs.filter(function (prof) {
-                validDayFilters.forEach(function (idx) {
+                return validDayFilters.some(function (idx) {
                     var day = DAYS_OF_THE_WEEK[idx];
                     var available = prof.availability[idx].map(convertTo24HrTime);
-                    var chosen = getValues($('#time-selector-' + day + ' .time-selector-range-selected'));
+                    var chosenElts = $('#time-selector-' + day + ' .time-selector-range-selected');
+                    var chosen = chosenElts.toArray().map(function (elt) {
+                        return convertTo24HrTime(elt.innerHTML);
+                    });
                     if (_.intersection(available, chosen).length > 0) {
                         return true;
                     }
                 });
-                return false;
             });
         }
     };
     // main function
-    return filterByChildAge(filterByWage(profiles));
+    return filterByTime(filterByChildAge(filterByWage(profiles)));
 };
 
 // display date in mm/dd/yyyy or mm/dd format
@@ -255,8 +257,14 @@ var generateWeeksForSelection = function () {
     });
 };
 
+var shownProfiles;
+var changeShownProfiles = function () {
+    shownProfiles = filterProfiles(PROFILES);
+    insertMiniProfileElts(sortProfiles(shownProfiles));
+};
+
 $(function () {
-    var shownProfiles = PROFILES;
+    shownProfiles = PROFILES;
     // on load
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
@@ -270,14 +278,12 @@ $(function () {
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
+        changeShownProfiles();
         $('.time-selector-range-selected').removeClass('time-selector-range-selected');
-        shownProfiles = PROFILES;
-        insertMiniProfileElts(sortProfiles(shownProfiles));
     });
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
-    	shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
+        changeShownProfiles();
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {
