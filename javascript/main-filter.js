@@ -261,17 +261,14 @@ $(function () {
         var containerHeight = $(".container").css("height");
         containerHeight = containerHeight.slice(0,-2);
         containerHeight = parseInt(containerHeight);
-        console.log((containerHeight - filterFloatHeight));
 
         // if the filter bar hits the bottom
         if ((scrollTop > containerHeight - filterFloatHeight - 15)){
-            console.log("1");
             $('#filter .float').css({
                 position:"absolute",
                 "top": (containerHeight - 15 - navHeight - filterFloatHeight)
             });
         } else if (scrollTop>navHeight){ // if the scroll has passed the nav bar
-            console.log("2");
             $('#filter .float').css({
                 position:"fixed",
                 top:0,
@@ -279,7 +276,6 @@ $(function () {
                 "padding-top": 0
             });
         } else { // back to normal view
-            console.log("3");
             $('#filter .float').css({
                 'position':"relative",
                 "padding-top": 0
