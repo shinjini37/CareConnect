@@ -1,26 +1,5 @@
 // main page: filter and sort handlers
 
-// convert integer rating to the appropiate number of stars
-//var starRatingString = function (n) {
-//    if (n === 0) {
-//        return '';
-//    } else {
-//        return '★' + starRatingString(n-1);
-//    }
-//};
-
-var starRatingString = function (n) {
-    var rating = '';
-    for (var i = 0; i<5; i++){
-        if (i<n){
-            rating = rating.concat('★');
-        } else {
-            rating = rating.concat('☆');
-        }
-    }
-    return rating;
-};
-
 // change the profile container to show specified profiles
 var insertMiniProfileElts = function (profiles) {
     $('#profile-container').empty();
@@ -98,7 +77,7 @@ var sortProfiles = function (profiles) {
     }
 };
 
-// extract values of an array of jquery objects
+// extract values of an array of jquery input objects
 var getValues = function (arr) {
     return arr.toArray().map(function (elt) {
         return parseInt(elt.value);
@@ -107,13 +86,6 @@ var getValues = function (arr) {
 
 // filter profile
 var filterProfiles = function (profiles) {
-    // map wage to correct group
-    var wageGroup = function (wage) {
-        if (wage <= 10) {return 0;}
-        else if (wage <= 20) {return 1;}
-        else if (wage <= 30) {return 2;}
-        else {return 3;}
-    };
     // filter by wage
     var filterByWage = function (profs) {
         var checkedPayRangeElts = $('#filter-payrange :input:checked');
@@ -174,7 +146,7 @@ var filterProfiles = function (profiles) {
 
 // display date in mm/dd/yyyy or mm/dd format
 // http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
-var displayDate = function(date, displayYear) {
+var mmddDate = function(date, displayYear) {
     var yyyy = date.getFullYear().toString();
     var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
     var dd  = date.getDate().toString();
@@ -225,7 +197,7 @@ var insertDateCheckboxes = function (date) {
         dateInfoElt.append(dayTextElt);
         var dateTextElt = $('<div/>', {
             class: 'date',
-            text: displayDate(arr[0], false),
+            text: mmddDate(arr[0], false),
         });
         dateInfoElt.append(dateTextElt);
         baseElt.append(dateInfoElt);
@@ -246,9 +218,9 @@ var generateWeeksForSelection = function () {
         return d;
     });
     sundays.forEach(function (date) {
-        var start = displayDate(date, true);
+        var start = mmddDate(date, true);
         date.setDate(date.getDate() + 6);
-        var end = displayDate(date, true);
+        var end = mmddDate(date, true);
         var optionElt = $('<option/>', {
             value: start,
             text: start + ' — ' + end,

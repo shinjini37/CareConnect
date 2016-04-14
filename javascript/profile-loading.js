@@ -1,4 +1,4 @@
-$(function(){
+$(function() {
     // Load the profile page
 
     // get query string to find which profile is being accessed
@@ -9,7 +9,7 @@ $(function(){
         var query_string = {};
         var query = window.location.search.substring(1);
         var vars = query.split("&");
-        for (var i=0;i<vars.length;i++) {
+        for (var i=0; i<vars.length; i++) {
             var pair = vars[i].split("=");
             // If first entry with this name
             if (typeof query_string[pair[0]] === "undefined") {
@@ -26,31 +26,9 @@ $(function(){
         return query_string;
     }();
 
-    // copied from main-filter.js needed to draw stars
-    // convert integer rating to the appropiate number of stars
-    //var starRatingString = function (n) {
-    //    if (n === 0) {
-    //        return '';
-    //    } else {
-    //        return '★☆' + starRatingString(n-1);
-    //    }
-    //};
-
-    var starRatingString = function (n) {
-        var rating = '';
-        for (var i = 0; i<5; i++){
-            if (i<n){
-                rating = rating.concat('★');
-            } else{
-                rating = rating.concat('☆')
-            }
-        }
-        return rating;
-    };
-
     // get the profile, load if it exists, redirect to homepage if it doesn't
     var profile = QueryString.profile;
-    if (profile === undefined){
+    if (profile === undefined) {
         window.location.href = 'index.html';
     } else {
         profile = profile.toLowerCase();

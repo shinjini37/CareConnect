@@ -2,8 +2,7 @@ $(function(){
     // Search function to find students given first names
     var search = function(){
         var searchText = $("#search-text").val().toLowerCase();
-        console.log(searchText);
-        if (searchText in PROFILE_INDEX){
+        if (searchText in PROFILE_INDEX) {
             window.location.href = 'profile.html' + '?profile=' + searchText;
         } else {
             window.location.href = 'index.html';
@@ -12,7 +11,7 @@ $(function(){
 
     }
 
-    $("#search-text").keyup(function(e){
+    $("#search-text").keyup(function(e) {
         if(e.keyCode == 13)
         {
             search();
