@@ -13,40 +13,26 @@
     background-color: #e6e6e6;
     width: 50px;
     left: -16px;
-    height: 100px;
     z-index: 10;
 }
 
-/* CSS taken from my RS1 implementation for reference */
-
-.dropdown-btn {
-    border: none;
-    padding: 5px;
-    color: black;
-    cursor: pointer;
-}
-
-.dropdown:hover .dropdown-btn, .content-group span:hover {
-    background-color: #2e9afe;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #e6e6e6;
-    width: 120px;
-}
-
-.content-group {
+.time-selector-range {
 	border: 1px solid black;
 	margin: -1px 0px;
+	cursor: default;
 }
 
-.content-group span {
-    display: block;
-    padding: 5px 10px;
-    color: black;
-    cursor: pointer;
+.time-selector-range-selected {
+    background-color: palegreen;
+}
+
+/* http://stackoverflow.com/questions/69430/is-there-a-way-to-make-text-unselectable-on-an-html-page */
+.unhighlightable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
 }
 
 .show {

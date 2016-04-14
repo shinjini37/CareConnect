@@ -196,20 +196,7 @@ var insertDateCheckboxes = function (date) {
         });
         dateInfoElt.append(dateTextElt);
         baseElt.append(dateInfoElt);
-        var timeSelectorBaseElt = $('<div/>', {
-            class: 'time-selector-base',
-        });
-        var timeSelectorBtnElt = $('<span/>', {
-            class: 'ui-icon ui-icon-triangle-1-s time-selector-btn',
-            id: 'time-selector-btn-' + arr[1].toLowerCase(),
-        });
-        timeSelectorBaseElt.append(timeSelectorBtnElt);
-        var timeSelectorElt = $('<div/>', {
-            class: 'time-selector',
-            id: 'time-selector-' + arr[1].toLowerCase(),
-        });
-        timeSelectorBaseElt.append(timeSelectorElt);
-        baseElt.append(timeSelectorBaseElt);
+        baseElt.append(createTimeSelectorElt(arr[1]));
         $('#filter-date-checkboxes').append(baseElt);
     });
 };
