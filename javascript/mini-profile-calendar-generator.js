@@ -58,7 +58,7 @@ var generateMiniCalendar = function(rightElement, b_availability){
         		});
         	} else {
         		hour_col_div = $("<div />", {
-        			"class" : "col-xs-1 cal_cell"
+        			"class" : "col-xs-1 cal_cell b_unavailable"
         		});
         	}
 
