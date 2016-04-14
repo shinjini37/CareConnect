@@ -1,6 +1,6 @@
 // main page: whenisgood-style time selector
 
-// convert 24-hour to AM/PM
+// convert 24-hour time to AM/PM
 var convertTo12HrTime = function (n) {
     if (n < 12) {
         return n + ' am';
@@ -8,6 +8,17 @@ var convertTo12HrTime = function (n) {
         return '12 pm';
     } else {
         return (n-12) + ' pm';
+    }
+};
+
+// convert AM/PM time to 24-hour
+var convertTo24HrTime = function (s) {
+    var hr = parseInt(s.substring(0, s.length-2)) % 12;
+    var modifier = s.substring(s.length-2);
+    if (modifier.toLowerCase() === 'am') {
+        return hr;
+    } else if (modifier.toLowerCase() === 'pm') {
+        return hr+12;
     }
 };
 
@@ -31,6 +42,7 @@ var addTimeRangeElts = function (elt) {
                 rangeElt.addClass('time-selector-range-selected');
             }
             $(document).mouseup(function () {
+                changeShownProfiles();
                 toggling = false;
                 $(document).off('mouseup');
             });
@@ -48,7 +60,7 @@ var addTimeRangeElts = function (elt) {
     });
 };
 
-var createTimeSelectorElt = function (day) {
+var createTimeSelectorElt = function (day, disable) {
     // generate elements
     var baseElt = $('<div/>', {
         class: 'time-selector-base',
@@ -65,13 +77,15 @@ var createTimeSelectorElt = function (day) {
     addTimeRangeElts(selectorElt);
     baseElt.append(selectorElt);
     // click handler for button
-    btnElt.click(function () {
-        if (selectorElt.hasClass('show')) {
-            selectorElt.removeClass('show');
-        } else {
-            $('.time-selector').removeClass('show');
-            selectorElt.addClass('show');
-        }
-    });
+    if (!disable) {
+        btnElt.click(function () {
+            if (selectorElt.hasClass('show')) {
+                selectorElt.removeClass('show');
+            } else {
+                $('.time-selector').removeClass('show');
+                selectorElt.addClass('show');
+            }
+        });
+    }
     return baseElt;
 };
