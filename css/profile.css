@@ -59,9 +59,12 @@
     text-align: center;
 }
 
-.babysitter-name {
+#babysitter-main-info .babysitter-name {
     font-weight: bold;
     width: 30%;
+}
+
+.babysitter-name {
     display: inline-block;
 }
 

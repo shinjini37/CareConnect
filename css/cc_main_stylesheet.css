@@ -44,9 +44,13 @@
 #filter{
     background-color: #AFD0EB;
     /*background-color: #BBDEFB;*/
-    height: 690px;
+    /*bottom: 0;*/
     width: 25%;
-    /*position: absolute;*/
+    padding: 0;
+}
+
+#filter .float{
+    padding: 0 15px 0 15px;
 }
 
 .filter-date-group{
@@ -151,7 +155,6 @@
 
 #profile-sort-container {
     width: 75%;
-    height: 690px;
 }
 
 #sort-dropdown {
@@ -175,8 +178,6 @@
 
 #profile-container {
     /*width: 650px;*/
-    height: 647px;
-    overflow: auto;
     margin: 0 -15px 0 -15px;
 }
 
@@ -192,8 +193,7 @@
 
 .container{
     width: 1000px;
-    height: 750px;
-    
+
     /*background-color: #bdc3c7;*/
     background-color: #CCCCCC;
 }

@@ -14,6 +14,7 @@
     <!-- page control scripts -->
     <script src="javascript/profiles.js"></script>
     <script src="javascript/main-filter.js"></script>
+    <script src="javascript/search.js"></script>
     <!-- stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
 </head>
@@ -26,10 +27,8 @@
         <div class="col-xs-5">
             <div id="search">
                 <div class="form-group">
-                    <form>
-                        <input type="text" placeholder="search..." class="form-control">
-                        <input type="submit" value="Search" class="btn btn-primary">
-                    </form>
+                    <input type="text" placeholder="search..." class="form-control" id="search-text">
+                    <button class="btn btn-primary" id="search-submit">Search</button>
                 </div>
             </div>
         </div>
@@ -50,164 +49,166 @@
     </div>
     <div class="row" id="main-container">
         <div class="col-xs-3" id="filter">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="filter-label filter-label-main">Filter...</div>
-                </div>
-            </div>
-            <div class="row" id="filter-date">
-                <div class="col-xs-12">
-                    <div id="filter-date-dropdown" class="form-group">
-                        <select class="form-control">
-                            <option value="">04/11/2016</option>
-                            <option value="">04/18/2016</option>
-                            <option value="">04/25/2016</option>
-                            <option value="">05/02/2016</option>
-                        </select>
-                    </div>
-                    <div id="filter-date-checkboxes">
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="monday">
-                            <div class="day">
-                                Mon
-                            </div>
-                            <div class="date">
-                                04/11
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="tuesday">
-                            <div class="day">
-                                Tue
-                            </div>
-                            <div class="date">
-                                04/12
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="wednesday">
-                            <div class="day">
-                                Wed
-                            </div>
-                            <div class="date">
-                                04/13
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="thursday">
-                            <div class="day">
-                                Thu
-                            </div>
-                            <div class="date">
-                                04/14
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="friday">
-                            <div class="day">
-                                Fri
-                            </div>
-                            <div class="date">
-                                04/15
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="saturday">
-                            <div class="day">
-                                Sat
-                            </div>
-                            <div class="date">
-                                04/16
-                            </div>
-                        </div>
-                        <div class="filter-date-group">
-                            <input type="checkbox" name="date" value="sunday">
-                            <div class="day">
-                                Sun
-                            </div>
-                            <div class="date">
-                                04/17
-                            </div>
-                        </div>
+            <div class="float">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="filter-label filter-label-main">Filter...</div>
                     </div>
                 </div>
-            </div>
+                <div class="row" id="filter-date">
+                    <div class="col-xs-12">
+                        <div id="filter-date-dropdown" class="form-group">
+                            <select class="form-control">
+                                <option value="">04/11/2016</option>
+                                <option value="">04/18/2016</option>
+                                <option value="">04/25/2016</option>
+                                <option value="">05/02/2016</option>
+                            </select>
+                        </div>
+                        <div id="filter-date-checkboxes">
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="monday">
+                                <div class="day">
+                                    Mon
+                                </div>
+                                <div class="date">
+                                    04/11
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="tuesday">
+                                <div class="day">
+                                    Tue
+                                </div>
+                                <div class="date">
+                                    04/12
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="wednesday">
+                                <div class="day">
+                                    Wed
+                                </div>
+                                <div class="date">
+                                    04/13
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="thursday">
+                                <div class="day">
+                                    Thu
+                                </div>
+                                <div class="date">
+                                    04/14
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="friday">
+                                <div class="day">
+                                    Fri
+                                </div>
+                                <div class="date">
+                                    04/15
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="saturday">
+                                <div class="day">
+                                    Sat
+                                </div>
+                                <div class="date">
+                                    04/16
+                                </div>
+                            </div>
+                            <div class="filter-date-group">
+                                <input type="checkbox" name="date" value="sunday">
+                                <div class="day">
+                                    Sun
+                                </div>
+                                <div class="date">
+                                    04/17
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div id="filter-payrange">
-                        <div class="filter-label">Pay Range (per hour)</div>
-                        <div class="filter-payrange-checkboxes">
-                            <input type="checkbox" name="payrange" value="0">
-                            <div class="payrange">
-                                Less than $10
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="filter-payrange">
+                            <div class="filter-label">Pay Range (per hour)</div>
+                            <div class="filter-payrange-checkboxes">
+                                <input type="checkbox" name="payrange" value="0">
+                                <div class="payrange">
+                                    Less than $10
+                                </div>
                             </div>
-                        </div>
-                        <div class="filter-payrange-checkboxes">
-                            <input type="checkbox" name="payrange" value="1">
-                            <div class="payrange">
-                                $10 to $20
+                            <div class="filter-payrange-checkboxes">
+                                <input type="checkbox" name="payrange" value="1">
+                                <div class="payrange">
+                                    $10 to $20
+                                </div>
                             </div>
-                        </div>
-                        <div class="filter-payrange-checkboxes">
-                            <input type="checkbox" name="payrange" value="2">
-                            <div class="payrange">
-                                $20 to $30
+                            <div class="filter-payrange-checkboxes">
+                                <input type="checkbox" name="payrange" value="2">
+                                <div class="payrange">
+                                    $20 to $30
+                                </div>
                             </div>
-                        </div>
-                        <div class="filter-payrange-checkboxes">
-                            <input type="checkbox" name="payrange" value="3">
-                            <div class="payrange">
-                                More than $30
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-xs-12">
-                    <div id="filter-agerange">
-                        <div class="filter-label">Child Age Range</div>
-                        <div class="filter-agerange-checkboxes">
-                            <input type="checkbox" name="agerange" value="0">
-                            <div class="agerange">
-                                2 years or younger
-                            </div>
-                        </div>
-                        <div class="filter-agerange-checkboxes">
-                            <input type="checkbox" name="agerange" value="1">
-                            <div class="agerange">
-                                3 to 4 years old
-                            </div>
-                        </div>
-                        <div class="filter-agerange-checkboxes">
-                            <input type="checkbox" name="agerange" value="2">
-                            <div class="agerange">
-                                5 to 7 years old
-                            </div>
-                        </div>
-                        <div class="filter-agerange-checkboxes">
-                            <input type="checkbox" name="agerange" value="3">
-                            <div class="agerange">
-                                8 to 9 years old
-                            </div>
-                        </div>
-                        <div class="filter-agerange-checkboxes">
-                            <input type="checkbox" name="agerange" value="4">
-                            <div class="agerange">
-                                10 years or older
+                            <div class="filter-payrange-checkboxes">
+                                <input type="checkbox" name="payrange" value="3">
+                                <div class="payrange">
+                                    More than $30
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-xs-12">
-                    <div id="filter-buttons">
-                        <button class="btn btn-primary" id="filter-reset">Reset</button>
-                        <button class="btn btn-primary" id="filter-apply">Apply Filter</button>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="filter-agerange">
+                            <div class="filter-label">Child Age Range</div>
+                            <div class="filter-agerange-checkboxes">
+                                <input type="checkbox" name="agerange" value="0">
+                                <div class="agerange">
+                                    2 years or younger
+                                </div>
+                            </div>
+                            <div class="filter-agerange-checkboxes">
+                                <input type="checkbox" name="agerange" value="1">
+                                <div class="agerange">
+                                    3 to 4 years old
+                                </div>
+                            </div>
+                            <div class="filter-agerange-checkboxes">
+                                <input type="checkbox" name="agerange" value="2">
+                                <div class="agerange">
+                                    5 to 7 years old
+                                </div>
+                            </div>
+                            <div class="filter-agerange-checkboxes">
+                                <input type="checkbox" name="agerange" value="3">
+                                <div class="agerange">
+                                    8 to 9 years old
+                                </div>
+                            </div>
+                            <div class="filter-agerange-checkboxes">
+                                <input type="checkbox" name="agerange" value="4">
+                                <div class="agerange">
+                                    10 years or older
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div id="filter-buttons">
+                            <button class="btn btn-primary" id="filter-reset">Reset</button>
+                            <button class="btn btn-primary" id="filter-apply">Apply Filter</button>
+                        </div>
                     </div>
                 </div>
             </div>
