@@ -3,12 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>CareConnect</title>
-    <!-- Latest compiled and minified CSS -->
+    <!-- stylesheets -->
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel='stylesheet' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.min.css'>
+    <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/time_selector.css">
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     <!-- other javascript libraries -->
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
     <!-- page control scripts -->
@@ -17,6 +20,8 @@
     <script src="javascript/search.js"></script>
     <!-- stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
+    <script src="javascript/main-time-dropdown.js"></script>
+    <script src="javascript/mini-profile-calendar-generator.js"></script>
 </head>
 <body>
 <div class="container">
@@ -49,6 +54,7 @@
     </div>
     <div class="row" id="main-container">
         <div class="col-xs-3" id="filter">
+
             <div class="float">
                 <div class="row">
                     <div class="col-xs-12">
@@ -57,82 +63,14 @@
                 </div>
                 <div class="row" id="filter-date">
                     <div class="col-xs-12">
-                        <div id="filter-date-dropdown" class="form-group">
-                            <select class="form-control">
-                                <option value="">04/11/2016</option>
-                                <option value="">04/18/2016</option>
-                                <option value="">04/25/2016</option>
-                                <option value="">05/02/2016</option>
+                        <div id="filter-date-dropdown" class="form-group" style="width: 76%;">
+                            <select id="week-select" class="form-control">
                             </select>
                         </div>
                         <div id="filter-date-checkboxes">
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="monday">
-                                <div class="day">
-                                    Mon
-                                </div>
-                                <div class="date">
-                                    04/11
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="tuesday">
-                                <div class="day">
-                                    Tue
-                                </div>
-                                <div class="date">
-                                    04/12
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="wednesday">
-                                <div class="day">
-                                    Wed
-                                </div>
-                                <div class="date">
-                                    04/13
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="thursday">
-                                <div class="day">
-                                    Thu
-                                </div>
-                                <div class="date">
-                                    04/14
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="friday">
-                                <div class="day">
-                                    Fri
-                                </div>
-                                <div class="date">
-                                    04/15
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="saturday">
-                                <div class="day">
-                                    Sat
-                                </div>
-                                <div class="date">
-                                    04/16
-                                </div>
-                            </div>
-                            <div class="filter-date-group">
-                                <input type="checkbox" name="date" value="sunday">
-                                <div class="day">
-                                    Sun
-                                </div>
-                                <div class="date">
-                                    04/17
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="filter-payrange">
@@ -140,31 +78,30 @@
                             <div class="filter-payrange-checkboxes">
                                 <input type="checkbox" name="payrange" value="0">
                                 <div class="payrange">
-                                    Less than $10
+                                    $10 and below
                                 </div>
                             </div>
                             <div class="filter-payrange-checkboxes">
                                 <input type="checkbox" name="payrange" value="1">
                                 <div class="payrange">
-                                    $10 to $20
+                                    $10.01 to $20
                                 </div>
                             </div>
                             <div class="filter-payrange-checkboxes">
                                 <input type="checkbox" name="payrange" value="2">
                                 <div class="payrange">
-                                    $20 to $30
+                                    $20.01 to $30
                                 </div>
                             </div>
                             <div class="filter-payrange-checkboxes">
                                 <input type="checkbox" name="payrange" value="3">
                                 <div class="payrange">
-                                    More than $30
+                                    $30.01 and above
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="filter-agerange">
@@ -202,12 +139,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="row">
                     <div class="col-xs-12">
                         <div id="filter-buttons">
                             <button class="btn btn-primary" id="filter-reset">Reset</button>
-                            <button class="btn btn-primary" id="filter-apply">Apply Filter</button>
                         </div>
                     </div>
                 </div>
@@ -230,7 +165,7 @@
         </div>
     </div>
 </div>
-<hr /> 
+<hr />
 
 
 </body>

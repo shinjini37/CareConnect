@@ -50,13 +50,14 @@ var insertMiniProfileElts = function (profiles) {
         leftElt.append(aboutElt);
         baseElt.append(leftElt);
         var rightElt = $('<div/>', {
-            class: 'col-xs-6',
+            class: 'col-xs-6'
         });
         var calendarElt = $('<div/>', {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        rightElt.append(calendarElt);
+        generateMiniCalendar(rightElt, profile.availability);
+        //rightElt.append(calendarElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
     });
@@ -129,18 +130,127 @@ var filterProfiles = function (profiles) {
     return filterByChildAge(filterByWage(profiles));
 };
 
+// display date in mm/dd/yyyy or mm/dd format
+// http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
+var displayDate = function(date, displayYear) {
+    var yyyy = date.getFullYear().toString();
+    var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
+    var dd  = date.getDate().toString();
+    if (displayYear) {
+        return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
+    } else {
+        return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]);
+    }
+};
+
+// change the date checkboxes to display the correct week
+var insertDateCheckboxes = function (date) {
+    var lastSunday = new Date(date);
+    lastSunday.setDate(date.getDate() - date.getDay());
+    lastSunday.setHours(19, 0, 0, 0); // no caretakers after 7 pm
+    var DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var dates = _.range(7).map(function (i) {
+        var d = new Date(lastSunday);
+        d.setDate(d.getDate() + i);
+        return d;
+    });
+    // generate elements
+    $('#filter-date-checkboxes').empty();
+    _.zip(dates, DAYS_OF_THE_WEEK).forEach(function (arr) {
+        var baseElt = $('<div/>', {
+            class: 'filter-date-group'
+        });
+        var checkboxElt = $('<input/>', {
+            type: 'checkbox',
+            name: 'date',
+        });
+        // disable past dates
+        if (arr[0] < new Date()) {
+            checkboxElt.prop('disabled', true);
+        }
+        baseElt.append(checkboxElt);
+        var dateInfoElt = $('<div/>', {
+            class: 'date-info',
+            id: 'date-info-' + arr[1].toLowerCase(),
+        });
+        var dayTextElt = $('<div/>', {
+            class: 'day',
+            text: arr[1],
+        });
+        dateInfoElt.append(dayTextElt);
+        var dateTextElt = $('<div/>', {
+            class: 'date',
+            text: displayDate(arr[0], false),
+        });
+        dateInfoElt.append(dateTextElt);
+        baseElt.append(dateInfoElt);
+        var timeSelectorBaseElt = $('<div/>', {
+            class: 'time-selector-base',
+        });
+        var timeSelectorBtnElt = $('<span/>', {
+            class: 'ui-icon ui-icon-triangle-1-s time-selector-btn',
+            id: 'time-selector-btn-' + arr[1].toLowerCase(),
+        });
+        timeSelectorBaseElt.append(timeSelectorBtnElt);
+        var timeSelectorElt = $('<div/>', {
+            class: 'time-selector',
+            id: 'time-selector-' + arr[1].toLowerCase(),
+        });
+        timeSelectorBaseElt.append(timeSelectorElt);
+        baseElt.append(timeSelectorBaseElt);
+        $('#filter-date-checkboxes').append(baseElt);
+    });
+};
+
+// insert correct weeks to the filter
+// should only be called on page load
+var generateWeeksForSelection = function () {
+    var currentDate = new Date();
+    var lastSunday = new Date();
+    lastSunday.setDate(currentDate.getDate() - currentDate.getDay());
+    var sundays = _.range(4).map(function (i) {
+        var d = new Date(lastSunday);
+        d.setDate(d.getDate() + 7 * i);
+        return d;
+    });
+    sundays.forEach(function (date) {
+        var start = displayDate(date, true);
+        date.setDate(date.getDate() + 6);
+        var end = displayDate(date, true);
+        var optionElt = $('<option/>', {
+            value: start,
+            text: start + ' — ' + end,
+        });
+        $('#week-select').append(optionElt);
+    });
+};
+
 $(function () {
     var shownProfiles = PROFILES;
     // on load
+    // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
+    // put correct dates in date filter
+    generateWeeksForSelection();
+    insertDateCheckboxes(new Date());
+    // week selection handler
+    $('#week-select').on('change', function () {
+        insertDateCheckboxes(new Date($(this).val()));
+    });
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
+        insertMiniProfileElts(sortProfiles(PROFILES));
     });
-    // filter handler
-    $('#filter-apply').click(function () {
-        shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
+    // // filter handler
+    // $('#filter-apply').click(function () {
+    //     shownProfiles = filterProfiles(PROFILES);
+    //     insertMiniProfileElts(sortProfiles(shownProfiles));
+    // });
+    // apply filter automatically whenever the user checks a box
+    $('#filter :input').change(function(){
+    	shownProfiles = filterProfiles(PROFILES);
+    	insertMiniProfileElts(sortProfiles(shownProfiles));
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {

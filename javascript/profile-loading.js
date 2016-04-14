@@ -43,12 +43,27 @@ $(function(){
     } else {
         profile = profile.toLowerCase();
     }
-
+    console.log(profile);
     if (profile in PROFILE_INDEX){
         var idx = PROFILE_INDEX[profile];
-        $(".babysitter-name").html(PROFILES[idx].name);
-        $(".babysitter-wage").html("$" + PROFILES[idx].wage);
-        $(".babysitter-rating").html(starRatingString(PROFILES[idx].rating));
+        profile = PROFILES[idx];
+        $(".babysitter-name").html(profile.name);
+        $("#babysitter-rating").html(starRatingString(profile.rating));
+        $("#babysitter-about-me").text(profile.about);
+        $("#babysitter-wage").html("$" + profile.wage + "/hr");
+        $("#babysitter-name").html(profile.name);
+        $("#babysitter-email").val(profile.email);
+        $("#babysitter-references").html(profile.references);
+        $("#babysitter-experiences").html(profile.experiences);
+        $("#babysitter-age-range").html(profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " years old");
+        var days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        for (var i=0; i < 7; i++) {
+            var availableHours = profile.availability[i];
+            for (var j=0; j < availableHours.length; j++) {
+                var slotID = days[i]+availableHours[j];
+                $('#' + slotID)[0].style.backgroundColor = 'PaleGreen';
+            }
+        }
     } else {
         window.location.href = 'index.html';
     }

@@ -55,6 +55,7 @@
 
 .filter-date-group{
     display: inline-block;
+    margin: 0px 2px;
 }
 
 #filter .date, #filter .day{
@@ -192,8 +193,8 @@
 /*Background*/
 
 .container{
+    /*width: 1200px;*/
     width: 1000px;
-
     /*background-color: #bdc3c7;*/
     background-color: #CCCCCC;
 }
@@ -212,3 +213,22 @@ body{
     border-color: #2e6da4;
     background-color: #1976D2;
 }
+
+.cal_cell{
+    border:1px solid #021a40;
+    max-width: 100%;
+    max-height: 100%;
+    font-size: 12px;
+    height: 20px;
+    padding: 0px;
+    text-align: center;
+}
+
+.b_available{
+    background:palegreen;
+}
+
+.b_unavailable{
+    background:lightgray;
+}
+
