@@ -64,7 +64,7 @@ var sortProfiles = function (profiles) {
         sortFunction = function(p1, p2) {return p2.wage - p1.wage;};
     } else if (sortCriterion === 'ratingLow') {
         sortFunction = function(p1, p2) {return p1.rating - p2.rating;};
-    } else if (sortCriterion === 'payHigh') {
+    } else if (sortCriterion === 'ratingHigh') {
         sortFunction = function(p1, p2) {return p2.rating - p1.rating;};
     } else {
         console.log('Invalid sort criterion!');
