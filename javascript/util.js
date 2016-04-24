@@ -13,9 +13,9 @@ var starRatingString = function (n) {
 
 // map wage to correct group in filter menu
 var wageGroup = function (wage) {
-    if (wage <= 10) {return 0;}
-    else if (wage <= 20) {return 1;}
-    else if (wage <= 30) {return 2;}
+    if (wage < 10) {return 0;}
+    else if (wage < 20) {return 1;}
+    else if (wage < 30) {return 2;}
     else {return 3;}
 };
 

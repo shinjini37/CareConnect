@@ -1,6 +1,6 @@
 /* Navigation */
 
-#navigation{
+#navigation {
     /*background-color: #2C89C6;*/
     background-color: #1565C0;
     padding: 10px;
@@ -8,7 +8,7 @@
 
 }
 
-#logo{
+#logo {
     color: whitesmoke;
     text-align: center;
     font-size: 1.5em;
@@ -19,54 +19,63 @@
 
 }
 
-#logo:hover{
+#logo:hover {
     background-color: #135DB0;
     cursor: pointer;
 }
 
 
-#navigation .form-control{
+#navigation .form-control {
     display: inline-block;
     width: 300px;
 }
 
-#profile-nav{
+#profile-nav {
     text-align: right;
 }
 
-
-
-.nav-dropdown{
+.nav-dropdown {
     display: inline-block;
 }
 
 /* Filter groups */
-#filter{
+#filter {
     background-color:  #C3C3C3;
     width: 25%;
     padding: 0;
+    cursor: default;
 }
 
-#filter .float{
+/* http://stackoverflow.com/questions/69430/is-there-a-way-to-make-text-unselectable-on-an-html-page */
+.unhighlightable {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+#filter .float {
     padding: 0 15px 0 15px;
 }
 
-.filter-date-group{
+.filter-date-group {
     display: inline-block;
-    margin: 0px 2px;
+    margin: 0px 3px;
 }
 
-#filter .date, #filter .day{
-    font-size: .7em;
+#filter .date, #filter .day {
+    font-size: .8em;
 
 }
 
-.payrange, .agerange{
+.payrange, .agerange {
     display: inline-block;
     padding: 5px;
+    cursor: pointer;
 }
 
-#filter-payrange, #filter-agerange{
+#filter-payrange, #filter-agerange {
     padding: 5px 15px 5px 15px;
 }
 

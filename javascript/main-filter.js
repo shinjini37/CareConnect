@@ -253,6 +253,12 @@ $(function () {
         $('#filter :input:checked').prop('checked', '');
         changeShownProfiles();
         $('.time-selector-range-selected').removeClass('time-selector-range-selected');
+        $('.time-selector').removeClass('show');
+    });
+    // clicking pay/age range = clicking checkbox
+    $('.payrange, .agerange').click(function () {
+        var input = $(this).parent().find('input');
+        input.prop('checked', !input.prop('checked'));
     });
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {

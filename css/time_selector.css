@@ -5,6 +5,7 @@
 
 .time-selector-btn {
     margin: 0px auto;
+    cursor: pointer;
 }
 
 .time-selector {
@@ -24,15 +25,6 @@
 
 .time-selector-range-selected {
     background-color: palegreen;
-}
-
-/* http://stackoverflow.com/questions/69430/is-there-a-way-to-make-text-unselectable-on-an-html-page */
-.unhighlightable {
-   -moz-user-select: -moz-none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
 }
 
 .show {
