@@ -32,17 +32,23 @@ var getValues = function (arr) {
 };
 
 // filter by wage
+//var filterByWage = function (profs) {
+//    var checkedPayRangeElts = $('#filter-payrange :input:checked');
+//    if (checkedPayRangeElts.length === 0 ||
+//        checkedPayRangeElts.length === $('#filter-payrange input').length) {
+//        return profs;
+//    } else {
+//        var checkedPayRangeGroups = getValues(checkedPayRangeElts);
+//        return profs.filter(function (prof) {
+//            return (checkedPayRangeGroups.indexOf(wageGroup(prof.wage)) > -1);
+//        });
+//    }
+//};
 var filterByWage = function (profs) {
-    var checkedPayRangeElts = $('#filter-payrange :input:checked');
-    if (checkedPayRangeElts.length === 0 ||
-        checkedPayRangeElts.length === $('#filter-payrange input').length) {
-        return profs;
-    } else {
-        var checkedPayRangeGroups = getValues(checkedPayRangeElts);
-        return profs.filter(function (prof) {
-            return (checkedPayRangeGroups.indexOf(wageGroup(prof.wage)) > -1);
-        });
-    }
+    var selectedPayRangeRange = [$( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 )];
+    return profs.filter(function (prof) {
+        return (((prof.wage) >= selectedPayRangeRange[0]) && ((prof.wage) <= selectedPayRangeRange[1]));
+    });
 };
 // filter by child age
 var filterByChildAge = function (profs, returnIntersection) {
@@ -291,6 +297,20 @@ var changeShownProfiles = function () {
 };
 
 $(function () {
+    // adding the filter price range slider
+    $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 30,
+        values: [0, 30],
+        slide: function( event, ui ) {
+            $( "#filter-payrange-selected" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+        }
+    });
+    $( "#filter-payrange-selected" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+        " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+
+
     shownProfiles = PROFILES;
     // on load
     // add mini-profiles
@@ -317,6 +337,11 @@ $(function () {
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
         changeShownProfiles();
+    });
+    $( "#slider-range" ).slider({
+        change: function( event, ui ) {
+            changeShownProfiles();
+        }
     });
     // sort-by select handler
     $('#sort-select').on('change', function () {

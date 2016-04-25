@@ -133,6 +133,23 @@
     width: 85%;
 }
 
+#filter-payrange-selected-container{
+    padding-left: 30px;
+    font-weight: normal;
+}
+#filter-payrange-selected-container label{
+    font-weight: normal;
+}
+
+input#filter-payrange-selected{
+    border: none;
+    background-color: transparent;
+}
+
+#slider-range{
+    margin: 15px 30px 5px 30px;
+}
+
 #filter-buttons{
     padding: 10px;
     text-align: center;

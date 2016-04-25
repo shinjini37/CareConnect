@@ -9,7 +9,7 @@
     <link rel='stylesheet' type='text/css' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.min.css'>
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
     <link rel="stylesheet" type="text/css" href="css/time_selector.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <!-- javascript libraries -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -22,7 +22,7 @@
     <script src="javascript/search.js"></script>
     <script src="javascript/main-time-dropdown.js"></script>
     <script src="javascript/mini-profile-calendar-generator.js"></script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 </head>
 <body>
 <div class="container">
@@ -75,30 +75,38 @@
                     <div class="col-xs-12">
                         <div id="filter-payrange">
                             <div class="filter-label">Pay Range (/hr)</div>
-                            <div class="filter-payrange-checkboxes">
-                                <input type="checkbox" name="payrange" value="0">
-                                <div class="payrange">
-                                    at most $9.99
-                                </div>
+                            <!-- from http://jqueryui.com/slider/#range-->
+                            <div id="slider-range"></div>
+                            <div id="filter-payrange-selected-container">
+                                <label for="filter-payrange-selected">Selected:</label>
+                                <input type="text" id="filter-payrange-selected" readonly>
                             </div>
-                            <div class="filter-payrange-checkboxes">
-                                <input type="checkbox" name="payrange" value="1">
-                                <div class="payrange">
-                                    $10 to $19.99
-                                </div>
-                            </div>
-                            <div class="filter-payrange-checkboxes">
-                                <input type="checkbox" name="payrange" value="2">
-                                <div class="payrange">
-                                    $20 to $29.99
-                                </div>
-                            </div>
-                            <div class="filter-payrange-checkboxes">
-                                <input type="checkbox" name="payrange" value="3">
-                                <div class="payrange">
-                                    $30 and above
-                                </div>
-                            </div>
+
+
+                            <!--<div class="filter-payrange-checkboxes">-->
+                                <!--<input type="checkbox" name="payrange" value="0">-->
+                                <!--<div class="payrange">-->
+                                    <!--at most $9.99-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="filter-payrange-checkboxes">-->
+                                <!--<input type="checkbox" name="payrange" value="1">-->
+                                <!--<div class="payrange">-->
+                                    <!--$10 to $19.99-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="filter-payrange-checkboxes">-->
+                                <!--<input type="checkbox" name="payrange" value="2">-->
+                                <!--<div class="payrange">-->
+                                    <!--$20 to $29.99-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="filter-payrange-checkboxes">-->
+                                <!--<input type="checkbox" name="payrange" value="3">-->
+                                <!--<div class="payrange">-->
+                                    <!--$30 and above-->
+                                <!--</div>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>
