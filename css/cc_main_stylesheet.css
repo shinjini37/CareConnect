@@ -8,6 +8,10 @@
 
 }
 
+.ui-menu-item{
+    z-index: 1000;
+}
+
 #logo {
     color: whitesmoke;
     text-align: center;
@@ -40,7 +44,7 @@
 
 /* Filter groups */
 #filter {
-    z-index: 500;
+    /*z-index: 500;*/
     background-color:  #C3C3C3;
     width: 40%;
     padding: 0;
