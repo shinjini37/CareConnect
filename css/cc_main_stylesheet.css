@@ -41,7 +41,7 @@
 /* Filter groups */
 #filter {
     background-color:  #C3C3C3;
-    width: 25%;
+    width: 40%;
     padding: 0;
     cursor: default;
 }
@@ -137,6 +137,13 @@
 	display: block;
 }
 
+.profile-picture {
+    /*border:1px solid #021a40;*/
+    border-radius: 5px;
+    background-color: whitesmoke;
+    width: 100%;
+}
+
 .babysitter-name {
     font-weight: bold;
     width: 270px;
@@ -173,7 +180,7 @@
 
 
 #profile-sort-container {
-    width: 75%;
+    width: 60%;
 }
 
 #sort-dropdown {

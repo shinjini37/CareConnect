@@ -8,8 +8,17 @@ var insertMiniProfileElts = function (profiles) {
         var baseElt = $('<div/>', {
             class: 'row mini-profile',
         });
+        var pictureElt = $('<div/>', {
+            class: 'col-xs-3',
+        });
+        var pictureImgElt = $('<img>', {
+           class: 'profile-picture',
+            src: 'images/blue-user-icon.png'
+        });
+        pictureElt.append(pictureImgElt);
+        baseElt.append(pictureElt);
         var leftElt = $('<div/>', {
-            class: 'col-xs-6',
+            class: 'col-xs-9',
         });
         var infoElt = $('<div/>', {
             class: 'row babysitter-info',
@@ -47,9 +56,9 @@ var insertMiniProfileElts = function (profiles) {
             class: 'babysitter-calendar',
             text: 'Calendar will be here!',
         });
-        generateMiniCalendar(rightElt, profile.availability);
+        //generateMiniCalendar(rightElt, profile.availability);
         //rightElt.append(calendarElt);
-        baseElt.append(rightElt);
+        //baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
     });
 };
