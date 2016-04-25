@@ -44,9 +44,13 @@ var insertMiniProfileElts = function (profiles) {
             text: starRatingString(profile.rating),
         });
         infoElt.append(ratingElt);
+        var ageRangeText = [];
+        profile.ageRange.forEach(function (ageRange, idx) {
+            ageRangeText.push(ageRange.text);
+        });
         var ageRangeElt = $('<div/>', {
             class: 'row babysitter-age-range',
-            text: profile.ageRange,
+            text: ageRangeText
         });
         infoElt.append(ageRangeElt);
         leftElt.append(infoElt);
@@ -123,9 +127,16 @@ var filterProfiles = function (profiles) {
             return profs;
         } else {
             var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
+            //console.log(checkedAgeRangeGroups);
             return profs.filter(function (prof) {
-                var desiredAgeRangeGroups = _.uniq(prof.ageRange.map(ageGroup), true);
-                return (_.intersection(desiredAgeRangeGroups, checkedAgeRangeGroups).length > 0);
+                var ageRangeGroup = [];
+                prof.ageRange.forEach(function(range, idx){
+                   ageRangeGroup.push(range.index);
+                });
+                console.log(ageRangeGroup);
+                //var desiredAgeRangeGroups = _.uniq(ageRange.map(ageGroup), true);
+                //console.log(desiredAgeRangeGroups);
+                return (_.intersection(ageRangeGroup, checkedAgeRangeGroups).length > 0);
             });
         }
     };
