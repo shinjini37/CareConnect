@@ -22,16 +22,16 @@ var AGE_RANGES = {
         text: "preschoolers"
     },
     'lower-elementary': {index: 3,
-        text: "younger elementary school kids"
+        text: "lower elementary school kids"
     },
     'higher-elementary': {index: 4,
-        text: "older elementary school kids",
+        text: "higher elementary school kids",
     },
     'lower-middle': {index: 5,
-        text: "younger middle school kids",
+        text: "lower middle school kids",
     },
     'higher-middle': {index: 6,
-        text: "older high school kids",
+        text: "higher middle school kids",
     },
 
 }
