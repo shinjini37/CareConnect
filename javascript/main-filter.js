@@ -382,6 +382,12 @@ $(function () {
             });
 
 
+            $('#sort-dropdown').css({
+                position:"absolute",
+                "top": (containerHeight - 15 - navHeight - filterFloatHeight)
+            });
+
+
         } else if (scrollTop>navHeight){ // if the scroll has passed the nav bar
             $('#filter .float').css({
                 position:"fixed",
@@ -389,10 +395,20 @@ $(function () {
                 width: $('#filter').css("width"),
                 "padding-top": 0
             });
+            $('#sort-dropdown').css({
+                position:"fixed",
+                top:0,
+                width: $('#sort-dropdown').css("width"),
+                //"padding-top": 0
+            });
         } else { // back to normal view
             $('#filter .float').css({
                 'position':"relative",
                 "padding-top": 0
+            });
+            $('#sort-dropdown').css({
+                'position':"relative",
+                //"padding-top": 0
             });
         }
     });
