@@ -69,10 +69,30 @@
 
 }
 
-.payrange, .agerange {
+.payrange{
     display: inline-block;
     padding: 5px;
     cursor: pointer;
+}
+
+.agerange {
+    display: block;
+}
+.filter-agerange-checkboxes-group {
+    vertical-align: top;
+}
+.filter-agerange-checkboxes {
+    display: inline-block;
+    width: 56px;
+    height: 80px;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.agerange-size{
+    font-size: 12px;
+    vertical-align: text-bottom;
 }
 
 #filter-payrange, #filter-agerange {

@@ -133,7 +133,7 @@ var filterProfiles = function (profiles) {
                 prof.ageRange.forEach(function(range, idx){
                    ageRangeGroup.push(range.index);
                 });
-                console.log(ageRangeGroup);
+                //console.log(ageRangeGroup);
                 //var desiredAgeRangeGroups = _.uniq(ageRange.map(ageGroup), true);
                 //console.log(desiredAgeRangeGroups);
                 return (_.intersection(ageRangeGroup, checkedAgeRangeGroups).length > 0);
@@ -285,7 +285,8 @@ $(function () {
     // clicking pay/age range = clicking checkbox
     $('.payrange, .agerange').click(function () {
         var input = $(this).parent().find('input');
-        input.prop('checked', !input.prop('checked'));
+        //input.prop('checked', !input.prop('checked'));
+        input.click();
     });
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
