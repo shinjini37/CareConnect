@@ -8,6 +8,7 @@ var insertMiniProfileElts = function (profiles) {
         var baseElt = $('<div/>', {
             class: 'row mini-profile',
         });
+
         var pictureElt = $('<div/>', {
             class: 'col-xs-3',
         });
@@ -17,6 +18,7 @@ var insertMiniProfileElts = function (profiles) {
         });
         pictureElt.append(pictureImgElt);
         baseElt.append(pictureElt);
+
         var leftElt = $('<div/>', {
             class: 'col-xs-9',
         });
@@ -42,6 +44,11 @@ var insertMiniProfileElts = function (profiles) {
             text: starRatingString(profile.rating),
         });
         infoElt.append(ratingElt);
+        var ageRangeElt = $('<div/>', {
+            class: 'row babysitter-age-range',
+            text: profile.ageRange,
+        });
+        infoElt.append(ageRangeElt);
         leftElt.append(infoElt);
         var aboutElt = $('<div/>', {
             class: 'row babysitter-about-me',
