@@ -401,6 +401,9 @@ $(function () {
                 width: $('#sort-dropdown').css("width"),
                 //"padding-top": 0
             });
+            $('#sort-dropdown-dummy').css({
+                display: "block"
+            });
         } else { // back to normal view
             $('#filter .float').css({
                 'position':"relative",
@@ -409,6 +412,9 @@ $(function () {
             $('#sort-dropdown').css({
                 'position':"relative",
                 //"padding-top": 0
+            });
+            $('#sort-dropdown-dummy').css({
+                display: "none"
             });
         }
     });

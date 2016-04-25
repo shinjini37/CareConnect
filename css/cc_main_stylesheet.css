@@ -246,6 +246,16 @@ input#filter-payrange-selected{
     margin: 0 -15px 0 -15px;
 }
 
+#sort-dropdown-dummy {
+    /*text-align: right;*/
+    padding: 5px 15px 5px 15px;
+    background-color: #759CC0;
+    height: 43px;
+    margin: 0 -15px 0 -15px;
+    display: none;
+}
+
+
 #sort-dropdown .form-group {
     display: inline-block;
     width: 210px;
