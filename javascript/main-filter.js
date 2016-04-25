@@ -1,78 +1,5 @@
 // main page: filter and sort handlers
 
-// change the profile container to show specified profiles
-var insertMiniProfileElts = function (profiles) {
-    $('#profile-container').empty();
-    profiles.forEach(function (profile) {
-        // create mini-profile element
-        var baseElt = $('<div/>', {
-            class: 'row mini-profile',
-        });
-
-        var pictureElt = $('<div/>', {
-            class: 'col-xs-3',
-        });
-        var pictureImgElt = $('<img>', {
-           class: 'profile-picture',
-            src: 'images/blue-user-icon.png'
-        });
-        pictureElt.append(pictureImgElt);
-        baseElt.append(pictureElt);
-
-        var leftElt = $('<div/>', {
-            class: 'col-xs-9',
-        });
-        var infoElt = $('<div/>', {
-            class: 'row babysitter-info',
-        });
-        var nameElt = $('<div>', {
-            class: 'col babysitter-name',
-        });
-        var nameLinkElt = $('<a>', {
-            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
-            text: profile.name,
-        });
-        nameElt.append(nameLinkElt);
-        infoElt.append(nameElt);
-        var wageElt = $('<div/>', {
-            class: 'col babysitter-wage',
-            text: '$' + profile.wage,
-        });
-        infoElt.append(wageElt);
-        var ratingElt = $('<div/>', {
-            class: 'col babysitter-rating',
-            text: starRatingString(profile.rating),
-        });
-        infoElt.append(ratingElt);
-        var ageRangeText = [];
-        profile.ageRange.forEach(function (ageRange, idx) {
-            ageRangeText.push(ageRange.text);
-        });
-        var ageRangeElt = $('<div/>', {
-            class: 'row babysitter-age-range',
-            text: ageRangeText
-        });
-        infoElt.append(ageRangeElt);
-        leftElt.append(infoElt);
-        var aboutElt = $('<div/>', {
-            class: 'row babysitter-about-me',
-            text: profile.about,
-        });
-        leftElt.append(aboutElt);
-        baseElt.append(leftElt);
-        var rightElt = $('<div/>', {
-            class: 'col-xs-6'
-        });
-        var calendarElt = $('<div/>', {
-            class: 'babysitter-calendar',
-            text: 'Calendar will be here!',
-        });
-        //generateMiniCalendar(rightElt, profile.availability);
-        //rightElt.append(calendarElt);
-        //baseElt.append(rightElt);
-        $('#profile-container').append(baseElt);
-    });
-};
 
 // sort profiles based on criterion selected; returns new array
 var sortProfiles = function (profiles) {
@@ -104,72 +31,84 @@ var getValues = function (arr) {
     });
 };
 
+// filter by wage
+var filterByWage = function (profs) {
+    var checkedPayRangeElts = $('#filter-payrange :input:checked');
+    if (checkedPayRangeElts.length === 0 ||
+        checkedPayRangeElts.length === $('#filter-payrange input').length) {
+        return profs;
+    } else {
+        var checkedPayRangeGroups = getValues(checkedPayRangeElts);
+        return profs.filter(function (prof) {
+            return (checkedPayRangeGroups.indexOf(wageGroup(prof.wage)) > -1);
+        });
+    }
+};
+// filter by child age
+var filterByChildAge = function (profs, returnIntersection) {
+    var checkedAgeRangeElts = $('#filter-agerange :input:checked');
+    if (checkedAgeRangeElts.length === 0 ||
+        checkedAgeRangeElts.length === $('#filter-agerange input').length) {
+        return profs;
+    } else {
+        var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
+        //console.log(checkedAgeRangeGroups);
+        var intersections = [];
+        var filteredProfs = profs.filter(function (prof) {
+            var ageRangeGroup = [];
+            prof.ageRange.forEach(function(range, idx){
+                ageRangeGroup.push(range.index);
+            });
+            //console.log(ageRangeGroup);
+            //var desiredAgeRangeGroups = _.uniq(ageRange.map(ageGroup), true);
+            //console.log(desiredAgeRangeGroups);
+            var intersection = _.intersection(ageRangeGroup, checkedAgeRangeGroups);
+
+            if (returnIntersection){
+                intersections.push(intersection);
+            }
+            return (intersection.length > 0);
+        });
+        if (returnIntersection){
+            return intersections;
+        }
+        return filteredProfs;
+    }
+};
+// filter by time
+var filterByTime = function (profs) {
+    var DAYS_OF_THE_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+    var validDayFilters = [];
+    DAYS_OF_THE_WEEK.forEach(function (day, idx) {
+        if ($('#filter-date-checkbox-' + day).prop('checked') &&
+            $('#time-selector-' + day + ' .time-selector-range-selected').length > 0) {
+            validDayFilters.push(idx);
+        }
+    });
+    if (validDayFilters.length === 0) {
+        return profs;
+    } else {
+        return profs.filter(function (prof) {
+            return validDayFilters.some(function (idx) {
+                var day = DAYS_OF_THE_WEEK[idx];
+                var available = prof.availability[idx].map(convertTo24HrTime);
+                var chosenElts = $('#time-selector-' + day + ' .time-selector-range-selected');
+                var chosen = chosenElts.toArray().map(function (elt) {
+                    return convertTo24HrTime(elt.innerHTML);
+                });
+                if (_.intersection(available, chosen).length > 0) {
+                    return true;
+                }
+            });
+        });
+    }
+};
+
+
 // filter profile
 var filterProfiles = function (profiles) {
-    // filter by wage
-    var filterByWage = function (profs) {
-        var checkedPayRangeElts = $('#filter-payrange :input:checked');
-        if (checkedPayRangeElts.length === 0 ||
-            checkedPayRangeElts.length === $('#filter-payrange input').length) {
-            return profs;
-        } else {
-            var checkedPayRangeGroups = getValues(checkedPayRangeElts);
-            return profs.filter(function (prof) {
-                return (checkedPayRangeGroups.indexOf(wageGroup(prof.wage)) > -1);
-            });
-        }
-    };
-    // filter by child age
-    var filterByChildAge = function (profs) {
-        var checkedAgeRangeElts = $('#filter-agerange :input:checked');
-        if (checkedAgeRangeElts.length === 0 ||
-            checkedAgeRangeElts.length === $('#filter-agerange input').length) {
-            return profs;
-        } else {
-            var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
-            //console.log(checkedAgeRangeGroups);
-            return profs.filter(function (prof) {
-                var ageRangeGroup = [];
-                prof.ageRange.forEach(function(range, idx){
-                   ageRangeGroup.push(range.index);
-                });
-                //console.log(ageRangeGroup);
-                //var desiredAgeRangeGroups = _.uniq(ageRange.map(ageGroup), true);
-                //console.log(desiredAgeRangeGroups);
-                return (_.intersection(ageRangeGroup, checkedAgeRangeGroups).length > 0);
-            });
-        }
-    };
-    // filter by time
-    var filterByTime = function (profs) {
-        var DAYS_OF_THE_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
-        var validDayFilters = [];
-        DAYS_OF_THE_WEEK.forEach(function (day, idx) {
-            if ($('#filter-date-checkbox-' + day).prop('checked') &&
-                $('#time-selector-' + day + ' .time-selector-range-selected').length > 0) {
-                validDayFilters.push(idx);
-            }
-        });
-        if (validDayFilters.length === 0) {
-            return profs;
-        } else {
-            return profs.filter(function (prof) {
-                return validDayFilters.some(function (idx) {
-                    var day = DAYS_OF_THE_WEEK[idx];
-                    var available = prof.availability[idx].map(convertTo24HrTime);
-                    var chosenElts = $('#time-selector-' + day + ' .time-selector-range-selected');
-                    var chosen = chosenElts.toArray().map(function (elt) {
-                        return convertTo24HrTime(elt.innerHTML);
-                    });
-                    if (_.intersection(available, chosen).length > 0) {
-                        return true;
-                    }
-                });
-            });
-        }
-    };
     // main function
-    return filterByTime(filterByChildAge(filterByWage(profiles)));
+    return filterByTime(filterByChildAge(filterByWage(profiles)), false);
 };
 
 // display date in mm/dd/yyyy or mm/dd format
@@ -256,6 +195,94 @@ var generateWeeksForSelection = function () {
         $('#week-select').append(optionElt);
     });
 };
+
+// change the profile container to show specified profiles
+var insertMiniProfileElts = function (profiles) {
+    $('#profile-container').empty();
+    profiles.forEach(function (profile) {
+        // create mini-profile element
+        var baseElt = $('<div/>', {
+            class: 'row mini-profile',
+        });
+
+        var pictureElt = $('<div/>', {
+            class: 'col-xs-3',
+        });
+        var pictureImgElt = $('<img>', {
+            class: 'profile-picture',
+            src: 'images/blue-user-icon.png'
+        });
+        pictureElt.append(pictureImgElt);
+        baseElt.append(pictureElt);
+
+        var leftElt = $('<div/>', {
+            class: 'col-xs-9',
+        });
+        var infoElt = $('<div/>', {
+            class: 'row babysitter-info',
+        });
+        var nameElt = $('<div>', {
+            class: 'col babysitter-name',
+        });
+        var nameLinkElt = $('<a>', {
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            text: profile.name,
+        });
+        nameElt.append(nameLinkElt);
+        infoElt.append(nameElt);
+        var wageElt = $('<div/>', {
+            class: 'col babysitter-wage',
+            text: '$' + profile.wage,
+        });
+        infoElt.append(wageElt);
+        var ratingElt = $('<div/>', {
+            class: 'col babysitter-rating',
+            text: starRatingString(profile.rating),
+        });
+        infoElt.append(ratingElt);
+        leftElt.append(infoElt);
+
+        var ageRangeElt = $('<div/>', {
+            class: 'row babysitter-age-range-container',
+            text: "Will babysit:"
+        });
+
+        var ageIntersection = filterByChildAge([profile], true)[0];
+        profile.ageRange.forEach(function (ageRange, idx) {
+            var ageRangeTextElt = $('<div/>', {
+                class: 'babysitter-age-range',
+                'data-index': ageRange.index,
+                text: ageRange.text
+            });
+            //console.log(intersection, ageRange.index)
+            if (_.intersection(ageIntersection,[ageRange.index]).length>0){
+                ageRangeTextElt.addClass("match");
+            }
+            ageRangeElt.append(ageRangeTextElt);
+        });
+
+        leftElt.append(ageRangeElt);
+
+        var aboutElt = $('<div/>', {
+            class: 'row babysitter-about-me',
+            text: profile.about,
+        });
+        leftElt.append(aboutElt);
+        baseElt.append(leftElt);
+        var rightElt = $('<div/>', {
+            class: 'col-xs-6'
+        });
+        var calendarElt = $('<div/>', {
+            class: 'babysitter-calendar',
+            text: 'Calendar will be here!',
+        });
+        //generateMiniCalendar(rightElt, profile.availability);
+        //rightElt.append(calendarElt);
+        //baseElt.append(rightElt);
+        $('#profile-container').append(baseElt);
+    });
+};
+
 
 var shownProfiles;
 var changeShownProfiles = function () {

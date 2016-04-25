@@ -179,13 +179,26 @@
 	display: inline-block;
 }
 
+.babysitter-age-range-container{
+    display: inline-block;
+    width: 100%;
+    overflow: auto;
+    /*border-radius: 5px;*/
+    /*background-color: #759CC0;*/
+    padding: 5px;
+    margin: 5px -10px 0 -10px;
+}
+.babysitter-age-range{
+    padding: 0 0 0 20px;
+}
+
 .babysitter-about-me {
 	display: inline-block;
     width: 100%;
     height: 120px;
     overflow: auto;
-    border: 1px solid darkgrey;
     border-radius: 5px;
+    background-color: #759CC0;
     padding: 5px;
     margin: 5px -10px 0 -10px;
 
@@ -284,4 +297,10 @@ body{
 input[type='checkbox'] {
     width:15px;
     height:15px;
+}
+
+
+.match{
+    background-color: lawngreen;
+    border-radius: 5px;
 }
