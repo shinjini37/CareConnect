@@ -358,7 +358,7 @@ $(function () {
     //clicking profile picture
     $('body').on('click', '.profile-picture', function () {
         var link = $(this).parent().parent().find('a');
-        window.location = link.attr('href');
+        window.location.href = link.attr('href');
     });
 
     // Make filter bar scroll with window. This can be made better

@@ -9,7 +9,7 @@
 }
 
 .ui-menu-item{
-    z-index: 1000;
+    z-index: 1500;
 }
 
 #logo {
@@ -241,7 +241,7 @@ input#filter-payrange-selected{
 }
 
 #sort-dropdown {
-    z-index: 500;
+    z-index: 100;
 	/*text-align: right;*/
     padding: 5px 15px 5px 15px;
     background-color: #759CC0;
