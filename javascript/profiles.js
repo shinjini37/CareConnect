@@ -134,3 +134,14 @@ var PROFILE_INDEX = {
     'stella': 5,
     'amy': 6,
 }
+
+// for autocomplete
+var PROFILE_NAMES = [
+    'Alissa',
+    'Ben',
+    'Peter',
+    'Ray',
+    'Pippin',
+    'Stella',
+    'Amy'
+];

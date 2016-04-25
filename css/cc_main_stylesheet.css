@@ -159,10 +159,11 @@
 }
 
 .profile-picture {
-    /*border:1px solid #021a40;*/
+    border:1px solid darkgrey;
     border-radius: 5px;
     background-color: whitesmoke;
     width: 100%;
+    cursor: pointer;
 }
 
 .babysitter-name {
@@ -198,7 +199,7 @@
     height: 120px;
     overflow: auto;
     border-radius: 5px;
-    background-color: #759CC0;
+    background-color: #e6e6e6;
     padding: 5px;
     margin: 5px -10px 0 -10px;
 

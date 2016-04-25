@@ -9,7 +9,7 @@ $(function(){
             alert("The student you are looking for does not exist");
         }
 
-    }
+    };
 
     $("#search-text").keyup(function(e) {
         if(e.keyCode == 13)
@@ -20,8 +20,13 @@ $(function(){
 
     $("#search-submit").click(function () {
         search();
-    })
+    });
 
-    }
 
-)
+
+    $("#search-text").autocomplete({
+        source: PROFILE_NAMES
+    });
+
+});
+

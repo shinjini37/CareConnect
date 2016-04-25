@@ -328,6 +328,11 @@ $(function () {
     var height = $("#profile-sort-container").css("height");
     $("#filter").css({height: height});
 
+    //clicking profile picture
+    $('body').on('click', '.profile-picture', function () {
+        var link = $(this).parent().parent().find('a');
+        window.location = link.attr('href');
+    });
 
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
