@@ -325,6 +325,8 @@ $(function () {
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
+        $("#slider-range").slider("values", 0, $("#slider-range").slider("option", "min"));
+        $("#slider-range").slider("values", 1, $("#slider-range").slider("option", "max"));
         changeShownProfiles();
         $('.time-selector-range-selected').removeClass('time-selector-range-selected');
         $('.time-selector').removeClass('show');
@@ -378,6 +380,8 @@ $(function () {
                 position:"absolute",
                 "top": (containerHeight - 15 - navHeight - filterFloatHeight)
             });
+
+
         } else if (scrollTop>navHeight){ // if the scroll has passed the nav bar
             $('#filter .float').css({
                 position:"fixed",
