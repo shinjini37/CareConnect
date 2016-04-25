@@ -312,7 +312,6 @@ $(function () {
     // clicking pay/age range = clicking checkbox
     $('.payrange, .agerange').click(function () {
         var input = $(this).parent().find('input');
-        //input.prop('checked', !input.prop('checked'));
         input.click();
     });
     // apply filter automatically whenever the user checks a box
