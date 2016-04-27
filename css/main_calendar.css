@@ -51,7 +51,7 @@
 }
 
 .time-selector-header {
-    height: 16%;
+    height: 42px;
     border: none;
 	text-align: center;
 }
@@ -63,13 +63,13 @@ p.time-selector-header-text {
 }
 
 .time-selector-cell {
-    height: 6%;
+    height: 21px;
     border: none;
     border-top: 1px solid black;
     text-align: center;
 }
 
-.time-selector-range {
+.time-selector-left-range, .time-selector-right-range {
     height: 100%;
     display: inline-block;
     background: #e6e6e6;

@@ -24,12 +24,16 @@ var getDesiredTimes = function () {
         var selector = '#time-selector-col-' + day + ' .time-selector-cell';
         var times = [];
         $(selector).each(function (idx) {
-            if ($(this).hasClass('time-selector-range-desired')) {
+            if ($(this).children().hasClass('time-selector-range-desired')) {
                 times.push(idx + START_TIME);
             }
         });
         return times;
     });
+};
+
+var clearDesiredTimes = function () {
+    $('.time-selector-cell').children().removeClass('time-selector-range-desired');
 };
 
 var clearAvailableTimes = function () {
@@ -139,14 +143,6 @@ var createTimeRangeDisplayColumn = function () {
     var headerElt = $('<div/>', {
         class: 'time-selector-header',
     });
-    // pad empty div with <p> using no-breaking space to align
-    _.range(2).forEach(function () {
-        var fillerElt = $('<p/>', {
-            class: 'time-selector-header-text',
-            text: '\xa0',
-        });
-        headerElt.append(fillerElt);
-    });
     columnElt.append(headerElt);
     _.range(START_TIME, END_TIME).forEach(function (hr) {
         var rangeElt = $('<div/>', {
@@ -186,11 +182,11 @@ var createTimeSelectColumn = function (date, idx) {
             class: 'time-selector-cell',
         });
         var leftRangeElt = $('<div/>', {
-            class: 'time-selector-range time-selector-left-range',
+            class: 'time-selector-left-range',
         });
         rangeElt.append(leftRangeElt);
         var rightRangeElt = $('<div/>', {
-            class: 'time-selector-range time-selector-right-range',
+            class: 'time-selector-right-range',
         });
         rangeElt.append(rightRangeElt);
         columnElt.append(rangeElt);
@@ -199,13 +195,11 @@ var createTimeSelectColumn = function (date, idx) {
         // to make other functions cleaner
         rangeElt.mousedown(function () {
             toggling = true;
-            if (rangeElt.hasClass('time-selector-range-desired')) {
+            if (rangeElt.children().hasClass('time-selector-range-desired')) {
                 addingToSelector = false;
-                rangeElt.removeClass('time-selector-range-desired');
                 rangeElt.children().removeClass('time-selector-range-desired');
             } else {
                 addingToSelector = true;
-                rangeElt.addClass('time-selector-range-desired');
                 rangeElt.children().addClass('time-selector-range-desired');
             }
             $(document).mouseup(function () {
@@ -217,10 +211,8 @@ var createTimeSelectColumn = function (date, idx) {
         rangeElt.mousemove(function () {
             if (toggling === true) {
                 if (addingToSelector === true) {
-                    rangeElt.addClass('time-selector-range-desired');
                     rangeElt.children().addClass('time-selector-range-desired');
                 } else {
-                    rangeElt.removeClass('time-selector-range-desired');
                     rangeElt.children().removeClass('time-selector-range-desired');
                 }
             }
@@ -263,16 +255,5 @@ var convertTo12HrTime = function (n) {
         return '12 PM';
     } else {
         return (n-12) + ' PM';
-    }
-};
-
-// convert AM/PM time to 24-hour
-var convertTo24HrTime = function (s) {
-    var hr = parseInt(s.substring(0, s.length-2)) % 12;
-    var modifier = s.substring(s.length-2);
-    if (modifier.toLowerCase() === 'am') {
-        return hr;
-    } else if (modifier.toLowerCase() === 'pm') {
-        return hr+12;
     }
 };

@@ -84,6 +84,17 @@ var getValues = function (arr) {
     });
 };
 
+// convert AM/PM time to 24-hour
+var convertTo24HrTime = function (s) {
+    var hr = parseInt(s.substring(0, s.length-2)) % 12;
+    var modifier = s.substring(s.length-2);
+    if (modifier.toLowerCase() === 'am') {
+        return hr;
+    } else if (modifier.toLowerCase() === 'pm') {
+        return hr+12;
+    }
+};
+
 // filter profile
 var filterProfiles = function (profiles) {
     // filter by wage
@@ -116,10 +127,10 @@ var filterProfiles = function (profiles) {
     // filter by time
     var filterByTime = function (profs) {
         var DAYS_OF_THE_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+        var desiredTimes = getDesiredTimes();
         var validDayFilters = [];
-        DAYS_OF_THE_WEEK.forEach(function (day, idx) {
-            if ($('#filter-date-checkbox-' + day).prop('checked') &&
-                $('#time-selector-' + day + ' .time-selector-range-selected').length > 0) {
+        desiredTimes.forEach(function (times, idx) {
+            if (times.length > 0) {
                 validDayFilters.push(idx);
             }
         });
@@ -130,11 +141,7 @@ var filterProfiles = function (profiles) {
                 return validDayFilters.some(function (idx) {
                     var day = DAYS_OF_THE_WEEK[idx];
                     var available = prof.availability[idx].map(convertTo24HrTime);
-                    var chosenElts = $('#time-selector-' + day + ' .time-selector-range-selected');
-                    var chosen = chosenElts.toArray().map(function (elt) {
-                        return convertTo24HrTime(elt.innerHTML);
-                    });
-                    if (_.intersection(available, chosen).length > 0) {
+                    if (_.intersection(available, desiredTimes[idx]).length > 0) {
                         return true;
                     }
                 });
@@ -145,118 +152,26 @@ var filterProfiles = function (profiles) {
     return filterByTime(filterByChildAge(filterByWage(profiles)));
 };
 
-// display date in mm/dd/yyyy or mm/dd format
-// http://stackoverflow.com/questions/3066586/get-string-in-yyyymmdd-format-from-js-date-object
-var mmddDate = function(date, displayYear) {
-    var yyyy = date.getFullYear().toString();
-    var mm = (date.getMonth()+1).toString(); // getMonth() is zero-based
-    var dd  = date.getDate().toString();
-    if (displayYear) {
-        return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]) + '/' + yyyy;
-    } else {
-        return (mm[1]?mm:"0"+mm[0]) + '/' + (dd[1]?dd:"0"+dd[0]);
-    }
-};
-
-// change the date checkboxes to display the correct week
-var insertDateCheckboxes = function (date) {
-    var lastSunday = new Date(date);
-    lastSunday.setDate(date.getDate() - date.getDay());
-    lastSunday.setHours(19, 0, 0, 0); // no caretakers after 7 pm
-    var DAYS_OF_THE_WEEK = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    var dates = _.range(7).map(function (i) {
-        var d = new Date(lastSunday);
-        d.setDate(d.getDate() + i);
-        return d;
-    });
-    // generate elements
-    $('#filter-date-checkboxes').empty();
-    _.zip(dates, DAYS_OF_THE_WEEK).forEach(function (arr) {
-        var baseElt = $('<div/>', {
-            class: 'filter-date-group'
-        });
-        var checkboxElt = $('<input/>', {
-            type: 'checkbox',
-            name: 'date',
-            class: 'filter-date-checkbox',
-            id: 'filter-date-checkbox-' + arr[1].toLowerCase(),
-        });
-        // disable past dates
-        var disableElt = (arr[0] < new Date());
-        if (disableElt) {
-            checkboxElt.prop('disabled', true);
-        }
-        baseElt.append(checkboxElt);
-        var dateInfoElt = $('<div/>', {
-            class: 'date-info',
-            id: 'date-info-' + arr[1].toLowerCase(),
-        });
-        var dayTextElt = $('<div/>', {
-            class: 'day',
-            text: arr[1],
-        });
-        dateInfoElt.append(dayTextElt);
-        var dateTextElt = $('<div/>', {
-            class: 'date',
-            text: mmddDate(arr[0], false),
-        });
-        dateInfoElt.append(dateTextElt);
-        baseElt.append(dateInfoElt);
-        baseElt.append(createTimeSelectorElt(arr[1], disableElt));
-        $('#filter-date-checkboxes').append(baseElt);
-    });
-};
-
-// insert correct weeks to the filter
-// should only be called on page load
-var generateWeeksForSelection = function () {
-    var currentDate = new Date();
-    var lastSunday = new Date();
-    lastSunday.setDate(currentDate.getDate() - currentDate.getDay());
-    var sundays = _.range(4).map(function (i) {
-        var d = new Date(lastSunday);
-        d.setDate(d.getDate() + 7 * i);
-        return d;
-    });
-    sundays.forEach(function (date) {
-        var start = mmddDate(date, true);
-        date.setDate(date.getDate() + 6);
-        var end = mmddDate(date, true);
-        var optionElt = $('<option/>', {
-            value: start,
-            text: start + ' — ' + end,
-        });
-        $('#week-select').append(optionElt);
-    });
-};
-
-var shownProfiles;
-var changeShownProfiles = function () {
-    shownProfiles = filterProfiles(PROFILES);
-    insertMiniProfileElts(sortProfiles(shownProfiles));
-};
 
 $(function () {
-    shownProfiles = PROFILES;
+    var shownProfiles = PROFILES;
+    var changeShownProfiles = function () {
+        shownProfiles = filterProfiles(PROFILES);
+        insertMiniProfileElts(sortProfiles(shownProfiles));
+    };
     // on load
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
-    /*
-    // put correct dates in date filter
-    generateWeeksForSelection();
-    insertDateCheckboxes(new Date());
-    // week selection handler
-    $('#week-select').on('change', function () {
-        insertDateCheckboxes(new Date($(this).val()));
-    });
-    */
+    // add calendar and its handlers
     $('#filter-date').append(createCalendar());
+    $('#filter-date').on('timeUpdated', function () {
+        changeShownProfiles();
+    });
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
         changeShownProfiles();
-        $('.time-selector-range-selected').removeClass('time-selector-range-selected');
-        $('.time-selector').removeClass('show');
+        clearDesiredTimes();
     });
     // clicking pay/age range = clicking checkbox
     $('.payrange, .agerange').click(function () {
