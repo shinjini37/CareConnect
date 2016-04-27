@@ -1,0 +1,91 @@
+/* http://stackoverflow.com/questions/69430/is-there-a-way-to-make-text-unselectable-on-an-html-page */
+.unhighlightable-text {
+   -moz-user-select: -moz-none;
+   -khtml-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+   cursor: default;
+}
+
+.clickable-text {
+    cursor: pointer;
+}
+
+#calendar {
+    width: 94%;
+    margin: 10px auto;
+}
+
+#week-selector {
+    height: 30px;
+    border: 1px solid black;
+}
+
+#week-selector div {
+    height: 100%;
+    position: relative;
+    display: inline;
+}
+
+.center-text {
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 120%;
+}
+
+#time-selector {
+    top: 8%;
+    height: 92%;
+}
+
+.col-8 {
+    width: 12.5%;
+    height: 100%;
+    display: inline-block;
+    border: 1px solid black;
+    vertical-align: top;
+}
+
+.time-selector-header {
+    height: 16%;
+    border: none;
+	text-align: center;
+}
+
+p.time-selector-header-text {
+    margin: 0px;
+    padding: 2px;
+    font-size: 90%;
+}
+
+.time-selector-cell {
+    height: 6%;
+    border: none;
+    border-top: 1px solid black;
+    text-align: center;
+}
+
+.time-selector-range {
+    height: 100%;
+    display: inline-block;
+    background: #e6e6e6;
+}
+
+.time-selector-left-range {
+    width: 33%;
+}
+.time-selector-right-range {
+    width: 67%;
+}
+
+.time-selector-range-desired {
+    background: palegreen;
+}
+
+.time-selector-range-available {
+    background: red;
+}

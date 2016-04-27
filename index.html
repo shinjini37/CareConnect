@@ -8,7 +8,7 @@
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans'>
     <link rel='stylesheet' type='text/css' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.min.css'>
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
-    <link rel="stylesheet" type="text/css" href="css/time_selector.css">
+    <link rel="stylesheet" type="text/css" href="css/main_calendar.css">
     <!-- javascript libraries -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -18,7 +18,7 @@
     <script src="javascript/profiles.js"></script>
     <script src="javascript/main-filter.js"></script>
     <script src="javascript/search.js"></script>
-    <script src="javascript/main-time-dropdown.js"></script>
+    <script src="javascript/main-calendar.js"></script>
     <script src="javascript/mini-profile-calendar-generator.js"></script>
 </head>
 <body>
@@ -51,7 +51,7 @@
         </div>
     </div>
     <div class="row" id="main-container">
-        <div class="col-xs-3 unhighlightable" id="filter">
+        <div class="col-xs-6 unhighlightable" id="filter">
             <div class="float">
                 <div class="row">
                     <div class="col-xs-12">
@@ -59,6 +59,7 @@
                     </div>
                 </div>
                 <div class="row" id="filter-date">
+                    <!--
                     <div class="col-xs-12">
                         <div id="filter-date-dropdown" class="form-group">
                             <select id="week-select" class="form-control">
@@ -67,6 +68,7 @@
                         <div id="filter-date-checkboxes">
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -145,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-xs-9" id="profile-sort-container">
+        <div class="col-xs-6" id="profile-sort-container">
             <div id="sort-dropdown">
                 <div id="sort-label">Sort by</div>
                 <div class="form-group">

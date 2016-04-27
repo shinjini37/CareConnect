@@ -241,6 +241,7 @@ $(function () {
     // on load
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
+    /*
     // put correct dates in date filter
     generateWeeksForSelection();
     insertDateCheckboxes(new Date());
@@ -248,6 +249,8 @@ $(function () {
     $('#week-select').on('change', function () {
         insertDateCheckboxes(new Date($(this).val()));
     });
+    */
+    $('#filter-date').append(createCalendar());
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');

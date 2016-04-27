@@ -41,32 +41,17 @@
 /* Filter groups */
 #filter {
     background-color:  #C3C3C3;
-    width: 25%;
+    width: 40%;
     padding: 0;
     cursor: default;
-}
-
-/* http://stackoverflow.com/questions/69430/is-there-a-way-to-make-text-unselectable-on-an-html-page */
-.unhighlightable {
-   -moz-user-select: -moz-none;
-   -khtml-user-select: none;
-   -webkit-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
 }
 
 #filter .float {
     padding: 0 15px 0 15px;
 }
 
-.filter-date-group {
-    display: inline-block;
-    margin: 0px 3px;
-}
 
-#filter .date, #filter .day {
-    font-size: .8em;
-
+#filter-date {
 }
 
 .payrange, .agerange {
@@ -85,43 +70,27 @@
     font-weight: 900;
 }
 
-
-.filter-label-main{
+.filter-label-main {
     text-align: center;
     font-size: 1.5em;
     color: whitesmoke;
     padding-top: 7px;
     height: 43px;
     background-color: #A5A5A5;
-
     margin: 0 -15px 15px -15px;
 
 }
 
-#filter-date-dropdown{
-    text-align: center;
-}
-
-#filter-date{
-    text-align: center;
-    padding: 5px 0 5px 0;
-}
-
-#filter-date .form-group{
-    margin: auto;
-    width: 85%;
-}
-
-#filter-buttons{
+#filter-buttons {
     padding: 10px;
     text-align: center;
 }
 
-#filter-buttons .btn{
+#filter-buttons .btn {
     background-color: #C04544;
     border: 1px solid #B64141;
 }
-#filter-buttons .btn:hover{
+#filter-buttons .btn:hover {
     background-color: #B64141;
     border: 1px solid #963635;
 }
@@ -173,7 +142,7 @@
 
 
 #profile-sort-container {
-    width: 75%;
+    width: 60%;
 }
 
 #sort-dropdown {
