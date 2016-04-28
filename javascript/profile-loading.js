@@ -44,7 +44,17 @@ $(function() {
         $("#babysitter-email").val(profile.email);
         $("#babysitter-references").html(profile.references);
         $("#babysitter-experiences").html(profile.experiences);
-        $("#babysitter-age-range").html("Will babysit: " + profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " year olds");
+        $("#babysitter-age-range").html("Will babysit: ");// + profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " year olds");
+        profile.ageRange.forEach(function (ageRange, idx) {
+            var ageRangeTextElt = $('<div/>', {
+                class: 'babysitter-age-range-elt',
+                'data-index': ageRange.index,
+                text: ageRange.text
+            });
+            $("#babysitter-age-range").append(ageRangeTextElt);
+        });
+
+
         var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         for (var i=0; i < 7; i++) {
             var availableHours = profile.availability[i];

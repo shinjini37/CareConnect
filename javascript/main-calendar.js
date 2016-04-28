@@ -1,6 +1,6 @@
 var DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 var START_TIME = 8;
-var END_TIME = 22;
+var END_TIME = 18;
 
 /*
  * Public methods

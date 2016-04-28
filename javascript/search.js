@@ -6,10 +6,10 @@ $(function(){
             window.location.href = 'profile.html' + '?profile=' + searchText;
         } else {
             window.location.href = 'index.html';
-            alert("The student you are looking for does not exist");
+            alert("Oops! Seems like the student you are looking for hasn't signed up yet!");
         }
 
-    }
+    };
 
     $("#search-text").keyup(function(e) {
         if(e.keyCode == 13)
@@ -19,9 +19,22 @@ $(function(){
     });
 
     $("#search-submit").click(function () {
+
         search();
-    })
+    });
 
-    }
 
-)
+
+    $("#search-text").autocomplete({
+        source: PROFILE_NAMES
+    });
+
+    $( "#search-text" ).autocomplete({
+        select: function( event, ui ) {
+            $("#search-text").val(ui.item.value.toLowerCase());
+            search();
+        }
+    });
+
+});
+
