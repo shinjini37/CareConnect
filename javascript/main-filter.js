@@ -44,9 +44,10 @@ var convertTo24HrTime = function (s) {
 
 // filter profiles by wage
 var filterByWage = function (profs) {
-    var selectedPayRangeRange = [$( "#slider-range" ).slider( "values", 0 ), $( "#slider-range" ).slider( "values", 1 )];
+    var payRangeLow = $('#slider-range').slider('values', 0);
+    var payRangeHigh = $('#slider-range').slider('values', 1);
     return profs.filter(function (prof) {
-        return (((prof.wage) >= selectedPayRangeRange[0]) && ((prof.wage) <= selectedPayRangeRange[1]));
+        return (prof.wage >= payRangeLow && prof.wage <= payRangeHigh);
     });
 };
 
@@ -96,9 +97,6 @@ var filterByTime = function (profs) {
                     return true;
                 }
             });
-            if (_.intersection(available, chosen).length > 0) {
-                return true;
-            }
         });
     };
 };

@@ -6,6 +6,7 @@ var END_TIME = 18;
  * Public methods
  */
 
+// create a calendar jquery object
 var createCalendar = function () {
     // invariant: date is always a sunday
     var date = addDays(new Date(), -(new Date().getDay()));
@@ -19,6 +20,7 @@ var createCalendar = function () {
     return calendarElt;
 };
 
+// get the time ranges that the user selected
 var getDesiredTimes = function () {
     return DAYS_OF_WEEK.map(function (day, idx) {
         var selector = '#time-selector-col-' + day + ' .time-selector-cell';
@@ -32,14 +34,12 @@ var getDesiredTimes = function () {
     });
 };
 
+// clear the time ranges that the user selected
 var clearDesiredTimes = function () {
     $('.time-selector-cell').children().removeClass('time-selector-range-desired');
 };
 
-var clearAvailableTimes = function () {
-    $('.time-selector-left-range').removeClass('time-selector-range-available');
-};
-
+// show a person's schedule on calendar
 var markAvailableTimes = function (schedule) {
     clearAvailableTimes();
     _.zip(schedule, DAYS_OF_WEEK).forEach(function (tuple) {
@@ -50,6 +50,11 @@ var markAvailableTimes = function (schedule) {
             $(cells[hr-START_TIME]).addClass('time-selector-range-available');
         });
     });
+};
+
+// clear the person's schedule
+var clearAvailableTimes = function () {
+    $('.time-selector-left-range').removeClass('time-selector-range-available');
 };
 
 /*
@@ -191,8 +196,6 @@ var createTimeSelectColumn = function (date, idx) {
         rangeElt.append(rightRangeElt);
         columnElt.append(rangeElt);
         // dragging mechanism
-        // rangeElt is never on top level, but we add/remove classes anyways
-        // to make other functions cleaner
         rangeElt.mousedown(function () {
             toggling = true;
             if (rangeElt.children().hasClass('time-selector-range-desired')) {
