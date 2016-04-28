@@ -183,6 +183,21 @@ var insertMiniProfileElts = function (profiles) {
         rightElt.append(aboutElt);
         baseElt.append(rightElt);
         $('#profile-container').append(baseElt);
+        // change calendar when hovering over a profile
+        baseElt.hover(
+            // start hovering
+            function () {
+                // who the **** decided that storing time as AM/PM string is a good idea
+                var schedule = profile.availability.map(function (daySchedule) {
+                    return daySchedule.map(convertTo24HrTime);
+                });
+                markAvailableTimes(schedule);
+            },
+            // end hovering
+            function () {
+                clearAvailableTimes();
+            }
+        )
     });
 };
 
