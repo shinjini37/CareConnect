@@ -143,6 +143,10 @@ var filterProfiles = function (profiles) {
 // change the profile container to show specified profiles
 var insertMiniProfileElts = function (profiles) {
     $('#profile-container').empty();
+    window.location.search.substring(1);
+    var currentURL = window.location.search.substring(1);
+    var parentId = getParameterByName('parentId');
+    console.log(parentId);
     profiles.forEach(function (profile) {
         // create mini-profile element
         var baseElt = $('<div/>', {
@@ -175,7 +179,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase() + (parentId != null ? '&parentId='+parentId : ''),
             target: '_blank', // open profile in new page
             text: profile.name,
         });
@@ -238,6 +242,17 @@ var insertMiniProfileElts = function (profiles) {
     });
 };
 
+///////// helper function ///////////
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+//////////////////////////////////////////
 
 $(function () {
     shownProfiles = PROFILES;
