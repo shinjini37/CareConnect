@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c70df018-e77a-4e1b-a98e-f3beb6d279d0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/cc_main_stylesheet.css" afterPath="$PROJECT_DIR$/css/cc_main_stylesheet.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/main-filter.js" afterPath="$PROJECT_DIR$/javascript/main-filter.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/main_calendar.css" afterPath="$PROJECT_DIR$/css/main_calendar.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/profiles.js" afterPath="$PROJECT_DIR$/javascript/profiles.js" />
     </list>
     <ignored path="CareConnect.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -36,11 +36,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="profiles.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="profiles.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javascript/profiles.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.28454173">
+              <caret line="133" column="85" selection-start-line="133" selection-start-column="85" selection-end-line="133" selection-end-column="85" />
               <folding />
             </state>
           </provider>
@@ -122,10 +122,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cc_main_stylesheet.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cc_main_stylesheet.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/cc_main_stylesheet.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21520804">
+            <state vertical-scroll-proportion="-1.2396694">
               <caret line="142" column="1" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
               <folding />
             </state>
@@ -135,8 +135,8 @@
       <file leaf-file-name="main_calendar.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/main_calendar.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.3305786">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state vertical-scroll-proportion="-5.3471074">
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -163,9 +163,7 @@
         <option value="$PROJECT_DIR$/profile-loading.js" />
         <option value="$PROJECT_DIR$/javascript/profilePage.js" />
         <option value="$PROJECT_DIR$/javascript/mini-profile-calendar-generator.js" />
-        <option value="$PROJECT_DIR$/javascript/profiles.js" />
         <option value="$PROJECT_DIR$/javascript/main-calendar.js" />
-        <option value="$PROJECT_DIR$/css/main_calendar.css" />
         <option value="$PROJECT_DIR$/navbar.css" />
         <option value="$PROJECT_DIR$/css/profile.css" />
         <option value="$PROJECT_DIR$/javascript/profile-loading.js" />
@@ -175,6 +173,8 @@
         <option value="$PROJECT_DIR$/css/navbar.css" />
         <option value="$PROJECT_DIR$/javascript/main-filter.js" />
         <option value="$PROJECT_DIR$/css/cc_main_stylesheet.css" />
+        <option value="$PROJECT_DIR$/css/main_calendar.css" />
+        <option value="$PROJECT_DIR$/javascript/profiles.js" />
       </list>
     </option>
   </component>
@@ -654,22 +654,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/main_calendar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.3305786">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/profiles.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="152" column="0" selection-start-line="152" selection-start-column="0" selection-end-line="152" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.9173554">
@@ -746,8 +730,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/cc_main_stylesheet.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21520804">
+        <state vertical-scroll-proportion="-1.2396694">
           <caret line="142" column="1" selection-start-line="142" selection-start-column="1" selection-end-line="142" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/main_calendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.3471074">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/profiles.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28454173">
+          <caret line="133" column="85" selection-start-line="133" selection-start-column="85" selection-end-line="133" selection-end-column="85" />
           <folding />
         </state>
       </provider>
