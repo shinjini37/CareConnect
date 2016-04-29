@@ -214,10 +214,10 @@ $(function () {
         max: 30,
         values: [0, 30],
         slide: function( event, ui ) {
-            $( "#filter-payrange-selected" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#filter-payrange-selected" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         }
     });
-    $( "#filter-payrange-selected" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+    $( "#filter-payrange-selected" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ) +
         " - $" + $( "#slider-range" ).slider( "values", 1 ) );
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));

@@ -69,6 +69,25 @@
     display: block;
     cursor: pointer;
 }
+
+#filter-agerange-slider-container, #slider-range, #filter-payrange-selected-container, #filter-payrange-selected, #filter-payrange-selected-label{
+    display: inline-block;
+}
+#filter-agerange-slider-container{
+    width: 100%;
+}
+#slider-range{
+    width: 80%;
+}
+#filter-payrange-selected-container{
+    width: 70px;
+}
+#filter-payrange-selected{
+    /*width: 100%;*/
+    margin: auto;
+    text-align: center;
+}
+
 .filter-agerange-checkboxes-group {
     vertical-align: top;
 }
