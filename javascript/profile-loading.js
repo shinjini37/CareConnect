@@ -90,7 +90,7 @@ $(function() {
             var availableHours = profile.availability[i];
             for (var j=0; j < availableHours.length; j++) {
                 var slotID = days[i]+availableHours[j];
-                $('#' + slotID)[0].style.backgroundColor = 'PaleGreen';
+                $('#' + slotID).css("background-color", 'PaleGreen');
             }
         }
     } else {
@@ -102,6 +102,22 @@ $(function() {
         width: $("#user-profile-wrapper").css("width")
     });
 
+    var parentId = getParameterByName('parentId');
+    if (parentId === null){
+        $("#logo a").attr("href", "index.html");
+    } else {
+        $("#logo a").attr("href", "index.html" + "?parentId=" + parentId);
     }
 
-)
+});
+
+///////// Helper method ///////////////
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
