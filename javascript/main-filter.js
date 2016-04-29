@@ -205,9 +205,6 @@ var insertMiniProfileElts = function (profiles) {
         var rightElt = $('<div/>', {
             class: 'col-xs-9',
         });
-        var infoElt = $('<div/>', {
-            class: 'row babysitter-info',
-        });
         // inserting name
         var nameElt = $('<div>', {
             class: 'col babysitter-name',
@@ -218,8 +215,7 @@ var insertMiniProfileElts = function (profiles) {
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
-        infoElt.append(nameElt);
-        rightElt.append(infoElt);
+        rightElt.append(nameElt);
 
         // inserting about
         var aboutElt = $('<div/>', {
