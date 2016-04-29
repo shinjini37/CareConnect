@@ -19,7 +19,26 @@
 
 #week-selector {
     height: 30px;
-    border: 1px solid black;
+    /*border: 1px solid black;*/
+    border-radius: 5px 5px 0px 0px;
+    background-color: whitesmoke;
+}
+
+#next-week-btn, #prev-week-btn{
+    background-color: #9BB9D1;
+
+}
+
+#next-week-btn{
+    border-radius: 0px 5px 0px 0px;
+}
+
+#prev-week-btn{
+    border-radius: 5px 0px 0px 0px;
+}
+
+#next-week-btn:hover, #prev-week-btn:hover{
+    background-color: #1976D2;
 }
 
 #week-selector div {
@@ -40,7 +59,16 @@
 #time-selector {
     top: 8%;
     height: 92%;
+
 }
+
+/*#days-of-the-week{*/
+    /*border-radius: 0px 0px 0px 5px;*/
+/*}*/
+
+/*#time-selector-col-sat{*/
+    /*border-radius: 0px 0px 5px 0px;*/
+/*}*/
 
 .col-8 {
     width: 12.5%;

@@ -144,6 +144,7 @@ var createTimeSelector = function (date) {
 var createTimeRangeDisplayColumn = function () {
     var columnElt = $('<div/>', {
         class: 'col-8',
+        id: "days-of-the-week"
     });
     var headerElt = $('<div/>', {
         class: 'time-selector-header',

@@ -140,7 +140,6 @@ var filterProfiles = function (profiles) {
     return filterByTime(filterByChildAge(filterByWage(profiles), false), onlyIncludePerfectMatches);
 };
 
-// change the profile container to show specified profiles
 var insertMiniProfileElts = function (profiles) {
     $('#profile-container').empty();
     profiles.forEach(function (profile) {
@@ -148,16 +147,21 @@ var insertMiniProfileElts = function (profiles) {
         var baseElt = $('<div/>', {
             class: 'row mini-profile',
         });
-        // inserting picture
+        // upper element with picture, name and about me
+        var upperElt = $('<div/>', {
+            class: 'row',
+        });
+
         var leftElt = $('<div/>', {
             class: 'col-xs-3',
         });
+        // inserting picture
         var pictureImgElt = $('<img>', {
             class: 'profile-picture',
             src: 'images/blue-user-icon.png'
         });
         leftElt.append(pictureImgElt);
-        baseElt.append(leftElt);
+        upperElt.append(leftElt);
         // inserting info
         var rightElt = $('<div/>', {
             class: 'col-xs-9',
@@ -175,6 +179,27 @@ var insertMiniProfileElts = function (profiles) {
         });
         nameElt.append(nameLinkElt);
         infoElt.append(nameElt);
+        rightElt.append(infoElt);
+
+        // inserting about
+        var aboutElt = $('<div/>', {
+            class: 'row babysitter-about-me',
+            text: profile.about,
+        });
+        rightElt.append(aboutElt);
+        upperElt.append(rightElt);
+        baseElt.append(upperElt);
+
+        // lower elt containing payrange, rating and child age
+        var lowerElt = $('<div/>', {
+            class: 'row',
+        });
+        var leftElt = $('<div/>', {
+            class: 'col-xs-3',
+        });
+        var infoElt = $('<div/>', {
+            class: 'row babysitter-info',
+        });
         // inserting wage info
         var wageElt = $('<div/>', {
             class: 'col babysitter-wage',
@@ -187,8 +212,13 @@ var insertMiniProfileElts = function (profiles) {
             text: starRatingString(profile.rating),
         });
         infoElt.append(ratingElt);
-        rightElt.append(infoElt);
+        leftElt.append(infoElt);
+        lowerElt.append(leftElt);
+
         // inserting age range info
+        var rightElt = $('<div/>', {
+            class: 'col-xs-9',
+        });
         var ageRangeElt = $('<div/>', {
             class: 'row babysitter-age-range-container',
             text: "Will babysit:"
@@ -206,13 +236,13 @@ var insertMiniProfileElts = function (profiles) {
             ageRangeElt.append(ageRangeTextElt);
         });
         rightElt.append(ageRangeElt);
-        // inserting about
-        var aboutElt = $('<div/>', {
-            class: 'row babysitter-about-me',
-            text: profile.about,
-        });
-        rightElt.append(aboutElt);
-        baseElt.append(rightElt);
+
+        lowerElt.append(rightElt);
+
+        baseElt.append(lowerElt);
+
+
+
         $('#profile-container').append(baseElt);
         // change calendar when hovering over a profile
         baseElt.hover(
@@ -231,6 +261,99 @@ var insertMiniProfileElts = function (profiles) {
         )
     });
 };
+
+
+// change the profile container to show specified profiles
+//var insertMiniProfileElts = function (profiles) {
+//    $('#profile-container').empty();
+//    profiles.forEach(function (profile) {
+//        // create mini-profile element
+//        var baseElt = $('<div/>', {
+//            class: 'row mini-profile',
+//        });
+//        // inserting picture
+//        var leftElt = $('<div/>', {
+//            class: 'col-xs-3',
+//        });
+//        var pictureImgElt = $('<img>', {
+//            class: 'profile-picture',
+//            src: 'images/blue-user-icon.png'
+//        });
+//        leftElt.append(pictureImgElt);
+//        baseElt.append(leftElt);
+//        // inserting info
+//        var rightElt = $('<div/>', {
+//            class: 'col-xs-9',
+//        });
+//        var infoElt = $('<div/>', {
+//            class: 'row babysitter-info',
+//        });
+//        // inserting name
+//        var nameElt = $('<div>', {
+//            class: 'col babysitter-name',
+//        });
+//        var nameLinkElt = $('<a>', {
+//            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+//            text: profile.name,
+//        });
+//        nameElt.append(nameLinkElt);
+//        infoElt.append(nameElt);
+//        // inserting wage info
+//        var wageElt = $('<div/>', {
+//            class: 'col babysitter-wage',
+//            text: '$' + profile.wage,
+//        });
+//        infoElt.append(wageElt);
+//        // inserting rating info
+//        var ratingElt = $('<div/>', {
+//            class: 'col babysitter-rating',
+//            text: starRatingString(profile.rating),
+//        });
+//        infoElt.append(ratingElt);
+//        rightElt.append(infoElt);
+//        // inserting age range info
+//        var ageRangeElt = $('<div/>', {
+//            class: 'row babysitter-age-range-container',
+//            text: "Will babysit:"
+//        });
+//        var ageIntersection = filterByChildAge([profile], true)[0];
+//        profile.ageRange.forEach(function (ageRange, idx) {
+//            var ageRangeTextElt = $('<div/>', {
+//                class: 'babysitter-age-range',
+//                'data-index': ageRange.index,
+//                text: ageRange.text,
+//            });
+//            if (_.intersection(ageIntersection,[ageRange.index]).length>0){
+//                ageRangeTextElt.addClass("match");
+//            }
+//            ageRangeElt.append(ageRangeTextElt);
+//        });
+//        rightElt.append(ageRangeElt);
+//        // inserting about
+//        var aboutElt = $('<div/>', {
+//            class: 'row babysitter-about-me',
+//            text: profile.about,
+//        });
+//        rightElt.append(aboutElt);
+//        baseElt.append(rightElt);
+//        $('#profile-container').append(baseElt);
+//        // change calendar when hovering over a profile
+//        baseElt.hover(
+//            // start hovering
+//            function () {
+//                // who the **** decided that storing time as AM/PM string is a good idea
+//                var schedule = profile.availability.map(function (daySchedule) {
+//                    return daySchedule.map(convertTo24HrTime);
+//                });
+//                markAvailableTimes(schedule);
+//            },
+//            // end hovering
+//            function () {
+//                clearAvailableTimes();
+//            }
+//        )
+//    });
+//};
 
 
 $(function () {
