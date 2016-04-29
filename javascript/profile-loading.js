@@ -42,9 +42,8 @@ $(function() {
         $("#babysitter-wage").html("$" + profile.wage + "/hr");
         $("#babysitter-name").html(profile.name);
         $("#babysitter-email").val(profile.email);
-        // $("#babysitter-references").html(profile.references);
         $("#babysitter-experiences").html(profile.experiences);
-        $("#babysitter-age-range").html("Will babysit: ");// + profile.ageRange[0] + " to " + profile.ageRange[profile.ageRange.length-1] + " year olds");
+        $("#babysitter-age-range").html("Will babysit: ");
         profile.ageRange.forEach(function (ageRange, idx) {
             var ageRangeTextElt = $('<div/>', {
                 class: 'babysitter-age-range-elt',
@@ -52,6 +51,38 @@ $(function() {
                 text: ageRange.text
             });
             $("#babysitter-age-range").append(ageRangeTextElt);
+        });
+
+        // load the reviews
+        profile.reviews.forEach(function (review) {
+            var panel = $('<div/>', {
+                class: 'panel panel-default',
+            });
+            var panelBody = $('<div/>', {
+                class: 'panel-body',
+            });
+            var leftElt = $('<div/>', {
+                class: 'col-xs-2 reviewer',
+            });
+            var reviewerName = $('<text/>', {
+                text: review[0]
+            })
+            var contactButton = $('<button/>', {
+                class: 'btn btn-primary btn-xs',
+                text: 'Contact',
+                'data-toggle': 'modal',
+                'data-target': '#myModal'
+            });
+            leftElt.append(reviewerName);
+            leftElt.append(contactButton);
+            var rightElt = $('<div/>', {
+                class: 'col-xs-10 review',
+                text: review[3]
+            });
+            panelBody.append(leftElt);
+            panelBody.append(rightElt);
+            panel.append(panelBody);
+            $('#review-container').append(panel);
         });
 
         var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

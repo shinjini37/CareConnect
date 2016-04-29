@@ -160,3 +160,12 @@ body{
     background-color: PaleGreen;
     font-weight: bold;
 }
+
+.reviewer {
+    font-weight: bold;
+    text-align: center;
+}
+
+.reviews {
+    text-align: left;
+}
