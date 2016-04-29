@@ -145,7 +145,7 @@ body{
 }
 .hour {
     border:1px solid #021a40;
-    height: 60px;
+    height: 40px;
     vertical-align:middle;
     text-align:center;
     background-color: LightGray;
@@ -154,9 +154,18 @@ body{
 
 .availableHour {
     border:1px solid #021a40;
-    height: 60px;
+    height: 40px;
     vertical-align:middle;
     text-align:center;
     background-color: PaleGreen;
     font-weight: bold;
+}
+
+.reviewer {
+    font-weight: bold;
+    text-align: center;
+}
+
+.reviews {
+    text-align: left;
 }
