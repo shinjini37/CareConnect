@@ -1,5 +1,12 @@
 // main page: filter and sort handlers
 
+// global config
+var onlyIncludePerfectMatches = false;
+var profiles;
+var changeShownProfiles = function () {
+    shownProfiles = filterProfiles(PROFILES);
+    insertMiniProfileElts(sortProfiles(shownProfiles));
+};
 
 // sort profiles based on criterion selected; returns new array
 var sortProfiles = function (profiles) {
@@ -79,7 +86,7 @@ var filterByChildAge = function (profs, returnIntersection) {
 };
 
 // filter profiles by time
-var filterByTime = function (profs) {
+var filterByTime = function (profs, perfectMatchesOnly) {
     var desiredTimes = getDesiredTimes();
     var validDayFilters = [];
     desiredTimes.forEach(function (times, idx) {
@@ -88,23 +95,49 @@ var filterByTime = function (profs) {
         }
     });
     if (validDayFilters.length === 0) {
+        // filter not used
         return profs;
-    } else {
+    } else if (!perfectMatchesOnly) {
+        // match all profiles with at least one common time slot
         return profs.filter(function (prof) {
             return validDayFilters.some(function (idx) {
                 var available = prof.availability[idx].map(convertTo24HrTime);
-                if (_.intersection(available, desiredTimes[idx]).length > 0) {
-                    return true;
-                }
+                var needed = desiredTimes[idx];
+                return (_.intersection(available, needed).length > 0);
             });
         });
-    };
+    } else {
+        // only match profiles available to all desired time slots
+        return profs.filter(function (prof) {
+            return validDayFilters.every(function (idx) {
+                var available = prof.availability[idx].map(convertTo24HrTime);
+                var needed = desiredTimes[idx];
+                return (_.intersection(available, needed).length === needed.length);
+            });
+        });
+    }
+};
+
+var createAnyAllToggle = function () {
+    var baseElt = $('<div/>', {
+        id: 'time-selector-any-all-toggle',
+        text: 'only include perfect matches ',
+    });
+    var checkboxElt = $('<input/>', {
+        type: 'checkbox',
+    });
+    checkboxElt.change(function () {
+        onlyIncludePerfectMatches = !onlyIncludePerfectMatches;
+        changeShownProfiles();
+    });
+    baseElt.append(checkboxElt);
+    return baseElt;
 };
 
 // filter profile
 var filterProfiles = function (profiles) {
     // main function
-    return filterByTime(filterByChildAge(filterByWage(profiles)), false);
+    return filterByTime(filterByChildAge(filterByWage(profiles), false), onlyIncludePerfectMatches);
 };
 
 // change the profile container to show specified profiles
@@ -226,11 +259,7 @@ var getParameterByName = function(name, url) {
 //////////////////////////////////////////
 
 $(function () {
-    var shownProfiles = PROFILES;
-    var changeShownProfiles = function () {
-        shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
-    };
+    shownProfiles = PROFILES;
     // on load
     // adding the filter price range slider
     $( "#slider-range" ).slider({
@@ -251,6 +280,7 @@ $(function () {
     $('#filter-date').on('timeUpdated', function () {
         changeShownProfiles();
     });
+    $('#filter-date').append(createAnyAllToggle());
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
