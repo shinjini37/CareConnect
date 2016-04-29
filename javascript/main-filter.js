@@ -1,7 +1,8 @@
 // main page: filter and sort handlers
 
 // global config
-var onlyIncludePerfectMatches = false;
+var onlyIncludePerfectMatchesTime = false;
+var onlyIncludePerfectMatchesAge = false;
 var profiles;
 var changeShownProfiles = function () {
     shownProfiles = filterProfiles(PROFILES);
@@ -59,12 +60,13 @@ var filterByWage = function (profs) {
 };
 
 // filter profiles by child age
-var filterByChildAge = function (profs, returnIntersection) {
-    var checkedAgeRangeElts = $('#filter-agerange :input:checked');
+var filterByChildAge = function (profs, onlyIncludePerfectMatchesAge, returnIntersection) {
+    var checkedAgeRangeElts = $('.filter-agerange-checkboxes :input:checked');
     if (checkedAgeRangeElts.length === 0 ||
-        checkedAgeRangeElts.length === $('#filter-agerange input').length) {
+        checkedAgeRangeElts.length === $('.filter-agerange-checkboxes input').length) {
         return profs;
-    } else {
+    } else if (!onlyIncludePerfectMatchesAge){
+        // any matches will do
         var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
         var intersections = [];
         var filteredProfs = profs.filter(function (prof) {
@@ -77,6 +79,25 @@ var filterByChildAge = function (profs, returnIntersection) {
                 intersections.push(intersection);
             }
             return (intersection.length > 0);
+        });
+        if (returnIntersection) {
+            return intersections;
+        }
+        return filteredProfs;
+    } else{
+        // only perfect matches
+        var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
+        var intersections = [];
+        var filteredProfs = profs.filter(function (prof) {
+            var ageRangeGroup = [];
+            prof.ageRange.forEach(function(range, idx){
+                ageRangeGroup.push(range.index);
+            });
+            var intersection = _.intersection(ageRangeGroup, checkedAgeRangeGroups);
+            if (returnIntersection) {
+                intersections.push(intersection);
+            }
+            return (intersection.length === checkedAgeRangeGroups.length);
         });
         if (returnIntersection) {
             return intersections;
@@ -118,16 +139,24 @@ var filterByTime = function (profs, perfectMatchesOnly) {
     }
 };
 
+var createGoToTodayButton = function(){
+    return $('<button/>', {
+        id: 'go-to-today',
+        class: 'btn',
+        text: 'Today',
+    });
+}
+
 var createAnyAllToggle = function () {
     var baseElt = $('<div/>', {
         id: 'time-selector-any-all-toggle',
-        text: 'only include perfect matches ',
+        text: 'Match Exactly ',
     });
     var checkboxElt = $('<input/>', {
         type: 'checkbox',
     });
     checkboxElt.change(function () {
-        onlyIncludePerfectMatches = !onlyIncludePerfectMatches;
+        onlyIncludePerfectMatchesTime = !onlyIncludePerfectMatchesTime;
         changeShownProfiles();
     });
     baseElt.append(checkboxElt);
@@ -137,11 +166,16 @@ var createAnyAllToggle = function () {
 // filter profile
 var filterProfiles = function (profiles) {
     // main function
-    return filterByTime(filterByChildAge(filterByWage(profiles), false), onlyIncludePerfectMatches);
+    return filterByTime(filterByChildAge(filterByWage(profiles), onlyIncludePerfectMatchesAge, false), onlyIncludePerfectMatchesTime);
 };
 
+// change the profile container to show specified profiles
 var insertMiniProfileElts = function (profiles) {
     $('#profile-container').empty();
+    window.location.search.substring(1);
+    var currentURL = window.location.search.substring(1);
+    var parentId = getParameterByName('parentId');
+    //console.log(parentId);
     profiles.forEach(function (profile) {
         // create mini-profile element
         var baseElt = $('<div/>', {
@@ -156,11 +190,16 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col-xs-3',
         });
         // inserting picture
+        var pictureLinkElt = $('<a>', {
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            target: '_blank', // open profile in new page
+        });
         var pictureImgElt = $('<img>', {
             class: 'profile-picture',
             src: 'images/blue-user-icon.png'
         });
-        leftElt.append(pictureImgElt);
+        pictureLinkElt.append(pictureImgElt);
+        leftElt.append(pictureLinkElt);
         upperElt.append(leftElt);
         // inserting info
         var rightElt = $('<div/>', {
@@ -174,7 +213,8 @@ var insertMiniProfileElts = function (profiles) {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase() + (parentId != null ? '&parentId='+parentId : ''),
+            target: '_blank', // open profile in new page
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
@@ -223,7 +263,7 @@ var insertMiniProfileElts = function (profiles) {
             class: 'row babysitter-age-range-container',
             text: "Will babysit:"
         });
-        var ageIntersection = filterByChildAge([profile], true)[0];
+        var ageIntersection = filterByChildAge([profile], onlyIncludePerfectMatchesAge, true)[0];
         profile.ageRange.forEach(function (ageRange, idx) {
             var ageRangeTextElt = $('<div/>', {
                 class: 'babysitter-age-range',
@@ -262,98 +302,18 @@ var insertMiniProfileElts = function (profiles) {
     });
 };
 
+///////// helper function ///////////
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+//////////////////////////////////////////
 
-// change the profile container to show specified profiles
-//var insertMiniProfileElts = function (profiles) {
-//    $('#profile-container').empty();
-//    profiles.forEach(function (profile) {
-//        // create mini-profile element
-//        var baseElt = $('<div/>', {
-//            class: 'row mini-profile',
-//        });
-//        // inserting picture
-//        var leftElt = $('<div/>', {
-//            class: 'col-xs-3',
-//        });
-//        var pictureImgElt = $('<img>', {
-//            class: 'profile-picture',
-//            src: 'images/blue-user-icon.png'
-//        });
-//        leftElt.append(pictureImgElt);
-//        baseElt.append(leftElt);
-//        // inserting info
-//        var rightElt = $('<div/>', {
-//            class: 'col-xs-9',
-//        });
-//        var infoElt = $('<div/>', {
-//            class: 'row babysitter-info',
-//        });
-//        // inserting name
-//        var nameElt = $('<div>', {
-//            class: 'col babysitter-name',
-//        });
-//        var nameLinkElt = $('<a>', {
-//            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
-//            text: profile.name,
-//        });
-//        nameElt.append(nameLinkElt);
-//        infoElt.append(nameElt);
-//        // inserting wage info
-//        var wageElt = $('<div/>', {
-//            class: 'col babysitter-wage',
-//            text: '$' + profile.wage,
-//        });
-//        infoElt.append(wageElt);
-//        // inserting rating info
-//        var ratingElt = $('<div/>', {
-//            class: 'col babysitter-rating',
-//            text: starRatingString(profile.rating),
-//        });
-//        infoElt.append(ratingElt);
-//        rightElt.append(infoElt);
-//        // inserting age range info
-//        var ageRangeElt = $('<div/>', {
-//            class: 'row babysitter-age-range-container',
-//            text: "Will babysit:"
-//        });
-//        var ageIntersection = filterByChildAge([profile], true)[0];
-//        profile.ageRange.forEach(function (ageRange, idx) {
-//            var ageRangeTextElt = $('<div/>', {
-//                class: 'babysitter-age-range',
-//                'data-index': ageRange.index,
-//                text: ageRange.text,
-//            });
-//            if (_.intersection(ageIntersection,[ageRange.index]).length>0){
-//                ageRangeTextElt.addClass("match");
-//            }
-//            ageRangeElt.append(ageRangeTextElt);
-//        });
-//        rightElt.append(ageRangeElt);
-//        // inserting about
-//        var aboutElt = $('<div/>', {
-//            class: 'row babysitter-about-me',
-//            text: profile.about,
-//        });
-//        rightElt.append(aboutElt);
-//        baseElt.append(rightElt);
-//        $('#profile-container').append(baseElt);
-//        // change calendar when hovering over a profile
-//        baseElt.hover(
-//            // start hovering
-//            function () {
-//                // who the **** decided that storing time as AM/PM string is a good idea
-//                var schedule = profile.availability.map(function (daySchedule) {
-//                    return daySchedule.map(convertTo24HrTime);
-//                });
-//                markAvailableTimes(schedule);
-//            },
-//            // end hovering
-//            function () {
-//                clearAvailableTimes();
-//            }
-//        )
-//    });
-//};
 
 
 $(function () {
@@ -374,11 +334,12 @@ $(function () {
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
     // add calendar and its handlers
+    $('#filter-date').append(createGoToTodayButton());
+    $('#filter-date').append(createAnyAllToggle());
     $('#filter-date').append(createCalendar());
     $('#filter-date').on('timeUpdated', function () {
         changeShownProfiles();
     });
-    $('#filter-date').append(createAnyAllToggle());
     // reset button handler
     $('#filter-reset').click(function () {
         $('#filter :input:checked').prop('checked', '');
@@ -392,6 +353,14 @@ $(function () {
         var input = $(this).parent().find('input');
         input.click();
     });
+
+    // age range exact match handler
+    $("#agerange-match-exactly").change(function(){
+        console.log(onlyIncludePerfectMatchesAge);
+        onlyIncludePerfectMatchesAge = !onlyIncludePerfectMatchesAge;
+        changeShownProfiles();
+    });
+
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
         changeShownProfiles();
@@ -411,16 +380,11 @@ $(function () {
     var height = $("#profile-sort-container").css("height");
     $("#filter").css({height: height});
 
-    //clicking profile picture
-    $('body').on('click', '.profile-picture', function () {
-        var link = $(this).parent().parent().find('a');
-        window.location.href = link.attr('href');
-    });
-
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
         var navHeight = $("#navigation").css("height");
+        console.log(navHeight);
         navHeight = navHeight.slice(0,-2);
         navHeight = parseInt(navHeight);
         var filterFloatHeight = $("#filter .float").css("height");

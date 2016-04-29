@@ -14,18 +14,22 @@
 
 #calendar {
     width: 94%;
-    margin: 10px auto;
+    margin: 0px auto 10px auto;
 }
 
 #week-selector {
-    height: 30px;
+    height: 25px;
     /*border: 1px solid black;*/
     border-radius: 5px 5px 0px 0px;
     background-color: whitesmoke;
 }
 
+#selected-week-text{
+    font-size: 13px;
+}
+
 #next-week-btn, #prev-week-btn{
-    background-color: #9BB9D1;
+    background-color: #A5A5A5;
 
 }
 
@@ -38,7 +42,7 @@
 }
 
 #next-week-btn:hover, #prev-week-btn:hover{
-    background-color: #1976D2;
+    background-color: #CCCCCC;
 }
 
 #week-selector div {
@@ -62,9 +66,14 @@
 
 }
 
-/*#days-of-the-week{*/
-    /*border-radius: 0px 0px 0px 5px;*/
-/*}*/
+#days-of-the-week{
+    background-color: whitesmoke;
+    border-left: 1px solid grey;
+}
+
+.time-selector-header{
+    background-color: whitesmoke;
+}
 
 /*#time-selector-col-sat{*/
     /*border-radius: 0px 0px 5px 0px;*/
@@ -74,12 +83,14 @@
     width: 12.5%;
     height: 100%;
     display: inline-block;
-    border: 1px solid black;
+    border-right: 1px solid grey;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
     vertical-align: top;
 }
 
 .time-selector-header {
-    height: 42px;
+    height: 36px;
     border: none;
 	text-align: center;
 }
@@ -88,12 +99,13 @@ p.time-selector-header-text {
     margin: 0px;
     padding: 2px;
     font-size: 90%;
+    height: 18px;
 }
 
 .time-selector-cell {
-    height: 21px;
+    height: 18px;
     border: none;
-    border-top: 1px solid black;
+    border-top: 1px solid grey;
     text-align: center;
 }
 

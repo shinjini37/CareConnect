@@ -90,7 +90,7 @@ $(function() {
             var availableHours = profile.availability[i];
             for (var j=0; j < availableHours.length; j++) {
                 var slotID = days[i]+availableHours[j];
-                $('#' + slotID)[0].style.backgroundColor = 'PaleGreen';
+                $('#' + slotID).css("background-color", 'PaleGreen');
             }
         }
     } else {
@@ -102,6 +102,6 @@ $(function() {
         width: $("#user-profile-wrapper").css("width")
     });
 
-    }
 
-)
+
+});
