@@ -128,7 +128,7 @@ var PROFILES = [
     },
     {
         name: 'Rich',
-        wage: 35,
+        wage: 25,
         rating: 5,
         about: "Hello. My name is Rich. I have been working with children for the last 5 years at the Boston Children's Museum. I really like working with children, and they seem to feel very comfortable around me.",
         ageRange: [AGE_RANGES["infant"],AGE_RANGES["toddler"],AGE_RANGES["preschooler"],AGE_RANGES["lower-elementary"], AGE_RANGES["higher-elementary"], AGE_RANGES["lower-middle"], AGE_RANGES["higher-middle"], ],// [5, 6, 7, 8],

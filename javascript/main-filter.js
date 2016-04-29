@@ -62,8 +62,8 @@ var filterByWage = function (profs) {
 // filter profiles by child age
 var filterByChildAge = function (profs, onlyIncludePerfectMatchesAge, returnIntersection) {
     var checkedAgeRangeElts = $('.filter-agerange-checkboxes :input:checked');
-    if (checkedAgeRangeElts.length === 0 ||
-        checkedAgeRangeElts.length === $('.filter-agerange-checkboxes input').length) {
+    if (checkedAgeRangeElts.length === 0) {
+        console.log("none selected");
         return profs;
     } else if (!onlyIncludePerfectMatchesAge){
         // any matches will do
@@ -352,7 +352,7 @@ $(function () {
 
     // age range exact match handler
     $("#agerange-match-exactly").change(function(){
-        console.log(onlyIncludePerfectMatchesAge);
+        //console.log(onlyIncludePerfectMatchesAge);
         onlyIncludePerfectMatchesAge = !onlyIncludePerfectMatchesAge;
         changeShownProfiles();
     });
@@ -380,7 +380,7 @@ $(function () {
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
         var navHeight = $("#navigation").css("height");
-        console.log(navHeight);
+        //console.log(navHeight);
         navHeight = navHeight.slice(0,-2);
         navHeight = parseInt(navHeight);
         var filterFloatHeight = $("#filter .float").css("height");
