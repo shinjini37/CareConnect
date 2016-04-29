@@ -152,11 +152,16 @@ var insertMiniProfileElts = function (profiles) {
         var leftElt = $('<div/>', {
             class: 'col-xs-3',
         });
+        var pictureLinkElt = $('<a>', {
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            target: '_blank', // open profile in new page
+        });
         var pictureImgElt = $('<img>', {
             class: 'profile-picture',
             src: 'images/blue-user-icon.png'
         });
-        leftElt.append(pictureImgElt);
+        pictureLinkElt.append(pictureImgElt);
+        leftElt.append(pictureLinkElt);
         baseElt.append(leftElt);
         // inserting info
         var rightElt = $('<div/>', {
@@ -171,6 +176,7 @@ var insertMiniProfileElts = function (profiles) {
         });
         var nameLinkElt = $('<a>', {
             href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            target: '_blank', // open profile in new page
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
@@ -287,12 +293,6 @@ $(function () {
     // filter extend to bottom of div
     var height = $("#profile-sort-container").css("height");
     $("#filter").css({height: height});
-
-    //clicking profile picture
-    $('body').on('click', '.profile-picture', function () {
-        var link = $(this).parent().parent().find('a');
-        window.location.href = link.attr('href');
-    });
 
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
