@@ -96,6 +96,25 @@ $(function() {
         });
 
         var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        var hours = ['8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm', '9pm', '10pm', '11pm'];
+
+        hours.forEach(function (hour) {
+            var hourRow = $('<div/>', {
+                class: "row seven-cols",
+                margin: 'auto'
+            });
+            days.forEach(function (day) {
+                var slot = $('<div/>', {
+                    class: "col-lg-1 col-md-3 col-sm-4 col-xs-6 hour",
+                    id: day + hour,
+                    text: hour
+                });
+                hourRow.append(slot);
+            });
+            $("#big-calendar").append(hourRow);
+        })
+
+        var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
         for (var i=0; i < 7; i++) {
             var availableHours = profile.availability[i];
             for (var j=0; j < availableHours.length; j++) {

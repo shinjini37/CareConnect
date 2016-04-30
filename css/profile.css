@@ -5,7 +5,6 @@
 }
 
 #profile-image {
-    /*border:1px solid #021a40;*/
     border-radius: 5px;
     float: left;
     max-width: 100%;
@@ -50,8 +49,7 @@
     font-size: .75em;
 }
 
-
-#babysitter-about-me, #babysitter-experiences, #babysitter-references{
+#babysitter-about-me, #babysitter-experiences {
     border:1px solid darkgrey;
     border-radius: 5px;
     max-height: 200px;
@@ -62,18 +60,18 @@
 }
 
 #experiences-references {
-    margin-left: 5px;
+    margin-left: 1px;
 }
 
+#babysitter-calendar {
+    margin-bottom: 5px;
+
+}
 
 
 /*Background*/
 
 .container{
-    width: 1200px;
-    height: 750px;
-    
-    /*background-color: #bdc3c7;*/
     background-color: #9BB9D1;
 }
 
@@ -122,4 +120,16 @@ body{
 .reviews {
     text-align: left;
     font-size: .50em;
+}
+
+@media (min-width: 1200px) {
+    .seven-cols {
+        margin: auto;
+    }
+    .seven-cols .col-md-1,
+    .seven-cols .col-sm-1,
+    .seven-cols .col-lg-1 {
+    width: 14.285714285714285714285714285714%;
+    *width: 14.285714285714285714285714285714%;
+  }
 }
