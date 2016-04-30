@@ -26,6 +26,8 @@ $(function() {
         return query_string;
     }();
 
+    console.log(QueryString);
+
     // get the profile, load if it exists, redirect to homepage if it doesn't
     var profile = QueryString.profile;
     if (profile === undefined) {
@@ -43,7 +45,11 @@ $(function() {
         $("#babysitter-name").html(profile.name);
         $("#babysitter-contact-btn").attr('data-email', profile.email);
         $("#babysitter-contact-btn").click(function () {
-            $('#babysitter-email').val($(this).attr('data-email'));
+            if (QueryString.parentId === undefined) {
+                window.location.href = 'login.html';
+            } else {
+                $('#babysitter-email').val($(this).attr('data-email'));
+            }
         });
         $("#babysitter-experiences").html(profile.experiences);
         $("#babysitter-age-range").html("Will babysit: ");
@@ -80,6 +86,9 @@ $(function() {
                 'data-target': '#myModal',
                 'data-email': review[1],
                 click: function () {
+                    if (QueryString.parentId === undefined) {
+                        window.location.href = 'login.html';
+                    }
                     $('#babysitter-email').val($(this).attr('data-email'));
                 }
             });
