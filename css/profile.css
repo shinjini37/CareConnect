@@ -125,11 +125,6 @@ body{
     font-family: 'Open Sans', serif, sans-serif;
 }
 
-.btn{
-    border-color: #1E88E5;
-    background-color: #1E88E5;
-}
-
 .btn:hover{
     border-color: #2e6da4;
     background-color: #1976D2;
@@ -140,9 +135,9 @@ body{
     height: 30px;
     vertical-align:middle;
     text-align:center;
-/*    background-color: DarkGray;*/
     font-weight: bold;
 }
+
 .hour {
     border:1px solid #021a40;
     height: 40px;

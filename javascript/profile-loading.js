@@ -41,7 +41,10 @@ $(function() {
         $("#babysitter-about-me").text(profile.about);
         $("#babysitter-wage").html("$" + profile.wage + "/hr");
         $("#babysitter-name").html(profile.name);
-        $("#babysitter-email").val(profile.email);
+        $("#babysitter-contact-btn").attr('data-email', profile.email);
+        $("#babysitter-contact-btn").click(function () {
+            $('#babysitter-email').val($(this).attr('data-email'));
+        });
         $("#babysitter-experiences").html(profile.experiences);
         $("#babysitter-age-range").html("Will babysit: ");
         profile.ageRange.forEach(function (ageRange, idx) {
@@ -71,7 +74,11 @@ $(function() {
                 class: 'btn btn-primary btn-xs',
                 text: 'Contact',
                 'data-toggle': 'modal',
-                'data-target': '#myModal'
+                'data-target': '#myModal',
+                'data-email': review[1],
+                click: function () {
+                    $('#babysitter-email').val($(this).attr('data-email'));
+                }
             });
             leftElt.append(reviewerName);
             leftElt.append(contactButton);
