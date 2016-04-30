@@ -1,47 +1,3 @@
-/* Navigation */
-
-#navigation {
-    /*background-color: #2C89C6;*/
-    background-color: #1565C0;
-    padding: 10px;
-    height: 60px;
-
-}
-
-.ui-menu-item{
-    z-index: 1500;
-}
-
-#logo {
-    color: whitesmoke;
-    text-align: center;
-    font-size: 1.5em;
-    font-weight: bold;
-    height: 60px;
-    margin: -10px -25px -10px -25px;
-    padding: 15px;
-
-}
-
-#logo:hover {
-    background-color: #135DB0;
-    cursor: pointer;
-}
-
-
-#navigation .form-control {
-    display: inline-block;
-    width: 300px;
-}
-
-#profile-nav {
-    text-align: right;
-}
-
-.nav-dropdown {
-    display: inline-block;
-}
-
 /* Filter groups */
 #filter {
     /*z-index: 500;*/
@@ -69,6 +25,48 @@
     display: block;
     cursor: pointer;
 }
+
+#filter-agerange .filter-label{
+    display: inline-block;
+    width: 60%;
+}
+
+#time-selector-any-all-toggle{
+    text-align: right;
+    width: 70%;
+    display: inline-block;
+    margin: 5px 15px 0 15px;
+}
+#go-to-today{
+    color: whitesmoke;
+    display: inline-block;
+    margin: 5px 15px 0 30px;
+}
+
+#agerange-match-exactly-container{
+    display: inline-block;
+    width: 39%;
+    text-align: right;
+}
+
+#filter-agerange-slider-container, #slider-range, #filter-payrange-selected-container, #filter-payrange-selected, #filter-payrange-selected-label{
+    display: inline-block;
+}
+#filter-agerange-slider-container{
+    width: 100%;
+}
+#slider-range{
+    width: 80%;
+}
+#filter-payrange-selected-container{
+    width: 70px;
+}
+#filter-payrange-selected{
+    /*width: 100%;*/
+    margin: auto;
+    text-align: center;
+}
+
 .filter-agerange-checkboxes-group {
     vertical-align: top;
 }
@@ -98,12 +96,12 @@
 
 .filter-label-main {
     text-align: center;
-    font-size: 1.5em;
+    font-size: 15px;
     color: whitesmoke;
     padding-top: 7px;
-    height: 43px;
+    height: 35px;
     background-color: #A5A5A5;
-    margin: 0 -15px 15px -15px;
+    margin: 0 -15px 0px -15px;
 
 }
 
@@ -139,6 +137,11 @@
     cursor: pointer;
 }
 
+.babysitter-info{
+    padding: 10px 15px;
+    /*text-align: center;*/
+}
+
 .babysitter-name {
     font-weight: bold;
     width: 270px;
@@ -147,10 +150,13 @@
 
 .babysitter-wage {
 	display: inline-block;
+    width: 30px;
+    margin: 0;
 }
 
 .babysitter-rating {
 	display: inline-block;
+    font-size: 18px;
 }
 
 .babysitter-age-range-container{
@@ -169,11 +175,11 @@
 .babysitter-about-me {
 	display: inline-block;
     width: 100%;
-    height: 120px;
+    height: 118px;
     overflow: auto;
     border-radius: 5px;
     background-color: #e6e6e6;
-    padding: 5px;
+    padding: 10px;
     margin: 5px -10px 0 -10px;
 
 }
@@ -197,7 +203,7 @@
     padding: 5px 15px 5px 15px;
     background-color: #759CC0;
     text-align: right;
-    height: 43px;
+    height: 35px;
     margin: 0 -15px 0 -15px;
 }
 
@@ -205,7 +211,7 @@
     /*text-align: right;*/
     padding: 5px 15px 5px 15px;
     background-color: #759CC0;
-    height: 43px;
+    height: 35px;
     margin: 0 -15px 0 -15px;
     display: none;
 }
@@ -214,7 +220,14 @@
 #sort-dropdown .form-group {
     display: inline-block;
     width: 210px;
+    }
+#sort-select{
+    padding-top: 0;
+    padding-bottom: 0;
+    height: 26px;
+    font-size: 12px;
 }
+
 
 #sort-label {
     display: inline-block;
@@ -249,6 +262,7 @@ body {
 .btn {
     border-color: #1E88E5;
     background-color: #1E88E5;
+
 }
 
 .btn:hover {

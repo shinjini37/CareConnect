@@ -1,0 +1,46 @@
+/* Navigation */
+
+#navigation {
+    /*background-color: #2C89C6;*/
+    background-color: #1565C0;
+    padding: 5px;
+    height: 45px;
+
+}
+
+.ui-menu-item{
+    z-index: 1500;
+}
+
+#logo {
+    color: whitesmoke;
+    text-align: center;
+    font-size: 20px;
+    /*font-weight: bold;*/
+    height: 45px;
+    margin: -5px -20px;
+    padding-top: 12px;
+
+}
+
+#logo:hover {
+    background-color: #135DB0;
+    cursor: pointer;
+}
+
+#search{
+    height: 0;
+}
+#navigation .form-control {
+    display: inline-block;
+    width: 300px;
+}
+
+#profile-nav {
+    text-align: right;
+}
+
+.nav-dropdown {
+    display: inline-block;
+}
+

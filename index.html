@@ -6,8 +6,9 @@
     <!-- stylesheets -->
     <link rel="stylesheet" type='text/css' href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans'>
-    <link rel='stylesheet' type='text/css' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/ui-lightness/jquery-ui.min.css'>
+    <link rel='stylesheet' type='text/css' href='http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css'>
     <link rel="stylesheet" type="text/css" href="css/cc_main_stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="css/navbar.css">
     <link rel="stylesheet" type="text/css" href="css/main_calendar.css">
     <!-- javascript libraries -->
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -17,7 +18,7 @@
     <!-- page control scripts -->
     <script src="javascript/util.js"></script>
     <script src="javascript/profiles.js"></script>
-    <script src="javascript/search.js"></script>
+    <script src="javascript/navbar-search.js"></script>
     <script src="javascript/main-calendar.js"></script>
     <script src="javascript/main-filter.js"></script>
 </head>
@@ -25,7 +26,7 @@
 <div class="container">
     <div class="row" id="navigation">
         <div class="col-xs-3">
-            <div id="logo">CareConnect</div>
+            <div id="logo"><a href="index.html" style="text-decoration: none; color: inherit;">CareConnect</a></div>
         </div>
         <div class="col-xs-5">
             <div id="search">
@@ -53,11 +54,7 @@
     <div class="row" id="main-container">
         <div class="col-xs-3 unhighlightable" id="filter">
             <div class="float">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="filter-label filter-label-main">Filter...</div>
-                    </div>
-                </div>
+                <div class="row filter-label filter-label-main">Filter...</div>
                 <div class="row" id="filter-date">
                 </div>
                 <div class="row">
@@ -65,10 +62,12 @@
                         <div id="filter-payrange">
                             <div class="filter-label">Pay Range (/hr)</div>
                             <!-- from http://jqueryui.com/slider/#range-->
-                            <div id="slider-range"></div>
-                            <div id="filter-payrange-selected-container">
-                                <label for="filter-payrange-selected">Selected:</label>
-                                <input type="text" id="filter-payrange-selected" readonly>
+                            <div id="filter-agerange-slider-container">
+                                <div id="filter-payrange-selected-container">
+                                    <div id="filter-payrange-selected-label"></div>
+                                    <div id="filter-payrange-selected"></div>
+                                </div>
+                                <div id="slider-range"></div>
                             </div>
                         </div>
                     </div>
@@ -77,6 +76,9 @@
                     <div class="col-xs-12">
                         <div id="filter-agerange">
                             <div class="filter-label">Child Age Range</div>
+                            <div id="agerange-match-exactly-container">Match Exactly
+                                <input id="agerange-match-exactly" type="checkbox">
+                            </div>
                             <div class="filter-agerange-checkboxes-group">
                                 <div class="filter-agerange-checkboxes">
                                     <input type="checkbox" name="agerange" value="0">

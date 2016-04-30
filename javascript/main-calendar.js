@@ -1,6 +1,6 @@
 var DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
 var START_TIME = 8;
-var END_TIME = 18;
+var END_TIME = 24;
 
 /*
  * Public methods
@@ -68,11 +68,11 @@ var createWeekSelector = function (date) {
     });
     // left: goto previous week
     var prevWeekBtnElt = $('<div/></div>', {
-        class: 'col-xs-1 clickable-text',
+        class: 'col-xs-2 clickable-text',
         id: 'prev-week-btn',
     }).append($('<p/>', {
         class: 'center-text',
-        text: '<',
+        text: '←',
     }));
     prevWeekBtnElt.click(function () {
         date = addDays(date, -7);
@@ -82,7 +82,7 @@ var createWeekSelector = function (date) {
     baseElt.append(prevWeekBtnElt);
     // center: show currently selected week
     var showWeekElt = $('<div/>', {
-        class: 'col-xs-10',
+        class: 'col-xs-8',
         id: 'selected-week',
     }).append($('<p/>', {
         class: 'center-text',
@@ -93,11 +93,11 @@ var createWeekSelector = function (date) {
     // right: goto next week
     baseElt.append(showWeekElt);
     var nextWeekBtnElt = $('<div/>', {
-        class: 'col-xs-1 clickable-text',
+        class: 'col-xs-2 clickable-text',
         id: 'next-week-btn',
     }).append($('<p/>', {
         class: 'center-text',
-        text: '>',
+        text: '→',
     }));
     nextWeekBtnElt.click(function () {
         date = addDays(date, 7);
@@ -144,6 +144,7 @@ var createTimeSelector = function (date) {
 var createTimeRangeDisplayColumn = function () {
     var columnElt = $('<div/>', {
         class: 'col-8',
+        id: "days-of-the-week"
     });
     var headerElt = $('<div/>', {
         class: 'time-selector-header',

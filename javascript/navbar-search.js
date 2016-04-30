@@ -53,5 +53,29 @@ $(function(){
         }
     });
 
+    // check for parent login
+    var parentId = getParameterByName('parentId');
+    if (parentId === null){
+        $("#logo a").attr("href", "index.html");
+    } else {
+        $("#logo a").attr("href", "index.html" + "?parentId=" + parentId);
+    }
+
+    // allow entire logo to be clicked
+    $("#logo").click(function(){
+        window.location.href = $("#logo a").attr("href");
+    })
+
 });
 
+
+///////// Helper method ///////////////
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}

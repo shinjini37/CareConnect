@@ -124,9 +124,33 @@ var PROFILES = [
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['12pm','1pm'],['6pm'],['9am'],[],['9am','10am','11am'],[],['11am','12pm','3pm','4pm','5pm','6pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']]
+        reviews: []
     },
-];
+    {
+        name: 'Rich',
+        wage: 25,
+        rating: 5,
+        about: "Hello. My name is Rich. I have been working with children for the last 5 years at the Boston Children's Museum. I really like working with children, and they seem to feel very comfortable around me.",
+        ageRange: [AGE_RANGES["infant"],AGE_RANGES["toddler"],AGE_RANGES["preschooler"],AGE_RANGES["lower-elementary"], AGE_RANGES["higher-elementary"], AGE_RANGES["lower-middle"], AGE_RANGES["higher-middle"], ],// [5, 6, 7, 8],
+        email: 'rich@mit.edu',
+        references: "Boston Children's Museum",
+        experiences: "I have been working with children for the last 5 years at the Boston Children's Museum.",
+        availability: [['12pm','1pm'],['6pm'],['9am'],[],['9am','10am','11am'],['7pm','8pm','9pm'],['11am','12pm','3pm','4pm','5pm','6pm']],
+        reviews: [['Prii', 'prii@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Nia', 'nia@mit.edu', 4, 'Really good job taking care of my kids, they really enjoyed it!']]
+    },
+    {
+        name: 'Jaya',
+        wage: 10,
+        rating: 0,
+        about: "I'm just starting out. I really like working with kids. Give me a shot!",
+        ageRange: [AGE_RANGES["higher-elementary"], AGE_RANGES["lower-middle"], AGE_RANGES["higher-middle"], ],// [5, 6, 7, 8],
+        email: 'jaya@mit.edu',
+        references: "",
+        experiences: "",
+        availability: [['9am','10am','11am','3pm','4pm','5pm'],['9am','10am','11am','3pm','4pm','5pm','6pm'],['9am','10am','11am','3pm','4pm','5pm'],['9am','10am','11am','3pm','4pm','5pm'],['9am','10am','11am','3pm','4pm','5pm'],['9am','10am','11am','3pm','4pm','5pm'],['9am','10am','11am','12pm','3pm','4pm','5pm','6pm']],
+        reviews: []
+    },
+]
 
 
 // For ease of finding profiles. Names are all in lower case, currently only uses first names, requires that names are unique
@@ -138,6 +162,8 @@ var PROFILE_INDEX = {
     'pippin': 4,
     'stella': 5,
     'amy': 6,
+    'rich':7,
+    'jaya':8
 }
 
 // for autocomplete
@@ -148,5 +174,7 @@ var PROFILE_NAMES = [
     'Ray',
     'Pippin',
     'Stella',
-    'Amy'
+    'Amy',
+    'Rich',
+    'Jaya'
 ];
