@@ -1,5 +1,13 @@
 // main page: filter and sort handlers
 
+// global config
+var onlyIncludePerfectMatchesTime = false;
+var onlyIncludePerfectMatchesAge = false;
+var profiles;
+var changeShownProfiles = function () {
+    shownProfiles = filterProfiles(PROFILES);
+    insertMiniProfileElts(sortProfiles(shownProfiles));
+};
 
 // sort profiles based on criterion selected; returns new array
 var sortProfiles = function (profiles) {
@@ -52,12 +60,13 @@ var filterByWage = function (profs) {
 };
 
 // filter profiles by child age
-var filterByChildAge = function (profs, returnIntersection) {
-    var checkedAgeRangeElts = $('#filter-agerange :input:checked');
-    if (checkedAgeRangeElts.length === 0 ||
-        checkedAgeRangeElts.length === $('#filter-agerange input').length) {
+var filterByChildAge = function (profs, onlyIncludePerfectMatchesAge, returnIntersection) {
+    var checkedAgeRangeElts = $('.filter-agerange-checkboxes :input:checked');
+    if (checkedAgeRangeElts.length === 0) {
+        console.log("none selected");
         return profs;
-    } else {
+    } else if (!onlyIncludePerfectMatchesAge){
+        // any matches will do
         var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
         var intersections = [];
         var filteredProfs = profs.filter(function (prof) {
@@ -75,11 +84,30 @@ var filterByChildAge = function (profs, returnIntersection) {
             return intersections;
         }
         return filteredProfs;
+    } else{
+        // only perfect matches
+        var checkedAgeRangeGroups = getValues(checkedAgeRangeElts);
+        var intersections = [];
+        var filteredProfs = profs.filter(function (prof) {
+            var ageRangeGroup = [];
+            prof.ageRange.forEach(function(range, idx){
+                ageRangeGroup.push(range.index);
+            });
+            var intersection = _.intersection(ageRangeGroup, checkedAgeRangeGroups);
+            if (returnIntersection) {
+                intersections.push(intersection);
+            }
+            return (intersection.length === checkedAgeRangeGroups.length);
+        });
+        if (returnIntersection) {
+            return intersections;
+        }
+        return filteredProfs;
     }
 };
 
 // filter profiles by time
-var filterByTime = function (profs) {
+var filterByTime = function (profs, perfectMatchesOnly) {
     var desiredTimes = getDesiredTimes();
     var validDayFilters = [];
     desiredTimes.forEach(function (times, idx) {
@@ -88,60 +116,126 @@ var filterByTime = function (profs) {
         }
     });
     if (validDayFilters.length === 0) {
+        // filter not used
         return profs;
-    } else {
+    } else if (!perfectMatchesOnly) {
+        // match all profiles with at least one common time slot
         return profs.filter(function (prof) {
             return validDayFilters.some(function (idx) {
                 var available = prof.availability[idx].map(convertTo24HrTime);
-                if (_.intersection(available, desiredTimes[idx]).length > 0) {
-                    return true;
-                }
+                var needed = desiredTimes[idx];
+                return (_.intersection(available, needed).length > 0);
             });
         });
-    };
+    } else {
+        // only match profiles available to all desired time slots
+        return profs.filter(function (prof) {
+            return validDayFilters.every(function (idx) {
+                var available = prof.availability[idx].map(convertTo24HrTime);
+                var needed = desiredTimes[idx];
+                return (_.intersection(available, needed).length === needed.length);
+            });
+        });
+    }
+};
+
+var createGoToTodayButton = function(){
+    return $('<button/>', {
+        id: 'go-to-today',
+        class: 'btn',
+        text: 'Today',
+    });
+}
+
+var createAnyAllToggle = function () {
+    var baseElt = $('<div/>', {
+        id: 'time-selector-any-all-toggle',
+        text: 'Match Exactly ',
+    });
+    var checkboxElt = $('<input/>', {
+        type: 'checkbox',
+    });
+    checkboxElt.change(function () {
+        onlyIncludePerfectMatchesTime = !onlyIncludePerfectMatchesTime;
+        changeShownProfiles();
+    });
+    baseElt.append(checkboxElt);
+    return baseElt;
 };
 
 // filter profile
 var filterProfiles = function (profiles) {
     // main function
-    return filterByTime(filterByChildAge(filterByWage(profiles)), false);
+    return filterByTime(filterByChildAge(filterByWage(profiles), onlyIncludePerfectMatchesAge, false), onlyIncludePerfectMatchesTime);
 };
 
 // change the profile container to show specified profiles
 var insertMiniProfileElts = function (profiles) {
     $('#profile-container').empty();
+    window.location.search.substring(1);
+    var currentURL = window.location.search.substring(1);
+    var parentId = getParameterByName('parentId');
+    //console.log(parentId);
     profiles.forEach(function (profile) {
         // create mini-profile element
         var baseElt = $('<div/>', {
             class: 'row mini-profile',
         });
-        // inserting picture
+        // upper element with picture, name and about me
+        var upperElt = $('<div/>', {
+            class: 'row',
+        });
+
         var leftElt = $('<div/>', {
             class: 'col-xs-3',
+        });
+        // inserting picture
+        var pictureLinkElt = $('<a>', {
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            target: '_blank', // open profile in new page
         });
         var pictureImgElt = $('<img>', {
             class: 'profile-picture',
             src: 'images/blue-user-icon.png'
         });
-        leftElt.append(pictureImgElt);
-        baseElt.append(leftElt);
+        pictureLinkElt.append(pictureImgElt);
+        leftElt.append(pictureLinkElt);
+        upperElt.append(leftElt);
         // inserting info
         var rightElt = $('<div/>', {
             class: 'col-xs-9',
-        });
-        var infoElt = $('<div/>', {
-            class: 'row babysitter-info',
         });
         // inserting name
         var nameElt = $('<div>', {
             class: 'col babysitter-name',
         });
         var nameLinkElt = $('<a>', {
-            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase() + (parentId != null ? '&parentId='+parentId : ''),
+            target: '_blank', // open profile in new page
             text: profile.name,
         });
         nameElt.append(nameLinkElt);
-        infoElt.append(nameElt);
+        rightElt.append(nameElt);
+
+        // inserting about
+        var aboutElt = $('<div/>', {
+            class: 'row babysitter-about-me',
+            text: profile.about,
+        });
+        rightElt.append(aboutElt);
+        upperElt.append(rightElt);
+        baseElt.append(upperElt);
+
+        // lower elt containing payrange, rating and child age
+        var lowerElt = $('<div/>', {
+            class: 'row',
+        });
+        var leftElt = $('<div/>', {
+            class: 'col-xs-3',
+        });
+        var infoElt = $('<div/>', {
+            class: 'row babysitter-info',
+        });
         // inserting wage info
         var wageElt = $('<div/>', {
             class: 'col babysitter-wage',
@@ -154,13 +248,18 @@ var insertMiniProfileElts = function (profiles) {
             text: starRatingString(profile.rating),
         });
         infoElt.append(ratingElt);
-        rightElt.append(infoElt);
+        leftElt.append(infoElt);
+        lowerElt.append(leftElt);
+
         // inserting age range info
+        var rightElt = $('<div/>', {
+            class: 'col-xs-9',
+        });
         var ageRangeElt = $('<div/>', {
             class: 'row babysitter-age-range-container',
             text: "Will babysit:"
         });
-        var ageIntersection = filterByChildAge([profile], true)[0];
+        var ageIntersection = filterByChildAge([profile], onlyIncludePerfectMatchesAge, true)[0];
         profile.ageRange.forEach(function (ageRange, idx) {
             var ageRangeTextElt = $('<div/>', {
                 class: 'babysitter-age-range',
@@ -173,13 +272,13 @@ var insertMiniProfileElts = function (profiles) {
             ageRangeElt.append(ageRangeTextElt);
         });
         rightElt.append(ageRangeElt);
-        // inserting about
-        var aboutElt = $('<div/>', {
-            class: 'row babysitter-about-me',
-            text: profile.about,
-        });
-        rightElt.append(aboutElt);
-        baseElt.append(rightElt);
+
+        lowerElt.append(rightElt);
+
+        baseElt.append(lowerElt);
+
+
+
         $('#profile-container').append(baseElt);
         // change calendar when hovering over a profile
         baseElt.hover(
@@ -199,13 +298,22 @@ var insertMiniProfileElts = function (profiles) {
     });
 };
 
+///////// helper function ///////////
+var getParameterByName = function(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+//////////////////////////////////////////
+
+
 
 $(function () {
-    var shownProfiles = PROFILES;
-    var changeShownProfiles = function () {
-        shownProfiles = filterProfiles(PROFILES);
-        insertMiniProfileElts(sortProfiles(shownProfiles));
-    };
+    shownProfiles = PROFILES;
     // on load
     // adding the filter price range slider
     $( "#slider-range" ).slider({
@@ -214,14 +322,16 @@ $(function () {
         max: 30,
         values: [0, 30],
         slide: function( event, ui ) {
-            $( "#filter-payrange-selected" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+            $( "#filter-payrange-selected" ).html( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
         }
     });
-    $( "#filter-payrange-selected" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
+    $( "#filter-payrange-selected" ).html( "$" + $( "#slider-range" ).slider( "values", 0 ) +
         " - $" + $( "#slider-range" ).slider( "values", 1 ) );
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
     // add calendar and its handlers
+    $('#filter-date').append(createGoToTodayButton());
+    $('#filter-date').append(createAnyAllToggle());
     $('#filter-date').append(createCalendar());
     $('#filter-date').on('timeUpdated', function () {
         changeShownProfiles();
@@ -239,6 +349,14 @@ $(function () {
         var input = $(this).parent().find('input');
         input.click();
     });
+
+    // age range exact match handler
+    $("#agerange-match-exactly").change(function(){
+        //console.log(onlyIncludePerfectMatchesAge);
+        onlyIncludePerfectMatchesAge = !onlyIncludePerfectMatchesAge;
+        changeShownProfiles();
+    });
+
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
         changeShownProfiles();
@@ -258,16 +376,11 @@ $(function () {
     var height = $("#profile-sort-container").css("height");
     $("#filter").css({height: height});
 
-    //clicking profile picture
-    $('body').on('click', '.profile-picture', function () {
-        var link = $(this).parent().parent().find('a');
-        window.location.href = link.attr('href');
-    });
-
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
         var navHeight = $("#navigation").css("height");
+        //console.log(navHeight);
         navHeight = navHeight.slice(0,-2);
         navHeight = parseInt(navHeight);
         var filterFloatHeight = $("#filter .float").css("height");
