@@ -63,7 +63,6 @@ var filterByWage = function (profs) {
 var filterByChildAge = function (profs, onlyIncludePerfectMatchesAge, returnIntersection) {
     var checkedAgeRangeElts = $('.filter-agerange-checkboxes :input:checked');
     if (checkedAgeRangeElts.length === 0) {
-        console.log("none selected");
         return profs;
     } else if (!onlyIncludePerfectMatchesAge){
         // any matches will do
@@ -108,7 +107,7 @@ var filterByChildAge = function (profs, onlyIncludePerfectMatchesAge, returnInte
 
 // filter profiles by time
 var filterByTime = function (profs, perfectMatchesOnly) {
-    var desiredTimes = getDesiredTimes();
+    var desiredTimes = calendar.getDesiredTimes();
     var validDayFilters = [];
     desiredTimes.forEach(function (times, idx) {
         if (times.length > 0) {
@@ -139,12 +138,16 @@ var filterByTime = function (profs, perfectMatchesOnly) {
     }
 };
 
-var createGoToTodayButton = function(){
-    return $('<button/>', {
+var createGoToTodayButton = function() {
+    var btn = $('<button/>', {
         id: 'go-to-today',
         class: 'btn',
         text: 'Today',
     });
+    btn.click(function () {
+        calendar.returnToCurrentWeek();
+    });
+    return btn;
 }
 
 var createAnyAllToggle = function () {
@@ -272,14 +275,10 @@ var insertMiniProfileElts = function (profiles) {
             ageRangeElt.append(ageRangeTextElt);
         });
         rightElt.append(ageRangeElt);
-
         lowerElt.append(rightElt);
-
         baseElt.append(lowerElt);
-
-
-
         $('#profile-container').append(baseElt);
+
         // change calendar when hovering over a profile
         baseElt.hover(
             // start hovering
@@ -288,11 +287,11 @@ var insertMiniProfileElts = function (profiles) {
                 var schedule = profile.availability.map(function (daySchedule) {
                     return daySchedule.map(convertTo24HrTime);
                 });
-                markAvailableTimes(schedule);
+                calendar.markAvailableTimes(schedule);
             },
             // end hovering
             function () {
-                clearAvailableTimes();
+                calendar.clearAvailableTimes();
             }
         )
     });
@@ -332,7 +331,7 @@ $(function () {
     // add calendar and its handlers
     $('#filter-date').append(createGoToTodayButton());
     $('#filter-date').append(createAnyAllToggle());
-    $('#filter-date').append(createCalendar());
+    $('#filter-date').append(calendar.createCalendar());
     $('#filter-date').on('timeUpdated', function () {
         changeShownProfiles();
     });
@@ -341,7 +340,7 @@ $(function () {
         $('#filter :input:checked').prop('checked', '');
         $("#slider-range").slider("values", 0, $("#slider-range").slider("option", "min"));
         $("#slider-range").slider("values", 1, $("#slider-range").slider("option", "max"));
-        clearDesiredTimes();
+        calendar.clearDesiredTimes();
         changeShownProfiles();
     });
     // clicking pay/age range = clicking checkbox

@@ -12,6 +12,10 @@
     cursor: pointer;
 }
 
+.clickable-text-disabled {
+    cursor: not-allowed;
+}
+
 #calendar {
     width: 94%;
     margin: 0px auto 10px auto;
