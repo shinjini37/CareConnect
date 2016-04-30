@@ -124,7 +124,7 @@ var PROFILES = [
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['12pm','1pm'],['6pm'],['9am'],[],['9am','10am','11am'],[],['11am','12pm','3pm','4pm','5pm','6pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']]
+        reviews: []
     },
 ];
 

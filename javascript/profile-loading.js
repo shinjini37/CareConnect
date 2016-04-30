@@ -54,6 +54,9 @@ $(function() {
         });
 
         // load the reviews
+        if (profile.reviews.length === 0) {
+            $('#review-container').html("There isn't any reviews yet.");
+        }
         profile.reviews.forEach(function (review) {
             var panel = $('<div/>', {
                 class: 'panel panel-default',
@@ -71,7 +74,10 @@ $(function() {
                 class: 'btn btn-primary btn-xs',
                 text: 'Contact',
                 'data-toggle': 'modal',
-                'data-target': '#myModal'
+                'data-target': '#myModal',
+                'onClick': function () {
+                    $("#babysitter-email").val(review[1])
+                }
             });
             leftElt.append(reviewerName);
             leftElt.append(contactButton);
