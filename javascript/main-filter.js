@@ -194,7 +194,7 @@ var insertMiniProfileElts = function (profiles) {
         });
         // inserting picture
         var pictureLinkElt = $('<a>', {
-            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase(),
+            href: 'profile.html'+ '?profile=' + profile.name.toLowerCase() + (parentId != null ? '&parentId='+parentId : ''),
             target: '_blank', // open profile in new page
         });
         var pictureImgElt = $('<img>', {
