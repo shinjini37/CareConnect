@@ -2,10 +2,11 @@
 
 #navigation {
     /*background-color: #2C89C6;*/
-    background-color: #1565C0;
-    padding: 5px;
-    height: 45px;
-
+    background-color: white;
+    padding: 0.7em 0 1em;
+    height: 65px;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .ui-menu-item{
@@ -23,14 +24,36 @@
 
 }
 
-#logo:hover {
-    background-color: #135DB0;
+#logo a img:hover {
     cursor: pointer;
 }
 
 #search{
     height: 0;
 }
+
+#search-text {
+    border: 1px solid #ddd;
+    outline: none;
+    color:#777;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0px;
+}
+
+#search-submit {
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+    margin-left: 0px;
+    background: white;
+    color : black;
+}
+
+#search-submit:hover{
+    background: #1DBAA5;
+    color: white;
+    transition: all 0.25s; 
+}
+
 #navigation .form-control {
     display: inline-block;
     width: 300px;
@@ -40,7 +63,57 @@
     text-align: right;
 }
 
+#profile-button-link{
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+    margin-left: 0px;
+    background: white;
+    color : black;
+}
+
+#profile-button-link:hover{
+    background: #1DBAA5;
+    color: white;
+    transition: all 0.25s; 
+}
+
+#messages-button-link{
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+    margin-left: 0px;
+    background: white;
+    color : black;
+}
+
+#messages-button-link:hover{
+    background: #1DBAA5;
+    color: white;   
+    transition: all 0.25s; 
+}
+
 .nav-dropdown {
     display: inline-block;
+}
+
+.dropdown-menu {
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+}
+.dropdown-menu li {
+    width: 30px;
+}
+
+#navigation-dropdown-button {
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+    margin-left: 0px;
+    background: white;
+    color : black;
+}
+
+#navigation-dropdown-button:hover{
+    background: #1DBAA5;
+    color: white;    
+    transition: all 0.25s;
 }
 

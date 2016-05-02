@@ -199,7 +199,7 @@ var insertMiniProfileElts = function (profiles) {
         });
         var pictureImgElt = $('<img>', {
             class: 'profile-picture',
-            src: 'images/blue-user-icon.png'
+            src: profile.photo
         });
         pictureLinkElt.append(pictureImgElt);
         leftElt.append(pictureLinkElt);

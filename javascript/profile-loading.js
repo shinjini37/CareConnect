@@ -38,6 +38,7 @@ $(function() {
     if (profile in PROFILE_INDEX){
         var idx = PROFILE_INDEX[profile];
         profile = PROFILES[idx];
+        $("#profile-image").attr("src", profile.photo)
         $(".babysitter-name").html(profile.name);
         $("#babysitter-rating").html(starRatingString(profile.rating));
         $("#babysitter-about-me").text(profile.about);
