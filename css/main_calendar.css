@@ -143,16 +143,29 @@ p.time-selector-header-text {
 
 
 .time-selector-left-range {
-    width: 33%;
+    width: 100%;
+    /*position: absolute;*/
 }
 .time-selector-right-range {
-    width: 67%;
+    /*width: 67%;*/
 }
 
 .time-selector-range-desired {
     background: #A1D36E;
 }
 
+/*.time-selector-range-desired:hover {*/
+    /*background: #81A958;*/
+    /*transition: all 0.25s;*/
+/*}*/
+
 .time-selector-range-available {
     background: #0e62c7;
+    /*opacity: 0.5;*/
+}
+
+.time-selector-range-available.time-selector-range-desired {
+    /*background: #86D3C4;*/
+    background: #43B7D3;
+    /*opacity: 0.2;*/
 }
