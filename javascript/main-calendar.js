@@ -33,6 +33,7 @@ var calendar = function () {
     that.returnToCurrentWeek = function () {
         date = CURRENT_DATE;
         $('#selected-week-text').text(weekText(date));
+        changeDateText();
         enableDisablePrevWeekBtn();
     };
 
