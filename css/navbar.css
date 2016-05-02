@@ -3,8 +3,9 @@
 #navigation {
     /*background-color: #2C89C6;*/
     background-color: white;
-    padding: 0.7em 0 1em;
-    height: 65px;
+    padding: 5px 0 0 0;
+    /*padding: 0.7em 0 1em;*/
+    height: 45px;
     border-bottom: 1px solid #ddd;
     font-family: 'Open Sans', sans-serif;
 }
@@ -24,7 +25,7 @@
 
 }
 
-#logo a img:hover {
+#logo {
     cursor: pointer;
 }
 

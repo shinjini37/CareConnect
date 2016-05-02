@@ -58,7 +58,7 @@
     color: #F97E76;
 }
 
-#next-week-btn:hover, #prev-week-btn:hover{
+#next-week-btn.clickable-text:hover, #prev-week-btn.clickable-text:hover{
     background-color: #1DBAA5;
     transition: all 0.25s;
 }

@@ -186,7 +186,7 @@ var insertMiniProfileElts = function (profiles) {
         });
         // upper element with picture, name and about me
         var upperElt = $('<div/>', {
-            class: 'row',
+            class: 'row babysitter-name-picture',
         });
 
         var leftElt = $('<div/>', {
@@ -371,9 +371,6 @@ $(function () {
         insertMiniProfileElts(sortProfiles(shownProfiles));
     });
 
-    // filter extend to bottom of div
-    var height = $("#profile-sort-container").css("height");
-    $("#filter").css({height: height});
 
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
@@ -429,5 +426,11 @@ $(function () {
             });
         }
     });
-
 });
+$(window).on("load", function(){
+    // filter extend to bottom of div
+    var height = $("#profile-sort-container").css("height");
+    console.log(height);
+    console.log(shownProfiles.length);
+    $("#filter").css({height: height});
+})

@@ -154,6 +154,10 @@
     /*text-align: center;*/
 }
 
+.babysitter-name-picture{
+    /*height: 220px;*/
+}
+
 .babysitter-name {
     font-weight: bold;
     width: 270px;
@@ -214,18 +218,25 @@
     z-index: 100;
 	/*text-align: right;*/
     padding: 5px 15px 5px 15px;
-    background-color: #759CC0;
+    /*background-color: #759CC0;*/
+    background-color: white;
     text-align: right;
     height: 35px;
     margin: 0 -15px 0 -15px;
+    color: #1DBAA5;
+    border: 1px solid #EBEBEB;
 }
 
 #sort-dropdown-dummy {
     /*text-align: right;*/
     padding: 5px 15px 5px 15px;
-    background-color: #759CC0;
+    /*background-color: #759CC0;*/
+    background-color: white;
+    text-align: right;
     height: 35px;
     margin: 0 -15px 0 -15px;
+    color: #1DBAA5;
+    border: 1px solid #EBEBEB;
     display: none;
 }
 
@@ -244,7 +255,7 @@
 
 #sort-label {
     display: inline-block;
-    color: whitesmoke;
+    /*color: whitesmoke;*/
 }
 
 #profile-container {
@@ -264,8 +275,8 @@
     width: 1200px;
     /*width: 1000px;*/
     /*background-color: #bdc3c7;*/
-    background-color: #9BB9D1;
-
+    /*background-color: #9BB9D1;*/
+    background-color: white;
 }
 
 body {
@@ -284,6 +295,9 @@ body {
     background-color: #1976D2;
 }
 
+.btn:focus {
+    outline: none;
+}
 
 /*Calendar*/
 .cal_cell {
