@@ -122,6 +122,14 @@ p.time-selector-header-text {
     height: 18px;
 }
 
+.time-range-cell {
+    height: 18px;
+    border: none;
+    border-top: 1px solid grey;
+    text-align: center;
+    background-color: white;
+}
+
 .time-selector-cell {
     height: 18px;
     border: none;
@@ -130,7 +138,7 @@ p.time-selector-header-text {
     background-color: white;
 }
 
-.time-selector-cell:hover{
+.time-selector-cell:hover {
     cursor: pointer;
     background-color: #d3d3d3;  
     transition: all 0.25s;

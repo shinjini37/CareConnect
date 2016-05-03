@@ -178,7 +178,7 @@ var calendar = function () {
         columnElt.append(headerElt);
         _.range(START_TIME, END_TIME).forEach(function (hr) {
             var rangeElt = $('<div/>', {
-                class: 'time-selector-cell',
+                class: 'time-range-cell',
                 text: convertTo12HrTime(hr),
             });
             columnElt.append(rangeElt);
