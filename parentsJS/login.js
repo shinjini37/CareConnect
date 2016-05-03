@@ -34,7 +34,7 @@ $(function() {
                 login_parent_id = parentIndex;
                 var studentId = getParameterByName('profile');
                 if (studentId != null) {
-                    window.location.href = 'profile.html?profile=' + studentId + 'parentId=' + parentIndex;
+                    window.location.href = 'profile.html?profile=' + studentId + '&parentId=' + parentIndex;
                 } else {
                     window.location.href = 'index.html?parentId=' + parentIndex;
                 }
