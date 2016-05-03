@@ -2,7 +2,7 @@ var calendar = function () {
 
     var DAYS_OF_WEEK = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
     var START_TIME = 8;
-    var END_TIME = 24;
+    var END_TIME = 22;
 
     // invariant: dates are always Sundays
     var CURRENT_DATE; // last Sunday
