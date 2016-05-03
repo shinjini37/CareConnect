@@ -95,13 +95,21 @@ $(function(){
         for (var parentIndex = 0; parentIndex < PARENT_PROFILES.length; parentIndex++){
             if (PARENT_PROFILES[parentIndex].email == parentEmail && PARENT_PROFILES[parentIndex].password == parentPassword){
                 login_parent_id = parentIndex;
-                window.location.href = 'index.html?parentId=' + parentIndex;
+                if (getParameterByName("profile") != null){
+                    window.location.href = window.location.href + '&parentId=' + parentIndex;
+                } else {
+                    window.location.href = window.location.href + '?parentId=' + parentIndex;
+                }
+                
                 break;
-            } else {
-                //window.location.href = 'index.html';
-                $("#nav_email").val("");
-                $("#nav_password").val("");
             }
+        }
+
+        $("#nav_email").val("");
+        $("#nav_password").val("");
+
+        if (login_parent_id == null) {
+            alert("Wrong username or password.");
         }
 
     });
