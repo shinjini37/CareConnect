@@ -98,7 +98,7 @@
 }
 
 #filter-payrange, #filter-agerange {
-    padding: 5px 15px 5px 15px;
+    padding: 5px 0px;
 }
 
 #filter-payrange .filter-label, #filter-agerange .filter-label {
