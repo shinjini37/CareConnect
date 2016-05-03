@@ -36,6 +36,7 @@
 #search-text {
     border: 1px solid #ddd;
     outline: none;
+    width: 290px;
     color:#777;
     font-family: 'Open Sans', sans-serif;
     border-radius: 0px;
@@ -57,7 +58,7 @@
 
 #navigation .form-control {
     display: inline-block;
-    width: 300px;
+    /*width: 300px;*/
 }
 
 #profile-nav {
@@ -118,3 +119,27 @@
     transition: all 0.25s;
 }
 
+#nav_email, #nav_password{
+    width: 150px;
+    border: 1px solid #ddd;
+    outline: none;
+    color:#777;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 0px;
+    margin-right: 2px;
+}
+
+#signin-btn, #signup-btn{
+    border: 1px solid #A8A8A8;
+    border-radius: 0px;
+    margin-left: 0px;
+    background: white;
+    color : black;
+    margin-right: 2px;
+}
+
+#signin-btn:hover, #signup-btn:hover{
+    background: #1DBAA5;
+    color: white;
+    transition: all 0.25s;
+}
