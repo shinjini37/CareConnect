@@ -157,6 +157,7 @@ var createAnyAllToggle = function () {
     });
     var checkboxElt = $('<input/>', {
         type: 'checkbox',
+        style: 'vertical-align: -2px',
     });
     checkboxElt.change(function () {
         onlyIncludePerfectMatchesTime = !onlyIncludePerfectMatchesTime;
@@ -329,8 +330,10 @@ $(function () {
     // add mini-profiles
     insertMiniProfileElts(sortProfiles(shownProfiles));
     // add calendar and its handlers
-    $('#filter-date').append(createGoToTodayButton());
-    $('#filter-date').append(createAnyAllToggle());
+    var dateFilterBtns = $('<div/>');
+    dateFilterBtns.append(createGoToTodayButton());
+    dateFilterBtns.append(createAnyAllToggle());
+    $('#filter-date').append(dateFilterBtns);
     $('#filter-date').append(calendar.createCalendar());
     $('#filter-date').on('timeUpdated', function () {
         changeShownProfiles();
