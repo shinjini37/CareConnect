@@ -48,7 +48,7 @@ var PROFILES = [
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['9am','10am','11am','12pm','1pm'], ['11am','12pm','5pm','6pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[]],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo:"images/alissa.jpg"
     },
     {
@@ -62,7 +62,7 @@ var PROFILES = [
         references: "- Babysat for Prof. Helen 1 time",
         experiences: "- Babysat my girlfriend's brother",
         availability: [['11am','12pm','5pm','6pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],[],['9am','10am','11am','12pm','1pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo: "images/ben.png"
     },
     {
@@ -76,7 +76,7 @@ var PROFILES = [
         references: "- Babysat for Prof. X 5 times.",
         experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],['11am','12pm','5pm','6pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo: "images/peter.gif"
     },
     {
@@ -90,7 +90,7 @@ var PROFILES = [
         references: "- Babysat for Prof. X 5 times.",
         experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['11am','12pm','5pm','6pm'], ['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],['11am','12pm','5pm','6pm'],['11am','12pm','5pm','6pm'],[]],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo:"images/rey.png"
     },
     {
@@ -103,7 +103,7 @@ var PROFILES = [
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
         availability: [[],['3pm','4pm','5pm','6pm'],['12pm','1pm'],[],[],[],['11am','12pm','5pm','6pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo:"images/pippin.jpg"
     },
     {
@@ -116,7 +116,7 @@ var PROFILES = [
         references: "- Babysat for Prof. Xavier 5 times",
         experiences: "- CPR <br/>- Have 7 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],['9am','10am','11am','12pm'],[],['11am','12pm','5pm','6pm']],
-        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo:"images/stella.jpg"
     },
     {
@@ -142,7 +142,7 @@ var PROFILES = [
         references: "Boston Children's Museum",
         experiences: "I have been working with children for the last 5 years at the Boston Children's Museum.",
         availability: [['12pm','1pm'],['6pm'],['9am'],[],['9am','10am','11am'],['7pm','8pm','9pm'],['11am','12pm','3pm','4pm','5pm','6pm']],
-        reviews: [['Prii', 'prii@mit.edu', 5, 'Amazing babysitter. Highly reccommend.'], ['Nia', 'nia@mit.edu', 4, 'Really good job taking care of my kids, they really enjoyed it!'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
+        reviews: [['Prii', 'prii@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Nia', 'nia@mit.edu', 4, 'Really good job taking care of my kids, they really enjoyed it!'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
         photo:"images/rich.jpg"
     },
     {

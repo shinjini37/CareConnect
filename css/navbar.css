@@ -10,7 +10,7 @@
     font-family: 'Open Sans', sans-serif;
 }
 
-.ui-menu-item{
+.ui-menu-item {
     z-index: 1500;
 }
 
@@ -21,15 +21,13 @@
     /*font-weight: bold;*/
     height: 45px;
     margin: -5px -20px;
-    padding-top: 12px;
-
 }
 
 #logo {
     cursor: pointer;
 }
 
-#search{
+#search {
     height: 0;
 }
 
@@ -100,9 +98,10 @@
 .dropdown-menu {
     border: 1px solid #A8A8A8;
     border-radius: 0px;
+    left: -108px;
 }
 .dropdown-menu li {
-    width: 30px;
+    width: 100%;
 }
 
 #navigation-dropdown-button {
