@@ -34,10 +34,10 @@ $(function() {
                 login_parent_id = parentIndex;
                 window.location.href = 'index.html?parentId=' + parentIndex;
                 break;
-            } else {
-                $("#login_error").css("display", "block")
-                break;
-            }
+            } 
+        }
+        if (login_parent_id == null) {
+        	$("#login_error").css("display", "block");
         }
 
     });
