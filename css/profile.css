@@ -83,10 +83,10 @@ body{
     font-family: 'Open Sans', serif, sans-serif;
 }
 
-.btn:hover{
+/*.btn:hover{
     border-color: #2e6da4;
     background-color: #1976D2;
-}
+}*/
 
 .day {
     border:1px solid #021a40;
@@ -114,6 +114,8 @@ body{
     font-weight: bold;
 }
 
+/*Reviews*/
+
 .reviewer {
     font-weight: bold;
     text-align: center;
@@ -123,6 +125,8 @@ body{
     text-align: left;
     font-size: .50em;
 }
+
+/*Calendar*/
 
 @media (min-width: 1200px) {
     .seven-cols {
@@ -134,4 +138,14 @@ body{
     width: 14.285714285714285714285714285714%;
     *width: 14.285714285714285714285714285714%;
   }
+}
+
+/*Contact*/
+.btn-save-draft {
+    color: white;
+}
+
+.btn-save-draft:hover {
+    background-color: DarkGray;
+    color: white;
 }
