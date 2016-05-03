@@ -32,7 +32,12 @@ $(function() {
         for (var parentIndex = 0; parentIndex < PARENT_PROFILES.length; parentIndex++){
             if (PARENT_PROFILES[parentIndex].email == parentEmail && PARENT_PROFILES[parentIndex].password == parentPassword){
                 login_parent_id = parentIndex;
-                window.location.href = 'index.html?parentId=' + parentIndex;
+                var studentId = getParameterByName('profile');
+                if (studentId != null) {
+                    window.location.href = 'profile.html?profile=' + studentId + 'parentId=' + parentIndex;
+                } else {
+                    window.location.href = 'index.html?parentId=' + parentIndex;
+                }
                 break;
             } else {
                 $("#login_error").css("display", "block")
