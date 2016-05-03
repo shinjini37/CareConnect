@@ -47,7 +47,7 @@ $(function() {
         $("#babysitter-contact-btn").attr('data-email', profile.email);
         $("#babysitter-contact-btn").click(function () {
             if (QueryString.parentId === undefined) {
-                window.location.href = 'login.html';
+                window.location.href = 'login.html?profile=' + profile.name;
             } else {
                 $('#babysitter-email').val($(this).attr('data-email'));
             }
