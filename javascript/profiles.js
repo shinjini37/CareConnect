@@ -77,7 +77,7 @@ var PROFILES = [
         experiences: "- CPR <br/>- Have 5 younger siblings <br />- Mentored at summer camp <br>",
         availability: [['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],['3pm','4pm','5pm','6pm'],['9am','10am','11am','12pm','1pm'],[],[],['11am','12pm','5pm','6pm']],
         reviews: [['Annalise', 'annak@mit.edu', 5, 'Amazing babysitter. Highly recommend.'], ['Bonnie', 'bonniew@mit.edu', 4, 'Took good care of my kids.']],
-        photo: "images/peter.gif"
+        photo: "images/peter.jpg"
     },
     {
         name: 'Rey',
