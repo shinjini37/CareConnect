@@ -114,6 +114,10 @@ $(function(){
 
     });
 
+    $("#signup-btn").click(function(event){
+        window.location.href = "login.html"
+    });
+
     $("#nav_logout").click(function(){
         window.location.href = 'index.html';
     });
