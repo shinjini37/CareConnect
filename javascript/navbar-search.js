@@ -124,6 +124,12 @@ $(function(){
 
         $("#nav_email").val("");
         $("#nav_password").val("");
+        $("#nav_password").off("keyup");
+        $("#nav_password").keyup(function (e) {
+            if (e.keyCode === 13) {
+                $("#signin-btn").click();
+            }
+        });
 
         if (login_parent_id == null) {
         var alert = $('<div/>', {
@@ -146,6 +152,12 @@ $(function(){
 
     $("#nav_logout").click(function(){
         window.location.href = 'index.html';
+    });
+
+    $("#nav_password").keyup(function (e) {
+        if (e.keyCode === 13) {
+            $("#signin-btn").click();
+        }
     });
 
 });
