@@ -70,7 +70,7 @@ var PROFILES = [
         index: 2,
         wage: 5,
         rating: 3,
-        about: 'Hi! My name is Peter!',
+        about: 'Hi! It\'s your friendly neighborhood Spider-Man, here!',
         ageRange: [AGE_RANGES["lower-elementary"]],//[7, 8, 9],
         email: 'peterParker@mit.edu',
         references: "- Babysat for Prof. X 5 times.",
