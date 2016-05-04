@@ -14,6 +14,9 @@ $(function(){
     // Search function to find students given first names
     var search = function(){
         var searchText = $("#search-text").val().toLowerCase();
+        if (searchText === '') {
+            return;
+        }
         if (searchText in PROFILE_INDEX) {
             var parentId = getParameterByName('parentId');
             if (parentId === null){
@@ -22,8 +25,16 @@ $(function(){
                 window.location.href = 'profile.html' + '?profile=' + searchText + "&parentId=" + parentId;    
             }
         } else {
-            window.location.href = 'index.html';
-            alert("Oops! Seems like the student you are looking for hasn't signed up yet!");
+            var alert = $('<div/>', {
+                class: 'alert alert-warning fade in',
+                id: 'alert'
+            });
+            alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
+            alert.append("Oops! Seems like the student you are looking for hasn't signed up yet!");
+            $('.container').prepend(alert);
+            $('#alert').fadeTo(2000, 500).slideUp(500, function(){
+                $("#alert").alert('close');
+            });
         }
 
     };
@@ -73,11 +84,14 @@ $(function(){
                 +'<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="navigation-dropdown-button"><span class="glyphicon glyphicon-cog" style="color:#F97E76"></span>'
                 +'<span class="caret"></span></button>'
                 +'<ul class="dropdown-menu">'
-                    +'<li><a href="#">Settings</a></li>'
-                    +'<li><a href="#">Log Out</a></li>'
+                +'<li><a href="#">Settings</a></li>'
+                +'<li><a href="#" id="nav-logout">Log Out</a></li>'
                 +'</ul>'
             +'</div>';
         $('#profile-nav').html(loggedIn);
+        $("#nav-logout").click(function(event) {
+            window.location.href = 'index.html';
+        });
     }
 
     // allow entire logo to be clicked
@@ -109,15 +123,19 @@ $(function(){
         $("#nav_password").val("");
 
         if (login_parent_id == null) {
-            alert("Wrong username or password.");
+        var alert = $('<div/>', {
+                class: 'alert alert-danger fade in',
+                id: 'alert'
+            });
+            alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
+            alert.append("Wrong username or password!");
+            $('.container').prepend(alert);
+            $('#alert').fadeTo(2000, 500).slideUp(500, function(){
+                $("#alert").alert('close');
+            });
         }
 
     });
-
-    $("#nav_logout").click(function(){
-        window.location.href = 'index.html';
-    });
-
 });
 
 
