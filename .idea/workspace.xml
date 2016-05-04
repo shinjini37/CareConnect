@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c70df018-e77a-4e1b-a98e-f3beb6d279d0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/parentsJS/FileSaver.min.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/login_style.css" afterPath="$PROJECT_DIR$/css/login_style.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.html" afterPath="$PROJECT_DIR$/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parentsJS/easyResponsiveTabs.js" afterPath="$PROJECT_DIR$/parentsJS/easyResponsiveTabs.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/parentsJS/login.js" afterPath="$PROJECT_DIR$/parentsJS/login.js" />
     </list>
     <ignored path="CareConnect.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -73,11 +77,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33333334">
-              <caret line="31" column="10" selection-start-line="27" selection-start-column="4" selection-end-line="31" selection-end-column="10" />
+            <state vertical-scroll-proportion="-8.445946">
+              <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#a#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login_style.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/css/login_style.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.93622446">
+              <caret line="329" column="15" selection-start-line="329" selection-start-column="15" selection-end-line="329" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -139,6 +156,7 @@
         <option value="$PROJECT_DIR$/javascript/profile-loading.js" />
         <option value="$PROJECT_DIR$/css/profile.css" />
         <option value="$PROJECT_DIR$/login.html" />
+        <option value="$PROJECT_DIR$/css/login_style.css" />
       </list>
     </option>
   </component>
@@ -288,14 +306,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/css/navbar.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/javascript/navbar-search.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -590,16 +600,16 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="55" column="7" selection-start-line="24" selection-start-column="4" selection-end-line="47" selection-end-column="7" />
           <folding>
-            <marker date="1462331150085" expanded="true" signature="468:1705" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="660:712" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="757:1701" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1033:1593" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1033:1694" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1160:1225" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1160:1582" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1311:1439" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1445:1545" placeholder="{...}" />
-            <marker date="1462331150085" expanded="true" signature="1631:1694" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="468:608" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="660:712" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="757:1701" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1033:1593" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1033:1694" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1160:1225" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1160:1582" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1311:1439" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1445:1545" placeholder="{...}" />
+            <marker date="1462334985991" expanded="true" signature="1631:1694" placeholder="{...}" />
           </folding>
         </state>
       </provider>
@@ -664,14 +674,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/main-filter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.8045976">
-          <caret line="155" column="26" selection-start-line="155" selection-start-column="26" selection-end-line="155" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/javascript/profile-loading.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.6666665">
@@ -698,8 +700,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334">
-          <caret line="31" column="10" selection-start-line="27" selection-start-column="4" selection-end-line="31" selection-end-column="10" />
+        <state vertical-scroll-proportion="-8.445946">
+          <caret line="25" column="22" selection-start-line="25" selection-start-column="22" selection-end-line="25" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/javascript/main-filter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.8045976">
+          <caret line="155" column="26" selection-start-line="155" selection-start-column="26" selection-end-line="155" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/login_style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.93622446">
+          <caret line="329" column="15" selection-start-line="329" selection-start-column="15" selection-end-line="329" selection-end-column="15" />
           <folding />
         </state>
       </provider>
