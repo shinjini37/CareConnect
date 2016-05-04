@@ -63,7 +63,12 @@
     min-height: 100px;
     overflow: auto;
     padding: 10px;
-    /*background-color: whitesmoke;*/
+
+}
+
+#babysitter-about-me{
+    background-color: whitesmoke;
+    border: none;
 }
 
 #experiences-references {
