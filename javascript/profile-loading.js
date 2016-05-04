@@ -1,3 +1,21 @@
+var contactFunction = function (parentId, email) {
+    if (parentId === undefined) {
+        var alert = $('<div/>', {
+            class: 'alert alert-warning fade in',
+            id: 'alert'
+        });
+        alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
+        alert.append("Oops! You need to sign in first!");
+        $('.container').prepend(alert);
+        $('#alert').fadeTo(2000, 500).slideUp(500, function(){
+            $("#alert").alert('close');
+        });
+    } else {
+        $('#babysitter-email').val(email);
+        $("#myModal").modal();
+    }
+}
+
 $(function() {
     // Load the profile page
 
@@ -30,6 +48,7 @@ $(function() {
 
     // get the profile, load if it exists, redirect to homepage if it doesn't
     var profile = QueryString.profile;
+    var parentId = QueryString.parentId;
     if (profile === undefined) {
         window.location.href = 'index.html';
     } else {
@@ -46,11 +65,7 @@ $(function() {
         $("#babysitter-name").html(profile.name);
         $("#babysitter-contact-btn").attr('data-email', profile.email);
         $("#babysitter-contact-btn").click(function () {
-            if (QueryString.parentId === undefined) {
-                window.location.href = 'login.html?profile=' + profile.name;
-            } else {
-                $('#babysitter-email').val($(this).attr('data-email'));
-            }
+            contactFunction(parentId, profile.email);
         });
         $("#babysitter-experiences").html(profile.experiences);
         $("#babysitter-age-range").html("Will babysit: ");
@@ -83,14 +98,9 @@ $(function() {
             var contactButton = $('<button/>', {
                 class: 'btn btn-primary btn-xs',
                 text: 'Contact',
-                'data-toggle': 'modal',
-                'data-target': '#myModal',
                 'data-email': review[1],
                 click: function () {
-                    if (QueryString.parentId === undefined) {
-                        window.location.href = 'login.html';
-                    }
-                    $('#babysitter-email').val($(this).attr('data-email'));
+                    contactFunction(parentId, review[1]);
                 }
             });
             leftElt.append(reviewerName);
