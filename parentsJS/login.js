@@ -16,7 +16,6 @@ $(function() {
     var currentURL = window.location.search.substring(1);
 
     var parentId = getParameterByName('parentId');
-    console.log(parentId)
 
     if (parentId != null){
         window.location.href = 'index.html';
@@ -46,4 +45,22 @@ $(function() {
         }
 
     });
+
+    $("#register_form").submit(function(event){
+        event.preventDefault();
+
+        var reg_name = $("#register_name").val();
+        var reg_email = $("#register_email").val();
+        var reg_password = $("#register_password").val();
+
+        if (reg_email.toLowerCase().indexOf("@mit.edu") >= 0){
+            //var credentials = new Blob([reg_email + " "+ reg_name + " " + reg_name], {type: "text/plain;charset=utf-8"});
+            //saveAs(credentials, "cred.txt");
+            window.localStorage.setItem("care_connect_email", reg_email);
+            window.localStorage.setItem("care_connect_password", reg_password);
+            window.localStorage.setItem("care_connect_name", reg_name);
+        }
+    });
 })
+
+

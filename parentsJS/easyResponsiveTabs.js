@@ -104,8 +104,12 @@
                         $respTabs.find('.resp-accordion-closed').removeAttr('style');
                     });
                 });
+
+                $("#register_tab").trigger("click");
+                console.log($("#register_tab"));
             });
         }
     });
+
 })(jQuery);
 
