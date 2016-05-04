@@ -46,6 +46,14 @@ $(function() {
 
     });
 
+    $("#register_form").submit(function (event) {
+        event.preventDefault(event);
+        var password = $("#register_password").val();
+        var confirmed_password = $("#confirmed_password").val();
+        window.location.href = 'index.html?parentId=' + '6813';
+    })
+
+    /*
     $("#register_form").submit(function(event){
         event.preventDefault();
 
@@ -61,6 +69,8 @@ $(function() {
             window.localStorage.setItem("care_connect_name", reg_name);
         }
     });
+
+    */
 })
 
 
