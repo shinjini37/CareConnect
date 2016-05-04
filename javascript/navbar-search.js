@@ -139,6 +139,18 @@ $(function(){
         }
 
     });
+<<<<<<< HEAD
+
+    $("#signup-btn").click(function(event){
+        window.location.href = "login.html"
+    });
+
+    $("#nav_logout").click(function(){
+        window.location.href = 'index.html';
+    });
+
+=======
+>>>>>>> 10b1e82d127339e83d3c5ca759dd1a6d021cae93
 });
 
 
