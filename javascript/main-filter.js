@@ -152,6 +152,7 @@ var createGoToTodayButton = function() {
 
 var createAnyAllToggle = function () {
     var baseElt = $('<div/>', {
+        class: 'unhighlightable-text',
         id: 'time-selector-any-all-toggle',
         text: 'Match Time Exactly ',
     });
@@ -159,9 +160,13 @@ var createAnyAllToggle = function () {
         type: 'checkbox',
         style: 'vertical-align: -2px',
     });
-    checkboxElt.change(function () {
+    checkboxElt.click(function (e) {
         onlyIncludePerfectMatchesTime = !onlyIncludePerfectMatchesTime;
         changeShownProfiles();
+        e.stopPropagation();
+    });
+    baseElt.click(function () {
+        checkboxElt.click();
     });
     baseElt.append(checkboxElt);
     return baseElt;
@@ -351,14 +356,15 @@ $(function () {
         var input = $(this).parent().find('input');
         input.click();
     });
-
     // age range exact match handler
-    $("#agerange-match-exactly").change(function(){
-        //console.log(onlyIncludePerfectMatchesAge);
+    $('#agerange-match-exactly').click(function (e) {
         onlyIncludePerfectMatchesAge = !onlyIncludePerfectMatchesAge;
         changeShownProfiles();
+        e.stopPropagation();
     });
-
+    $('#agerange-match-exactly-container').click(function () {
+        $('#agerange-match-exactly').click();
+    });
     // apply filter automatically whenever the user checks a box
     $('#filter :input').change(function () {
         changeShownProfiles();
@@ -373,8 +379,6 @@ $(function () {
         // no need to run filter again
         insertMiniProfileElts(sortProfiles(shownProfiles));
     });
-
-
     // Make filter bar scroll with window. This can be made better
     $(window).scroll(function() {
         var scrollTop = $(window).scrollTop();
@@ -388,7 +392,6 @@ $(function () {
         var containerHeight = $(".container").css("height");
         containerHeight = containerHeight.slice(0,-2);
         containerHeight = parseInt(containerHeight);
-
         // if the filter bar hits the bottom
         if ((scrollTop > containerHeight - filterFloatHeight - 15)){
             $('#filter .float').css({
@@ -433,7 +436,7 @@ $(function () {
 $(window).on("load", function(){
     // filter extend to bottom of div
     var height = $("#profile-sort-container").css("height");
-    console.log(height);
-    console.log(shownProfiles.length);
+    // console.log(height);
+    // console.log(shownProfiles.length);
     $("#filter").css({height: height});
 })
