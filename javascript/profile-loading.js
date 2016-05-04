@@ -139,7 +139,7 @@ $(function() {
             var availableHours = profile.availability[i];
             for (var j=0; j < availableHours.length; j++) {
                 var slotID = days[i]+availableHours[j];
-                $('#' + slotID).css("background-color", '#66b2ff');
+                $('#' + slotID).css("background-color", '#0e62c7' /*'#66b2ff'*/);
                 $('#' + slotID).css("color", 'white');
             }
         }
