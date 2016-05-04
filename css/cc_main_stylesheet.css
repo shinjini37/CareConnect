@@ -1,7 +1,7 @@
 /* Filter groups */
 #filter {
     /*z-index: 500;*/
-    background-color:  #e0e0e0;
+    background-color:  #F3F3F3;
     width: 40%;
     padding: 0;
     cursor: default;
@@ -85,9 +85,9 @@
 }
 .filter-agerange-checkboxes {
     display: inline-block;
-    width: 56px;
+    width: 60px;
     height: 80px;
-    font-size: 10px;
+    font-size: 11px;
     text-align: center;
     vertical-align: top;
 }
@@ -109,14 +109,12 @@
 
 .filter-label-main {
     text-align: center;
-    font-size: 15px;
+    font-size: 16px;
     color: #1DBAA5;
     padding-top: 7px;
     height: 35px;
     background-color: white;
     margin: 0 -15px 0px -15px;
-    font-family: Calibri,Arial;
-    font-size: 20px;
 }
 
 #filter-buttons {
@@ -287,14 +285,15 @@ body {
 }
 
 .btn {
-    border-color: #1E88E5;
-    background-color: #1E88E5;
+    /*border-color: #1E88E5;*/
+    /*background-color: #1E88E5;*/
+    border-radius: 0;
 
 }
 
 .btn:hover {
-    border-color: #2e6da4;
-    background-color: #1976D2;
+    /*border-color: #2e6da4;*/
+    /*background-color: #1976D2;*/
 }
 
 .btn:focus {
@@ -327,6 +326,7 @@ input[type='checkbox'] {
 
 
 .match{
-    background-color: lawngreen;
+    /*background-color: lawngreen;*/
+    background-color: #43B7D3;
     border-radius: 5px;
 }

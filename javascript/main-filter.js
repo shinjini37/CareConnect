@@ -153,7 +153,7 @@ var createGoToTodayButton = function() {
 var createAnyAllToggle = function () {
     var baseElt = $('<div/>', {
         id: 'time-selector-any-all-toggle',
-        text: 'Match Exactly ',
+        text: 'Match Time Exactly ',
     });
     var checkboxElt = $('<input/>', {
         type: 'checkbox',

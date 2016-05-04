@@ -30,7 +30,12 @@
 
 }
 
+#selected-week{
+    background-color: #F97E76;
+}
+
 #selected-week-text{
+    color: white;
     font-size: 18px;
 }
 
