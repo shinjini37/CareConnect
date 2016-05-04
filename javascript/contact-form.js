@@ -10,5 +10,17 @@ $(function () {
 	    $('#alert').fadeTo(2000, 500).slideUp(500, function(){
 	        $("#alert").alert('close');
 	    });
-	})
+	});
+	$('#btn-save-draft').click(function () {
+    var alert = $('<div/>', {
+        class: 'alert alert-success fade in',
+        id: 'alert'
+    });
+    alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
+    alert.append("Draft saved successfully!");
+    $('.container').prepend(alert);
+    $('#alert').fadeTo(2000, 500).slideUp(500, function(){
+        $("#alert").alert('close');
+    });
+})
 });

@@ -12,7 +12,7 @@ var contactFunction = function (parentId, email) {
         });
     } else {
         $('#babysitter-email').val(email);
-        $("#myModal").modal();
+        $("#myModal").modal({backdrop: 'static'});
     }
 }
 
