@@ -48,9 +48,13 @@ $(function() {
 
     $("#register_form").submit(function (event) {
         event.preventDefault(event);
-        var password = $("#register_password").val();
-        var confirmed_password = $("#confirmed_password").val();
-        window.location.href = 'index.html?parentId=' + '6813';
+
+        var reg_name = $("#register_name").val();
+        var reg_email = $("#register_email").val();
+        var reg_password = $("#register_password").val();
+        if (reg_email.toLowerCase().indexOf("@mit.edu") >= 0){
+            window.location.href = 'index.html?parentId=' + '6813';
+        }
     })
 
     /*
