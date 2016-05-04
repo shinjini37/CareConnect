@@ -74,6 +74,9 @@ $(function(){
             +'<button class="btn btn-primary" id="signin-btn"><span></span>Sign In</button>'
             +'<button class="btn btn-primary" id="signup-btn"><span></span>Sign Up</button>'
         $('#profile-nav').html(notLoggedIn);
+        $('#signup-btn').click(function (event) {
+            window.location.href = 'login.html';
+        })
     } else {
         $("#logo a").attr("href", "index.html" + "?parentId=" + parentId);
 
@@ -89,7 +92,7 @@ $(function(){
                 +'</ul>'
             +'</div>';
         $('#profile-nav').html(loggedIn);
-        $("#nav-logout").click(function(event) {
+        $("#nav-logout").click(function (event) {
             window.location.href = 'index.html';
         });
     }

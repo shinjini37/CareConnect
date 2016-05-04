@@ -46,4 +46,15 @@ $(function() {
         }
 
     });
+
+    $("#signup_form").submit(function (event) {
+        event.preventDefault(event);
+        var password = $("#password").val();
+        var confirmed_password = $("#confirmed_password").val();
+        if (password === confirmed_password) {
+            window.location.href = 'index.html?parentId=' + '6813';
+        } else {
+            alert("Confirmed password doesn't match!");
+        }
+    })
 })
