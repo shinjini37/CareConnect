@@ -366,3 +366,10 @@ h2.resp-accordion {
 		font-size: 12px;
 	}
 }
+
+#about-us{
+    /*margin: auto;*/
+    /*width: 500px;*/
+    text-align: center;
+    padding: 15px;
+ } 

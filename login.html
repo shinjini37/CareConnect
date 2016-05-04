@@ -39,6 +39,7 @@
 
 				<div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
 						<div class="register">
+						<span id="register_error" style="color: red; font-weight: bold"></span>
 							<form id="register_form">										
 								<input placeholder="Name" id="register_name" type="text" required="">
 								<input placeholder="Email Address" id="register_email" type="text" required="">									
@@ -48,22 +49,23 @@
 										<input type="submit" value="Create Account"/>
 									</div>
 							</form>
-							<p id="register_error" style="color: red;"></p>
 						</div>
 				</div>	
 
 				<div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
 						<div class="register">
+						<span id="login_error" style="display: none; color: red; font-weight: bold;">Incorrect username or password.</span>
 							<form id="login_form">	
-
 								<input placeholder="Email Address" id="login_email" class="mail" type="text" required="">									
 								<input placeholder="Password" id="login_password" class="lock" type="password" required="">				
 								<input type="submit" value="Login"/>	
 							</form>
-							<p id="login_error" style="display: none; color: red;">Incorrect username or password.</p>
 						</div>
-					</div> 	        					            	      
-					
+					</div> 	     					            	      
+					<div id="about-us">
+ 	Welcome to CareConnect! <br><br>
+ 	We are here to connect parents at MIT who need childcare, <br> with MIT students who are excited to look after children.
+ 					</div>
 			</div>	
 			
 		</div>
