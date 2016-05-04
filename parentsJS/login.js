@@ -48,14 +48,20 @@ $(function() {
 
     $("#register_form").submit(function (event) {
         event.preventDefault(event);
-
         var reg_name = $("#register_name").val();
         var reg_email = $("#register_email").val();
         var reg_password = $("#register_password").val();
+        var reg_password_confirm = $("#register_password_confirm").val();
         if (reg_email.toLowerCase().indexOf("@mit.edu") >= 0){
-            window.location.href = 'index.html?parentId=' + '6813';
+            if (reg_password == reg_password_confirm){
+                window.location.href = 'index.html?parentId=' + '6813';
+            } else {
+                $("#register_error").html("Passwords do not match.");
+            }
+        } else {
+            $("#register_error").html("Only MIT emails allowed.");
         }
-    })
+    });
 
     /*
     $("#register_form").submit(function(event){
