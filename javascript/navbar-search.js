@@ -11,6 +11,14 @@ var getParameterByName = function(name, url) {
 //////////// Helper method ///////////
 
 $(function(){
+    //make buttons the same size as input boxes
+    $("#navigation").on('DOMNodeInserted', '.btn', function(){
+        var navBtnHeight = $("#search-text").css('height');
+        console.log(navBtnHeight);
+        $("#navigation .btn").css("height", navBtnHeight);
+    });
+
+
     // Search function to find students given first names
     var search = function(){
         var searchText = $("#search-text").val().toLowerCase();

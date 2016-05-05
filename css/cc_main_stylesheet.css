@@ -34,10 +34,10 @@
 
 #time-selector-any-all-toggle {
     text-align: right;
-    width: 70%;
     display: inline-block;
     margin: 8px 15px;
     float: right;
+    cursor: pointer;
 }
 
 #go-to-today {
@@ -60,6 +60,7 @@
     display: inline-block;
     width: 39%;
     text-align: right;
+    cursor: pointer;
 }
 
 #filter-agerange-slider-container, #slider-range, #filter-payrange-selected-container, #filter-payrange-selected, #filter-payrange-selected-label{
@@ -322,6 +323,7 @@ body {
 input[type='checkbox'] {
     width:15px;
     height:15px;
+    cursor: pointer;
 }
 
 
