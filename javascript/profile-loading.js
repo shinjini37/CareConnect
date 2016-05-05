@@ -80,7 +80,7 @@ $(function() {
 
         // load the reviews
         if (profile.reviews.length === 0) {
-            $('#review-container').html("There isn't any reviews yet.");
+            $('#review-container').html("<div id='no-reviews'>There aren't any reviews yet.</div>");
         }
         profile.reviews.forEach(function (review) {
             var panel = $('<div/>', {

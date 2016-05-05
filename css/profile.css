@@ -107,8 +107,8 @@ body{
 }*/
 
 .day {
-    border-left:1px solid lightgrey;
-    border-bottom:1px solid lightgrey;
+    border-left:1px solid grey;
+    border-bottom:1px solid grey;
     height: 30px;
     padding-top: 6px;
     vertical-align:middle;
@@ -117,8 +117,8 @@ body{
 }
 
 .hour {
-    border-left:1px solid lightgrey;
-    border-bottom:1px solid lightgrey;
+    border-left:1px solid grey;
+    border-bottom:1px solid grey;
     height: 40px;
     padding-top: 10px;
     text-align:center;
@@ -136,7 +136,7 @@ body{
 }
 
 #big-calendar{
-    border-right: 1px solid lightgrey;
+    border-right: 1px solid grey;
 }
 
 /*Reviews*/
@@ -156,7 +156,8 @@ body{
     background-color: whitesmoke;
 }
 
-.panel{
+#no-reviews{
+    padding: 15px;
 }
 
 

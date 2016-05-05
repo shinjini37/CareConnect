@@ -50,6 +50,7 @@ h1{
     margin-top: 60px;
 }
 
+
 /*----sap-----*/
 .sap_tabs {
      margin: 0 auto;
@@ -102,6 +103,8 @@ h2.resp-accordion {
   padding: 5px;
   display: none;
 }
+
+
 
 .resp-tab-content {
   display: none;
@@ -387,4 +390,20 @@ h2.resp-accordion {
 #background-image img{
 	opacity: 0.2;
 	-webkit-filter: blur(8px);
+}
+
+#logo{
+	margin-top: 20px;
+}
+
+#logo a{
+	text-decoration: none;
+	font-family: inherit;
+	color: white;
+	font-size: 36px;
+	cursor: pointer
+}
+#logo a:hover{
+	color: lightgrey;
+	transition: all 0.15s;
 }
