@@ -141,11 +141,11 @@ p.time-selector-header-text {
     border-top: 1px solid grey;
     text-align: center;
     background-color: white;
+    cursor: pointer;
 }
 
 .time-selector-cell:hover {
-    cursor: pointer;
-    background-color: #d3d3d3;  
+    background-color: #d3d3d3;
     transition: all 0.25s;
 }
 
