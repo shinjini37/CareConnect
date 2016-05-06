@@ -114,7 +114,7 @@ h2.resp-accordion {
 }
 
 /*---------*/
-.register input[type="text"],.register input[type="password"] {
+.register input[type="text"],.register input[type="password"],.register select, .register option {
 	outline: none;
     font-size: 16px;
     color: #000000;
@@ -128,6 +128,14 @@ h2.resp-accordion {
     margin-bottom: 10px;
 	font-weight:600;
 	letter-spacing:1px;
+}
+
+.register select, .register option{
+	width: 100.5%;
+}
+
+.register option{
+	height: 50px
 }
 
 .register input[type="submit"] {

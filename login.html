@@ -46,12 +46,16 @@
 						<span id="register_error" style="color: red; font-weight: bold"></span>
 							<form id="register_form">										
 								<input placeholder="Name" id="register_name" type="text" required="">
-								<input placeholder="Email Address" id="register_email" type="text" required="">									
+								<select name="signup-type">
+									<option value="parent" selected>I am a Parent</option>
+									<option value="student">I am a Student</option>
+								</select>
+								<input placeholder="Email Address" id="register_email" type="text" required="">
 								<input placeholder="Password" id="register_password" type="password" required="">	
 								<input placeholder="Confirm Password" id="register_password_confirm" type="password" required="">
-									<div class="sign-up">
-										<input type="submit" value="Create Account"/>
-									</div>
+								<div class="sign-up">
+									<input type="submit" value="Create Account"/>
+								</div>
 							</form>
 						</div>
 				</div>	

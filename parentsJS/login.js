@@ -13,6 +13,9 @@ var getParameterByName = function(name, url) {
 $(function() {
     // Load the login page
 
+    // select all text on click
+    $("input:text").focus(function() { $(this).mouseup(function (e) {e.preventDefault(); }).select(); } );
+
     var currentURL = window.location.search.substring(1);
 
     var parentId = getParameterByName('parentId');

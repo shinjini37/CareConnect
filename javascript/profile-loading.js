@@ -7,6 +7,13 @@ var contactFunction = function (parentId, email) {
         alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
         alert.append("Oops! You need to sign in first!");
         $('.container').prepend(alert);
+        $('#alert').css({
+            position:'fixed',
+            top: "0",
+            left: "0",
+            width: "100%",
+            "z-index":500
+        });
         $('#alert').fadeTo(2000, 500).slideUp(500, function(){
             $("#alert").alert('close');
         });
@@ -43,8 +50,6 @@ $(function() {
         }
         return query_string;
     }();
-
-    console.log(QueryString);
 
     // get the profile, load if it exists, redirect to homepage if it doesn't
     var profile = QueryString.profile;

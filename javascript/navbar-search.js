@@ -14,9 +14,15 @@ $(function(){
     //make buttons the same size as input boxes
     $("#navigation").on('DOMNodeInserted', '.btn', function(){
         var navBtnHeight = $("#search-text").css('height');
-        console.log(navBtnHeight);
-        $("#navigation .btn").css("height", navBtnHeight);
+        $("#navigation .btn").css({
+            "height": navBtnHeight
+        });
+
+        // select all text on click
+        $("input:text").focus(function() { $(this).mouseup(function (e) {e.preventDefault(); }).select(); } );
+
     });
+
 
 
     // Search function to find students given first names
@@ -40,6 +46,13 @@ $(function(){
             alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
             alert.append("Oops! Seems like the student you are looking for hasn't signed up yet!");
             $('.container').prepend(alert);
+            $('#alert').css({
+                position:'fixed',
+                top: "0",
+                left: "0",
+                width: "100%",
+                "z-index":500
+            });
             $('#alert').fadeTo(2000, 500).slideUp(500, function(){
                 $("#alert").alert('close');
             });
@@ -112,7 +125,6 @@ $(function(){
 
 
     $("#signin-btn").click(function(event){
-        console.log("mo");
         var parentEmail = $("#nav_email").val();
         var parentPassword = $("#nav_password").val();
         var login_parent_id;
@@ -130,7 +142,7 @@ $(function(){
             }
         }
 
-        $("#nav_email").val("");
+        //$("#nav_email").val("");
         $("#nav_password").val("");
         $("#nav_password").off("keyup");
         $("#nav_password").keyup(function (e) {
@@ -140,13 +152,20 @@ $(function(){
         });
 
         if (login_parent_id == null) {
-        var alert = $('<div/>', {
+            var alert = $('<div/>', {
                 class: 'alert alert-danger fade in',
                 id: 'alert'
             });
             alert.append("<a href='#'' class='close' data-dismiss='alert' aria-label='close'>&times;</a>");
             alert.append("Wrong username or password!");
             $('.container').prepend(alert);
+            $('#alert').css({
+                position:'fixed',
+                top: "0",
+                left: "0",
+                width: "100%",
+                "z-index":500
+            });
             $('#alert').fadeTo(2000, 500).slideUp(500, function(){
                 $("#alert").alert('close');
             });
