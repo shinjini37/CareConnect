@@ -357,6 +357,8 @@ $(function () {
         $('.filter-agerange-checkboxes-group :input:checked').prop('checked', '');
         $("#slider-range").slider("values", 0, $("#slider-range").slider("option", "min"));
         $("#slider-range").slider("values", 1, $("#slider-range").slider("option", "max"));
+        onlyIncludePerfectMatchesTime = true;
+        onlyIncludePerfectMatchesAge = true;
         calendar.clearDesiredTimes();
         changeShownProfiles();
     });
