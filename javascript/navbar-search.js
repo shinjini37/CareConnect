@@ -92,8 +92,8 @@ $(function(){
         var notLoggedIn =
             '<input type="text" placeholder="email..." class="form-control" id="nav_email">'
             +'<input type="password" placeholder="password..." class="form-control" id="nav_password">'
-            +'<button class="btn btn-primary" id="signin-btn"><span></span>Sign In</button>'
-            +'<button class="btn btn-primary" id="signup-btn"><span></span>Sign Up</button>'
+            +'<button class="btn btn-primary" id="signin-btn"><span></span>Sign in</button>'
+            +'<button class="btn btn-primary" id="signup-btn"><span></span>Sign up</button>'
         $('#profile-nav').html(notLoggedIn);
         $('#signup-btn').click(function (event) {
             window.location.href = 'login.html';
