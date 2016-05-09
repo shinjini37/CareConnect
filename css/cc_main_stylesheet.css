@@ -332,3 +332,11 @@ input[type='checkbox'] {
     background-color: #43B7D3;
     border-radius: 5px;
 }
+
+#no-profiles-to-show{
+    text-align: center;
+    padding: 15px;
+    position: fixed;
+    margin: auto;
+
+}

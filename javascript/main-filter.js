@@ -1,8 +1,8 @@
 // main page: filter and sort handlers
 
 // global config
-var onlyIncludePerfectMatchesTime = false;
-var onlyIncludePerfectMatchesAge = false;
+var onlyIncludePerfectMatchesTime = true;
+var onlyIncludePerfectMatchesAge = true;
 var profiles;
 var changeShownProfiles = function () {
     shownProfiles = filterProfiles(PROFILES);
@@ -156,9 +156,12 @@ var createAnyAllToggle = function () {
         id: 'time-selector-any-all-toggle',
         text: 'Match Time Exactly ',
     });
+
+
     var checkboxElt = $('<input/>', {
         type: 'checkbox',
         style: 'vertical-align: -2px',
+        checked: true
     });
     checkboxElt.click(function (e) {
         onlyIncludePerfectMatchesTime = !onlyIncludePerfectMatchesTime;
@@ -185,6 +188,11 @@ var insertMiniProfileElts = function (profiles) {
     var currentURL = window.location.search.substring(1);
     var parentId = getParameterByName('parentId');
     //console.log(parentId);
+    if (profiles.length===0){ // nothing to show
+        $('#profile-container').html("<div id='no-profiles-to-show'>Sorry, no students were found who match the criteria. " +
+            "<br>You can uncheck the Match Exactly/Match All checkboxes to relax the filter criteria" +
+            "</div>")
+    }
     profiles.forEach(function (profile) {
         // create mini-profile element
         var baseElt = $('<div/>', {
@@ -345,7 +353,8 @@ $(function () {
     });
     // reset button handler
     $('#filter-reset').click(function () {
-        $('#filter :input:checked').prop('checked', '');
+        $('#filter :input').prop('checked', true);
+        $('.filter-agerange-checkboxes-group :input:checked').prop('checked', '');
         $("#slider-range").slider("values", 0, $("#slider-range").slider("option", "min"));
         $("#slider-range").slider("values", 1, $("#slider-range").slider("option", "max"));
         calendar.clearDesiredTimes();
