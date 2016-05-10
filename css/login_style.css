@@ -417,3 +417,13 @@ h2.resp-accordion {
 	color: lightgrey;
 	transition: all 0.15s;
 }
+
+#enter-as-guest{
+	margin: auto;
+	text-align: center;
+	padding: 15px;
+}
+
+#enter-as-guest:hover{
+	text-decoration: underline;
+}
