@@ -398,6 +398,8 @@ h2.resp-accordion {
 #background-image img{
 	opacity: 0.2;
 	-webkit-filter: blur(8px);
+	filter: blur(8px);
+	width: 100%;
 }
 
 #logo{
