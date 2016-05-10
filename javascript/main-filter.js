@@ -190,7 +190,7 @@ var insertMiniProfileElts = function (profiles) {
     //console.log(parentId);
     if (profiles.length===0){ // nothing to show
         $('#profile-container').html("<div id='no-profiles-to-show'>Sorry, no students were found who match the criteria. " +
-            "<br>You can uncheck the Match Exactly/Match All checkboxes to relax the filter criteria" +
+            "<br>You can uncheck the Match Exactly/Match All checkboxes to relax the filter criteria." +
             "</div>")
     }
     profiles.forEach(function (profile) {
