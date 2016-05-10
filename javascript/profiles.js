@@ -13,25 +13,25 @@ var AGE_RANGE_CONVERSION = {
 
 var AGE_RANGES = {
     infant: {index: 0,
-        text: "Infants"
+        text: "Infants (0)"
     },
     toddler:{index: 1,
-        text: "Toddlers"
+        text: "Toddlers (1-2)"
     },
     preschooler: {index: 2,
-        text: "Preschoolers"
+        text: "Preschoolers (3-4)"
     },
     'lower-elementary': {index: 3,
-        text: "Lower elementary school kids"
+        text: "Lower elementary school kids (5-7)"
     },
     'higher-elementary': {index: 4,
-        text: "Higher elementary school kids",
+        text: "Higher elementary school kids (8-10)"
     },
     'lower-middle': {index: 5,
-        text: "Lower middle school kids",
+        text: "Lower middle school kids (11-12)"
     },
     'higher-middle': {index: 6,
-        text: "Higher middle school kids",
+        text: "Higher middle school kids (13-14)"
     },
 
 }
